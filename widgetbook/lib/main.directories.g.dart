@@ -168,6 +168,20 @@ import 'package:widgetbook_workspace/components/patterns/table/table.dart'
     as _widgetbook_workspace_components_patterns_table_table;
 import 'package:widgetbook_workspace/components/patterns/tree_view/tree_view.dart'
     as _widgetbook_workspace_components_patterns_tree_view_tree_view;
+import 'package:widgetbook_workspace/components/status/badge/badge.dart'
+    as _widgetbook_workspace_components_status_badge_badge;
+import 'package:widgetbook_workspace/components/status/meter/meter.dart'
+    as _widgetbook_workspace_components_status_meter_meter;
+import 'package:widgetbook_workspace/components/status/notification_badge/notification_badge.dart'
+    as _widgetbook_workspace_components_status_notification_badge_notification_badge;
+import 'package:widgetbook_workspace/components/status/progress_bar/progress_bar.dart'
+    as _widgetbook_workspace_components_status_progress_bar_progress_bar;
+import 'package:widgetbook_workspace/components/status/progress_circle/progress_circle.dart'
+    as _widgetbook_workspace_components_status_progress_circle_progress_circle;
+import 'package:widgetbook_workspace/components/status/skeleton/skeleton.dart'
+    as _widgetbook_workspace_components_status_skeleton_skeleton;
+import 'package:widgetbook_workspace/components/status/status_light/status_light.dart'
+    as _widgetbook_workspace_components_status_status_light_status_light;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -1457,6 +1471,121 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_patterns_tree_view_tree_view
                             .BuildTreeViewPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'status',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'badge',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumBadge',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder: _widgetbook_workspace_components_status_badge_badge
+                        .BuildBadgePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'meter',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumMeter',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder: _widgetbook_workspace_components_status_meter_meter
+                        .BuildMeterPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'notification_badge',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumNotificationBadge',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_status_notification_badge_notification_badge
+                            .BuildNotificationBadgePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'progress_bar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumProgressBar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_status_progress_bar_progress_bar
+                            .BuildProgressBarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'progress_circle',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumProgressCircle',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_status_progress_circle_progress_circle
+                            .BuildProgressCirclePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'skeleton',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumSkeleton',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_status_skeleton_skeleton
+                            .BuildSkeletonPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'status_light',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumStatusLight',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_status_status_light_status_light
+                            .BuildStatusLightPresentation,
                   ),
                 ],
               ),
