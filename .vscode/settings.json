@@ -1,0 +1,27 @@
+{
+    "dart.flutterSdkPath": "/Users/diegocatalao/fvm/versions/stable",
+    "dart.lineLength": 120,
+    "dart.flutterHotReloadOnSave": "all",
+    "[dart]": {
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "editor.inlayHints.enabled": "offUnlessPressed",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true,
+        "editor.rulers": [120],
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[git-commit]": {
+        "editor.rulers": [80]
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/build": true,
+        "**/.dart_tool": true
+    },
+}

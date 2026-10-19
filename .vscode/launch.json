@@ -1,0 +1,28 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Run on Chrome",
+			"request": "launch",
+			"type": "dart",
+			"program": "${workspaceFolder}/widgetbook/lib/main.dart",
+			"cwd": "${workspaceFolder}/widgetbook",
+			"deviceId": "chrome"
+		},
+		{
+			"name": "Run on MacOS",
+			"request": "launch",
+			"type": "dart",
+			"program": "${workspaceFolder}/widgetbook/lib/main.dart",
+			"cwd": "${workspaceFolder}/widgetbook",
+			"deviceId": "macos"
+		},
+		{
+			"name": "Run on Device",
+			"request": "launch",
+			"type": "dart",
+			"program": "${workspaceFolder}/widgetbook/lib/main.dart",
+			"cwd": "${workspaceFolder}/widgetbook",
+		}
+	] 
+}
