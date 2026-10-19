@@ -124,6 +124,8 @@ import 'package:widgetbook_workspace/components/labeled_value/labeled_value.dart
     as _widgetbook_workspace_components_labeled_value_labeled_value;
 import 'package:widgetbook_workspace/components/link/link.dart'
     as _widgetbook_workspace_components_link_link;
+import 'package:widgetbook_workspace/components/link_button/link_button.dart'
+    as _widgetbook_workspace_components_link_button_link_button;
 import 'package:widgetbook_workspace/components/list_box/list_box.dart'
     as _widgetbook_workspace_components_list_box_list_box;
 import 'package:widgetbook_workspace/components/list_view/list_view.dart'
@@ -1113,6 +1115,22 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_link_link
                     .BuildLinkPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'link_button',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumLinkButton',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder:
+                    _widgetbook_workspace_components_link_button_link_button
+                        .BuildLinkButtonPresentation,
               ),
             ],
           ),
