@@ -1,6 +1,6 @@
 ## Summary
 
-<!-- The problem this pull request solves or the reason for the change. -->
+<!-- The problem this pull request solves briefly. -->
 
 **Intent**: <!-- The intent of this pull request. -->
 
