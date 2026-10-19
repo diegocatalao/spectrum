@@ -50,6 +50,18 @@ import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
     as _widgetbook_workspace_components_containers_divider_divider;
 import 'package:widgetbook_workspace/components/containers/tray/tray.dart'
     as _widgetbook_workspace_components_containers_tray_tray;
+import 'package:widgetbook_workspace/components/date_time/calendar/calendar.dart'
+    as _widgetbook_workspace_components_date_time_calendar_calendar;
+import 'package:widgetbook_workspace/components/date_time/date_field/date_field.dart'
+    as _widgetbook_workspace_components_date_time_date_field_date_field;
+import 'package:widgetbook_workspace/components/date_time/date_picker/date_picker.dart'
+    as _widgetbook_workspace_components_date_time_date_picker_date_picker;
+import 'package:widgetbook_workspace/components/date_time/date_range_picker/date_range_picker.dart'
+    as _widgetbook_workspace_components_date_time_date_range_picker_date_range_picker;
+import 'package:widgetbook_workspace/components/date_time/range_calendar/range_calendar.dart'
+    as _widgetbook_workspace_components_date_time_range_calendar_range_calendar;
+import 'package:widgetbook_workspace/components/date_time/time_field/time_field.dart'
+    as _widgetbook_workspace_components_date_time_time_field_time_field;
 import 'package:widgetbook_workspace/components/feedback/coach_mark/coach_mark.dart'
     as _widgetbook_workspace_components_feedback_coach_mark_coach_mark;
 import 'package:widgetbook_workspace/components/feedback/color_loupe/color_loupe.dart'
@@ -60,8 +72,6 @@ import 'package:widgetbook_workspace/components/feedback/inline_alert/inline_ale
     as _widgetbook_workspace_components_feedback_inline_alert_inline_alert;
 import 'package:widgetbook_workspace/components/feedback/toast/toast.dart'
     as _widgetbook_workspace_components_feedback_toast_toast;
-import 'package:widgetbook_workspace/components/inputs/calendar/calendar.dart'
-    as _widgetbook_workspace_components_inputs_calendar_calendar;
 import 'package:widgetbook_workspace/components/inputs/checkbox/checkbox.dart'
     as _widgetbook_workspace_components_inputs_checkbox_checkbox;
 import 'package:widgetbook_workspace/components/inputs/checkbox_group/checkbox_group.dart'
@@ -78,12 +88,6 @@ import 'package:widgetbook_workspace/components/inputs/color_wheel/color_wheel.d
     as _widgetbook_workspace_components_inputs_color_wheel_color_wheel;
 import 'package:widgetbook_workspace/components/inputs/combo_box/combo_box.dart'
     as _widgetbook_workspace_components_inputs_combo_box_combo_box;
-import 'package:widgetbook_workspace/components/inputs/date_field/date_field.dart'
-    as _widgetbook_workspace_components_inputs_date_field_date_field;
-import 'package:widgetbook_workspace/components/inputs/date_picker/date_picker.dart'
-    as _widgetbook_workspace_components_inputs_date_picker_date_picker;
-import 'package:widgetbook_workspace/components/inputs/date_range_picker/date_range_picker.dart'
-    as _widgetbook_workspace_components_inputs_date_range_picker_date_range_picker;
 import 'package:widgetbook_workspace/components/inputs/drop_zone/drop_zone.dart'
     as _widgetbook_workspace_components_inputs_drop_zone_drop_zone;
 import 'package:widgetbook_workspace/components/inputs/form/form.dart'
@@ -96,8 +100,6 @@ import 'package:widgetbook_workspace/components/inputs/radio_button/radio_button
     as _widgetbook_workspace_components_inputs_radio_button_radio_button;
 import 'package:widgetbook_workspace/components/inputs/radio_group/radio_group.dart'
     as _widgetbook_workspace_components_inputs_radio_group_radio_group;
-import 'package:widgetbook_workspace/components/inputs/range_calendar/range_calendar.dart'
-    as _widgetbook_workspace_components_inputs_range_calendar_range_calendar;
 import 'package:widgetbook_workspace/components/inputs/range_slider/range_slider.dart'
     as _widgetbook_workspace_components_inputs_range_slider_range_slider;
 import 'package:widgetbook_workspace/components/inputs/rating/rating.dart'
@@ -114,8 +116,6 @@ import 'package:widgetbook_workspace/components/inputs/switch/switch.dart'
     as _widgetbook_workspace_components_inputs_switch_switch;
 import 'package:widgetbook_workspace/components/inputs/text_field/text_field.dart'
     as _widgetbook_workspace_components_inputs_text_field_text_field;
-import 'package:widgetbook_workspace/components/inputs/time_field/time_field.dart'
-    as _widgetbook_workspace_components_inputs_time_field_time_field;
 import 'package:widgetbook_workspace/components/media/avatar/avatar.dart'
     as _widgetbook_workspace_components_media_avatar_avatar;
 import 'package:widgetbook_workspace/components/media/avatar_group/avatar_group.dart'
@@ -521,6 +521,107 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
+        name: 'date_time',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'calendar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCalendar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_date_time_calendar_calendar
+                            .BuildCalendarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'date_field',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDateField',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_date_time_date_field_date_field
+                            .BuildDateFieldPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'date_picker',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDatePicker',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_date_time_date_picker_date_picker
+                            .BuildDatePickerPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'date_range_picker',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDateRangePicker',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_date_time_date_range_picker_date_range_picker
+                            .BuildDateRangePickerPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'range_calendar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumRangeCalendar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_date_time_range_calendar_range_calendar
+                            .BuildRangeCalendarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'time_field',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTimeField',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_date_time_time_field_time_field
+                            .BuildTimeFieldPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
         name: 'feedback',
         children: [
           _widgetbook.WidgetbookFolder(
@@ -608,22 +709,6 @@ final directories = <_widgetbook.WidgetbookNode>[
       _widgetbook.WidgetbookFolder(
         name: 'inputs',
         children: [
-          _widgetbook.WidgetbookFolder(
-            name: 'calendar',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumCalendar',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_calendar_calendar
-                            .BuildCalendarPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
           _widgetbook.WidgetbookFolder(
             name: 'checkbox',
             children: [
@@ -753,54 +838,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'date_field',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumDateField',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_date_field_date_field
-                            .BuildDateFieldPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'date_picker',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumDatePicker',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_date_picker_date_picker
-                            .BuildDatePickerPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'date_range_picker',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumDateRangePicker',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_date_range_picker_date_range_picker
-                            .BuildDateRangePickerPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'drop_zone',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -890,22 +927,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_inputs_radio_group_radio_group
                             .BuildRadioGroupPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'range_calendar',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumRangeCalendar',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_range_calendar_range_calendar
-                            .BuildRangeCalendarPresentation,
                   ),
                 ],
               ),
@@ -1034,22 +1055,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_inputs_text_field_text_field
                             .BuildTextFieldPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'time_field',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTimeField',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_time_field_time_field
-                            .BuildTimeFieldPresentation,
                   ),
                 ],
               ),
