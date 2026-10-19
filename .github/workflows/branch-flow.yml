@@ -1,0 +1,27 @@
+name: Branch flow
+
+# Keeps the promotion flow develop -> staging -> master:
+# staging only accepts pull requests from develop,
+# and master only accepts pull requests from staging.
+on:
+  pull_request:
+    branches: [staging, master]
+
+jobs:
+  check-source-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check source branch
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+        run: |
+          if [ "$BASE" = "staging" ] && [ "$HEAD" != "develop" ]; then
+            echo "::error::staging only accepts pull requests from develop, not from $HEAD."
+            exit 1
+          elif [ "$BASE" = "master" ] && [ "$HEAD" != "staging" ]; then
+            echo "::error::master only accepts pull requests from staging, not from $HEAD."
+            exit 1
+          else
+            echo "$HEAD -> $BASE is allowed."
+          fi
