@@ -54,6 +54,7 @@ export 'image/image.dart';
 export 'inline_alert/inline_alert.dart';
 export 'labeled_value/labeled_value.dart';
 export 'link/link.dart';
+export 'link_button/link_button.dart';
 export 'list_box/list_box.dart';
 export 'list_view/list_view.dart';
 export 'menu/menu.dart';
