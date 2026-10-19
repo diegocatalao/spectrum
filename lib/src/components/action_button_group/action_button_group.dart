@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:spectrum/src/utils/selects.dart';
 
-/// Spectrum Action Group: places action buttons side by side (or stacked),
+/// Spectrum Action Button Group: places action buttons side by side (or stacked),
 /// passes shared options down to them and can manage their selection.
-class SpectrumActionGroup extends StatelessWidget {
+class SpectrumActionButtonGroup extends StatelessWidget {
   /// The action buttons of the group.
   final List<Widget> children;
 
@@ -36,7 +36,7 @@ class SpectrumActionGroup extends StatelessWidget {
   /// Text read by screen readers to describe the group.
   final String? label;
 
-  const SpectrumActionGroup({
+  const SpectrumActionButtonGroup({
     super.key,
     this.children = const [],
     this.isQuiet = false,
@@ -52,24 +52,24 @@ class SpectrumActionGroup extends StatelessWidget {
 
   /// Returns True when the widget is inside a quiet group.
   static bool isQuietOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_ActionGroupScope>()?.isQuiet ?? false;
+    return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupScope>()?.isQuiet ?? false;
   }
 
   /// Returns True when the widget is inside an emphasized group.
   static bool isEmphasizedOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_ActionGroupScope>()?.isEmphasized ?? false;
+    return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupScope>()?.isEmphasized ?? false;
   }
 
   /// Returns the corners of the button inside a compact group,
   /// or null when the button keeps its own rounded corners.
   static BorderRadius? borderRadiusOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_ActionGroupCornerScope>()?.borderRadius;
+    return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupCornerScope>()?.borderRadius;
   }
 
   /// Returns the selection of the button inside a group with selection,
   /// or null when the group does not manage the selection.
   static ({bool selected, VoidCallback onSelect})? itemOf(BuildContext context) {
-    final item = context.dependOnInheritedWidgetOfExactType<_ActionGroupItemScope>();
+    final item = context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupItemScope>();
     if (item == null) return null;
     return (selected: item.selected, onSelect: item.onSelect);
   }
@@ -95,15 +95,9 @@ class SpectrumActionGroup extends StatelessWidget {
     final isLast = index == children.length - 1;
 
     if (isVertical) {
-      return BorderRadius.vertical(
-        top: isFirst ? radius : Radius.zero,
-        bottom: isLast ? radius : Radius.zero,
-      );
+      return BorderRadius.vertical(top: isFirst ? radius : Radius.zero, bottom: isLast ? radius : Radius.zero);
     } else {
-      return BorderRadius.horizontal(
-        left: isFirst ? radius : Radius.zero,
-        right: isLast ? radius : Radius.zero,
-      );
+      return BorderRadius.horizontal(left: isFirst ? radius : Radius.zero, right: isLast ? radius : Radius.zero);
     }
   }
 
@@ -118,7 +112,7 @@ class SpectrumActionGroup extends StatelessWidget {
       // selected and how to select itself. In single selection, screen
       // readers also announce the buttons as mutually exclusive.
       if (selects != SpectrumSelects.none) {
-        item = _ActionGroupItemScope(
+        item = _ActionButtonGroupItemScope(
           selected: selected.contains(index),
           onSelect: () => _select(index),
           child: Semantics(inMutuallyExclusiveGroup: selects == SpectrumSelects.single, child: item),
@@ -129,7 +123,7 @@ class SpectrumActionGroup extends StatelessWidget {
       // quiet: the first and the last keep the outer rounded corners and every
       // corner between two buttons becomes square, so hover and selection fit together.
       if (isCompact) {
-        item = _ActionGroupCornerScope(borderRadius: _cornersOf(index), child: item);
+        item = _ActionButtonGroupCornerScope(borderRadius: _cornersOf(index), child: item);
       }
 
       // Horizontal and justified: every button takes the same share of the row.
@@ -144,7 +138,7 @@ class SpectrumActionGroup extends StatelessWidget {
       container: true,
       explicitChildNodes: true,
       label: label,
-      child: _ActionGroupScope(
+      child: _ActionButtonGroupScope(
         isQuiet: isQuiet,
         isEmphasized: isEmphasized,
         child: Flex(
@@ -163,35 +157,35 @@ class SpectrumActionGroup extends StatelessWidget {
 
 /// Shares the group options with the action buttons below it in the tree,
 /// as the sp-action-group does with its children on the web.
-class _ActionGroupScope extends InheritedWidget {
+class _ActionButtonGroupScope extends InheritedWidget {
   final bool isQuiet;
   final bool isEmphasized;
 
-  const _ActionGroupScope({required this.isQuiet, required this.isEmphasized, required super.child});
+  const _ActionButtonGroupScope({required this.isQuiet, required this.isEmphasized, required super.child});
 
   @override
-  bool updateShouldNotify(_ActionGroupScope oldWidget) {
+  bool updateShouldNotify(_ActionButtonGroupScope oldWidget) {
     return oldWidget.isQuiet != isQuiet || oldWidget.isEmphasized != isEmphasized;
   }
 }
 
 /// Shares the selection of one button of the group with that button.
-class _ActionGroupItemScope extends InheritedWidget {
+class _ActionButtonGroupItemScope extends InheritedWidget {
   final bool selected;
   final VoidCallback onSelect;
 
-  const _ActionGroupItemScope({required this.selected, required this.onSelect, required super.child});
+  const _ActionButtonGroupItemScope({required this.selected, required this.onSelect, required super.child});
 
   @override
-  bool updateShouldNotify(_ActionGroupItemScope oldWidget) => oldWidget.selected != selected;
+  bool updateShouldNotify(_ActionButtonGroupItemScope oldWidget) => oldWidget.selected != selected;
 }
 
 /// Shares the corners of one button of a compact group with that button.
-class _ActionGroupCornerScope extends InheritedWidget {
+class _ActionButtonGroupCornerScope extends InheritedWidget {
   final BorderRadius borderRadius;
 
-  const _ActionGroupCornerScope({required this.borderRadius, required super.child});
+  const _ActionButtonGroupCornerScope({required this.borderRadius, required super.child});
 
   @override
-  bool updateShouldNotify(_ActionGroupCornerScope oldWidget) => oldWidget.borderRadius != borderRadius;
+  bool updateShouldNotify(_ActionButtonGroupCornerScope oldWidget) => oldWidget.borderRadius != borderRadius;
 }

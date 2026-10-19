@@ -47,9 +47,7 @@ class _SpectrumAccordionState extends State<SpectrumAccordion> {
   void initState() {
     super.initState();
 
-    final expandeds = widget.items.indexed.where(
-      (e) => e.$2.isExpanded).map((e) => e.$1,
-    );
+    final expandeds = widget.items.indexed.where((e) => e.$2.isExpanded).map((e) => e.$1);
 
     if (widget.allowMultiple) {
       // When allowMultiple is True, every item created with isExpanded

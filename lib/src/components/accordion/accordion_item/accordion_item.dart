@@ -47,9 +47,7 @@ class SpectrumAccordionItem extends StatelessWidget {
     // Light gray background on hover, transparent when disabled.
     final hover = isDisabled ? Colors.transparent : colors.surfaceContainerHigh;
     // Darker gray background on tap, transparent when disabled.
-    final pressed = isDisabled
-        ? Colors.transparent
-        : colors.surfaceContainerHighest;
+    final pressed = isDisabled ? Colors.transparent : colors.surfaceContainerHighest;
     // A quarter turn points the chevron down when expanded.
     final turns = isExpanded ? 0.25 : 0.0;
     // Full content height when expanded, zero when collapsed.
@@ -123,10 +121,7 @@ class SpectrumAccordionItem extends StatelessWidget {
             // CrossAxisAlignment.stretch of the Column does.
             child: SizedBox(
               width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
-                child: panel,
-              ),
+              child: Padding(padding: const EdgeInsets.fromLTRB(16, 10, 16, 10), child: panel),
             ),
           ),
         ),

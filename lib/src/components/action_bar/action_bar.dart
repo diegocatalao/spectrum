@@ -59,15 +59,14 @@ class SpectrumActionBar extends StatelessWidget {
                 MaterialLocalizations.of(context).selectedRowCountTitle(selectedCount),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: isEmphasized ? colors.onPrimary : colors.onSurface,
-                ),
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(color: isEmphasized ? colors.onPrimary : colors.onSurface),
               ),
             ),
             const SizedBox(width: 24),
             // As in Spectrum, the actions are always quiet inside the bar,
             // so the user does not need to pass isQuiet to each one.
-            SpectrumActionGroup(isQuiet: true, children: children),
+            SpectrumActionButtonGroup(isQuiet: true, children: children),
           ],
         ),
       ),

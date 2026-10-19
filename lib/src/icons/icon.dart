@@ -21,9 +21,7 @@ class SpectrumIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = this.color ??
-                  IconTheme.of(context).color ??
-                  Theme.of(context).colorScheme.onSurface;
+    final color = this.color ?? IconTheme.of(context).color ?? Theme.of(context).colorScheme.onSurface;
 
     return SvgPicture.asset(
       asset.name,

@@ -10,7 +10,7 @@ class SpectrumCloseButton extends StatefulWidget {
   /// Called on every tap.
   final VoidCallback? onTap;
 
-  const SpectrumCloseButton({ super.key, this.isDisabled = false, this.onTap});
+  const SpectrumCloseButton({super.key, this.isDisabled = false, this.onTap});
 
   @override
   State<SpectrumCloseButton> createState() => _SpectrumCloseButtonState();
@@ -80,23 +80,28 @@ class _SpectrumCloseButtonState extends State<SpectrumCloseButton> {
               onFocusChange: (value) => setState(() => _isFocused = value),
               child: SizedBox.square(
                 dimension: 32,
-                child: Center(
-                  child: SpectrumIcon(SpectrumIcons.close, size: 12, color: content),
-                ),
+                child: Center(child: SpectrumIcon(SpectrumIcons.close, size: 12, color: content)),
               ),
             ),
           ),
           // Spectrum focus indicator: a 2px ring with a 2px gap around
           // the button, drawn outside it so the layout does not change.
-          Positioned(left: -4, top: -4, right: -4, bottom: -4, child: IgnorePointer(
-            child: Visibility(
-              visible: ring,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: context.spectrum.focusIndicator, width: 2),
-                )
-            ))),
+          Positioned(
+            left: -4,
+            top: -4,
+            right: -4,
+            bottom: -4,
+            child: IgnorePointer(
+              child: Visibility(
+                visible: ring,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: context.spectrum.focusIndicator, width: 2),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

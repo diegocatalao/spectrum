@@ -86,10 +86,8 @@ class SpectrumMenuGroup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 8, 12, 4),
               child: DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: colors.inverseSurface,
-                ),
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(fontWeight: FontWeight.w700, color: colors.inverseSurface),
                 child: ExcludeSemantics(child: header!),
               ),
             ),
