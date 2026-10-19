@@ -1,0 +1,1 @@
+// Animação de fade reutilizável
