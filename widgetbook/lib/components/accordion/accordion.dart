@@ -63,14 +63,8 @@ Widget BuildAccordionPresentation(BuildContext context) {
     isDisabled: _IsDisabledKnobsFn(context),
     onExpansionChange: (index, expanded) => log("BuildAccordionPresentation item $index expanded: $expanded."),
     items: [
-      SpectrumAccordionItem(
-        title: Text('Personal Information'),
-        panel: Text('Personal information from here.'),
-      ),
-      SpectrumAccordionItem(
-        title: Text('Billing Address'),
-        panel: Text('Billing Address from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Personal Information'), panel: Text('Personal information from here.')),
+      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
     ],
   );
 }
@@ -88,10 +82,7 @@ Widget BuildAccordionExpanding(BuildContext context) {
         title: Text('Personal Information'),
         panel: Text('Personal information expanded from here.'),
       ),
-      SpectrumAccordionItem(
-        title: Text('Billing Address'),
-        panel: Text('Billing Address from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
     ],
   );
 }
@@ -121,13 +112,11 @@ Widget BuildAccordionActions(BuildContext context) {
           ),
         ],
       ),
-      SpectrumAccordionItem(
-        title: Text('Billing Address'),
-        panel: Text('Billing Address from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
     ],
   );
 }
+
 @widgetbook.UseCase(name: 'Disabled Item', type: SpectrumAccordion)
 Widget BuildAccordionDisabledItem(BuildContext context) {
   return SpectrumAccordion(
@@ -135,19 +124,13 @@ Widget BuildAccordionDisabledItem(BuildContext context) {
     isQuiet: _IsQuietKnobsFn(context),
     allowMultiple: _AllowMultipleKnobsFn(context),
     items: [
-      SpectrumAccordionItem(
-        title: Text('Personal Information'),
-        panel: Text('Personal information from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Personal Information'), panel: Text('Personal information from here.')),
       SpectrumAccordionItem(
         isDisabled: true,
         title: Text('Billing Address'),
         panel: Text('Billing Address from here.'),
       ),
-      SpectrumAccordionItem(
-        title: Text('Shipping Address'),
-        panel: Text('Shipping Address from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Shipping Address'), panel: Text('Shipping Address from here.')),
     ],
   );
 }
@@ -177,10 +160,7 @@ Widget BuildAccordionLongTitle(BuildContext context) {
           ),
         ],
       ),
-      SpectrumAccordionItem(
-        title: Text('Billing Address'),
-        panel: Text('Billing Address from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
     ],
   );
 }
@@ -212,7 +192,7 @@ Widget BuildAccordionRichPanel(BuildContext context) {
                   onTap: () => log("BuildAccordionRichPanel button 'CANCEL' was tapped."),
                 ),
                 SpectrumActionButton(
-                                    child: Text("Save"),
+                  child: Text("Save"),
                   onTap: () => log("BuildAccordionRichPanel button 'SAVE' was tapped."),
                 ),
               ],
@@ -220,10 +200,7 @@ Widget BuildAccordionRichPanel(BuildContext context) {
           ],
         ),
       ),
-      SpectrumAccordionItem(
-        title: Text('Billing Address'),
-        panel: Text('Billing Address from here.'),
-      ),
+      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
     ],
   );
 }
