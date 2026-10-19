@@ -18,7 +18,7 @@ class SpectrumActionBar extends StatelessWidget {
   final VoidCallback onClose;
 
   /// Action buttons shown on the right, always quiet inside the bar.
-  final List<Widget> children;
+  final List<SpectrumActionButton> children;
 
   const SpectrumActionBar({
     super.key,
