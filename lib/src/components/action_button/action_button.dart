@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:spectrum/spectrum.dart';
 
@@ -7,80 +9,47 @@ class SpectrumActionButton extends StatefulWidget {
   /// Text shown on the right of the icon.
   final Text? child;
 
-  /// When True, each tap switches the selection on and off.
-  final bool toggles;
-
-  /// Initial selection of the button.
-  final bool isSelected;
+  /// Icon shown on the left of the text.
+  final SpectrumIcon? icon;
 
   /// Removes the gray background, which only appears on hover and tap.
   final bool isQuiet;
 
-  /// Uses the accent blue instead of the light gray when selected.
-  final bool isEmphasized;
-
-  /// Grays out the content and ignores hover, tap and long press.
+  /// Grays out the content and ignores hover and tap.
   final bool isDisabled;
 
-  /// Text read by screen readers. Required in practice for icon only buttons.
-  final String? label;
+  /// Ignores taps while an action is running and, after one second, shows a loading
+  /// circle in place of the content, keeping the button size and its focus.
+  final bool isPending;
 
-  /// Icon shown on the left of the text.
-  final SpectrumIcon? icon;
+  /// Fixed white or black colors for buttons over images or colored backgrounds.
+  /// When set, it replaces the theme colors.
+  final SpectrumStaticColor? staticColor;
 
-  /// Called on every tap, after the selection changes.
+  /// Focuses the button as soon as it is shown.
+  final bool isAutoFocus;
+
+  /// Called on every tap.
   final VoidCallback? onTap;
-
-  /// Called on long press. When set, the hold affordance triangle is shown.
-  final VoidCallback? onLongPress;
 
   const SpectrumActionButton({
     super.key,
     this.child,
-    this.toggles = false,
-    this.isSelected = false,
-    this.isQuiet = false,
-    this.isEmphasized = false,
-    this.isDisabled = false,
-    this.label,
     this.icon,
+    this.isQuiet = false,
+    this.isDisabled = false,
+    this.isPending = false,
+    this.staticColor,
+    this.isAutoFocus = false,
     this.onTap,
-    this.onLongPress,
   }) : assert(child != null || icon != null);
 
   @override
   State<SpectrumActionButton> createState() => _SpectrumActionButtonState();
 }
 
-/// Paints the hold affordance triangle with the button content color.
-class _CornerTrianglePainter extends CustomPainter {
-  final Color color;
-
-  const _CornerTrianglePainter(this.color);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final pathline = Path();
-
-    pathline.moveTo(size.width, 0);
-    pathline.lineTo(size.width, size.height);
-    pathline.lineTo(0, size.height);
-    pathline.close();
-
-    canvas.drawPath(pathline, Paint()..color = color);
-  }
-
-  @override
-  bool shouldRepaint(_CornerTrianglePainter delegate) => delegate.color != color;
-}
-
-/// Keeps the selection of the button and picks its colors.
+/// Keeps the interaction states of the button and picks its colors.
 class _SpectrumActionButtonState extends State<SpectrumActionButton> {
-  /// The current selection of the button. It starts with isSelected and
-  /// is switched by _handleTap when toggles is True, so the button can
-  /// change its own colors without the parent rebuilding it.
-  bool _isSelected = false;
-
   /// Hover and press states, kept to change the neutral text color,
   /// since the InkWell only changes the background by itself.
   bool _isHovered = false;
@@ -90,48 +59,66 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
   /// button is focused by the keyboard, not by a mouse click.
   bool _isFocused = false;
 
+  /// Whether the loading circle is shown. It turns True one second after
+  /// isPending, as in Spectrum 2, so quick actions never flash the circle.
+  bool _isSpinnerVisible = false;
+
+  /// Timer that shows the loading circle one second after isPending.
+  Timer? _pendingTimer;
+
   @override
   void initState() {
     super.initState();
-    // When the button is created, the selection starts with the value
-    // of isSelected, so a button can already appear selected without
-    // the user tapping it first.
-    _isSelected = widget.isSelected;
+    // When the button is created already pending, the one second
+    // delay starts right away, as if isPending had just turned True.
+    _updatePending();
   }
 
   @override
   void didUpdateWidget(covariant SpectrumActionButton widget) {
     super.didUpdateWidget(widget);
 
-    // When the parent changes isSelected (here, widget is the old one and
-    // this.widget is the new one), the selection follows the new value.
-    // Otherwise, the selection made by the user tapping is kept.
-    if (widget.isSelected != this.widget.isSelected) {
-      _isSelected = this.widget.isSelected;
+    // When the parent changes isPending (here, widget is the old one and
+    // this.widget is the new one), the delay starts or the circle hides.
+    if (widget.isPending != this.widget.isPending) {
+      _updatePending();
     }
   }
 
-  /// When toggles is True, the tap switches the selection and rebuilds
-  /// the button with the new colors. In both cases, the onTap passed
-  /// by the user is called after it.
-  void _handleTap() {
-    final group = SpectrumActionButtonGroup.itemOf(context);
+  @override
+  void dispose() {
+    _pendingTimer?.cancel();
+    super.dispose();
+  }
 
-    // Inside a group with selection, the group decides the selection
-    // and the button only tells it was tapped.
-    if (group != null) {
-      group.onSelect();
-    } else if (widget.toggles) {
-      setState(() => _isSelected = !_isSelected);
+  /// Starts the one second delay when pending, or hides the circle at once when not.
+  void _updatePending() {
+    _pendingTimer?.cancel();
+
+    if (widget.isPending) {
+      // When isPending is True, the content stays visible for one second
+      // and only then the loading circle replaces it.
+      _pendingTimer = Timer(const Duration(seconds: 1), () => setState(() => _isSpinnerVisible = true));
+    } else {
+      // When isPending is False, the loading circle hides immediately
+      // and the content comes back without waiting.
+      _isSpinnerVisible = false;
     }
+  }
 
-    widget.onTap?.call();
+  /// Ignores the tap while pending, so the running action is not started again.
+  /// The InkWell keeps a tap handler so the pending button stays focusable.
+  void _handleTap() {
+    if (!widget.isPending) {
+      widget.onTap?.call();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final Color background, pressed, content;
+    final Color tone;
 
     // When the button is hovered or pressed, the neutral text gets
     // one step lighter, from gray-800 to gray-900, as in Spectrum.
@@ -140,44 +127,62 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
     // The button is quiet when isQuiet is True or when it is inside
     // a quiet SpectrumActionButtonGroup, like the ones in the Action Bar.
     final quiet = widget.isQuiet || SpectrumActionButtonGroup.isQuietOf(context);
-    final emphasized = widget.isEmphasized || SpectrumActionButtonGroup.isEmphasizedOf(context);
 
-    // Inside a group with selection, the selection comes from the group.
-    // Otherwise, the button keeps its own selection.
-    final group = SpectrumActionButtonGroup.itemOf(context);
-    final isSelected = group?.selected ?? _isSelected;
+    // A pending button looks disabled, as in Spectrum 2, once the loading circle appears.
+    final isDisabled = widget.isDisabled;
+    final staticColor = widget.staticColor;
+    final isInactive = isDisabled || _isSpinnerVisible;
 
     // Inside a compact group, the group decides which corners are rounded.
     final borderRadius = SpectrumActionButtonGroup.borderRadiusOf(context) ?? BorderRadius.circular(8);
 
-    if (widget.isDisabled && quiet) {
-      // When isDisabled and isQuiet are True, the gray color
-      // inside the button will be transparent, and just the text will change
-      // your own color to gray mixing both behavior.
+    if (staticColor == SpectrumStaticColor.black) {
+      // When staticColor is black, the button uses black tones over light images.
+      tone = SpectrumColors.black;
+    } else {
+      // Otherwise the static tone is white, used over dark images when staticColor is white.
+      tone = SpectrumColors.white;
+    }
+
+    if (staticColor != null && isInactive && quiet) {
+      // When staticColor is set and isDisabled (or isPending) and isQuiet are True,
+      // the background stays transparent and the text keeps the static tone
+      // with low opacity, so it stays visible but can not be tapped.
+      background = Colors.transparent;
+      pressed = Colors.transparent;
+      content = tone.withValues(alpha: 0.4);
+    } else if (staticColor != null && isInactive) {
+      // When staticColor is set and isDisabled (or isPending) is True, the background
+      // and the text keep the static tone with low opacity, so the button
+      // stays visible over the image but clearly can not be tapped.
+      background = tone.withValues(alpha: 0.1);
+      pressed = tone.withValues(alpha: 0.1);
+      content = tone.withValues(alpha: 0.4);
+    } else if (staticColor != null && quiet) {
+      // When staticColor is set and isQuiet is True, the background is
+      // transparent and a translucent tone only appears on hover and tap.
+      background = Colors.transparent;
+      pressed = tone.withValues(alpha: 0.2);
+      content = tone;
+    } else if (staticColor != null) {
+      // When staticColor is set, the background is a translucent static tone,
+      // getting a little stronger on hover and tap, with the text in the tone.
+      background = tone.withValues(alpha: 0.1);
+      pressed = tone.withValues(alpha: 0.2);
+      content = tone;
+    } else if (isInactive && quiet) {
+      // When isDisabled (or isPending) and isQuiet are True, the background
+      // is transparent and just the text changes its color to gray.
       background = Colors.transparent;
       pressed = Colors.transparent;
       content = colors.outline;
-    } else if (widget.isDisabled) {
-      // When isDisabled is True, the button keeps its gray background
-      // but stops reacting to hover and tap, and the text changes
-      // your own color to gray, even if the button is selected.
+    } else if (isInactive) {
+      // When isDisabled (or isPending) is True, the button keeps its gray
+      // background but stops reacting to hover and tap, and the text
+      // changes its color to gray.
       background = colors.surfaceContainerHigh;
       pressed = colors.surfaceContainerHigh;
       content = colors.outline;
-    } else if (isSelected && emphasized) {
-      // When isSelected and isEmphasized are True, the background will be
-      // the accent blue, the text will change your own color to white
-      // and the hover will use a different blue from the theme extension.
-      background = colors.primary;
-      pressed = context.spectrum.accentHover;
-      content = colors.onPrimary;
-    } else if (isSelected) {
-      // When isSelected is True, the colors will be inverted, the background
-      // will be a light gray and the text will change your own color
-      // to a dark gray, getting a little darker on hover.
-      background = colors.secondary;
-      pressed = colors.inverseSurface;
-      content = colors.surfaceContainerLow;
     } else if (quiet) {
       // When isQuiet is True, the gray color inside the button will be
       // transparent, and the gray background just appears on hover
@@ -194,82 +199,117 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
       content = neutral;
     }
 
+    final Color spinner, track;
+
+    if (staticColor != null) {
+      // When staticColor is set, the loading circle uses the solid static tone
+      // over a translucent track, so it stays visible over the image.
+      spinner = tone;
+      track = tone.withValues(alpha: 0.25);
+    } else {
+      // Otherwise the loading circle is the accent blue over a gray track,
+      // as the Spectrum 2 progress circle inside a pending button.
+      spinner = colors.primary;
+      track = colors.surfaceContainerHighest;
+    }
+
+    final Widget? text;
+
+    if (widget.child != null) {
+      // When there is a text, it is Flexible so it can shrink with an ellipsis.
+      text = Flexible(child: widget.child!);
+    } else {
+      // Otherwise nothing is added, since an empty child would still
+      // receive the Row spacing and push the icon out of the center.
+      text = null;
+    }
+
     // The focus ring is only shown for keyboard navigation, as the
     // :focus-visible of the web, so a mouse click never shows it.
     final showFocusRing = _isFocused && FocusManager.instance.highlightMode == FocusHighlightMode.traditional;
 
-    // Tells screen readers that this is a button, its label, if it is enabled
-    // and, when toggles is True, if it is switched on or off.
+    // Tells screen readers that this is a button and if it is enabled.
     return Semantics(
       button: true,
-      label: widget.label,
-      enabled: !widget.isDisabled,
-      toggled: widget.toggles || group != null ? isSelected : null,
+      enabled: !isDisabled,
       child: Stack(
         // passthrough keeps the width given by the parent, so the button
         // fills an Expanded and keeps its content width everywhere else.
         fit: StackFit.passthrough,
         clipBehavior: Clip.none,
         children: [
-          Material(
-            color: background,
-            borderRadius: borderRadius,
-            child: InkWell(
+          // Spectrum 2 "press scale": the button shrinks a little while it is
+          // pressed and grows back when released, as the SpectrumButton.
+          AnimatedScale(
+            scale: _isPressed ? 0.95 : 1,
+            duration: const Duration(milliseconds: 130),
+            curve: Curves.easeInOut,
+            child: Material(
+              color: background,
               borderRadius: borderRadius,
-              hoverColor: pressed,
-              highlightColor: pressed,
-              // When isDisabled is True, or there is no onTap and no toggles, the tap
-              // will be null and the InkWell stops reacting to hover and tap. Otherwise,
-              // _handleTap switches the selection (if toggles) and calls onTap.
-              onTap: !widget.isDisabled && (widget.onTap != null || widget.toggles || group != null)
-                  ? _handleTap
-                  : null,
-              onLongPress: widget.isDisabled ? null : widget.onLongPress,
-              onHover: (value) => setState(() => _isHovered = value),
-              onHighlightChanged: (value) => setState(() => _isPressed = value),
-              onFocusChange: (value) => setState(() => _isFocused = value),
-              focusColor: Colors.transparent,
-              child: Stack(
-                fit: StackFit.passthrough,
-                children: [
-                  Container(
-                    height: 32,
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    // widthFactor 1 keeps the button with the width of its content,
-                    // only stretching when the parent forces it, like an Expanded.
-                    child: Center(
-                      widthFactor: 1,
-                      child: IconTheme.merge(
-                        data: IconThemeData(color: content),
-                        child: DefaultTextStyle.merge(
-                          style: TextStyle(color: content),
-                          child: Row(
-                            spacing: 6,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              // The icon and the text are only added when they exist, because
-                              // an empty child would still receive the Row spacing and push
-                              // the content out of the center. The text is Flexible to allow ellipsis.
-                              if (widget.icon != null) widget.icon!,
-                              if (widget.child != null) Flexible(child: widget.child!),
-                            ],
-                          ),
+              child: InkWell(
+                borderRadius: borderRadius,
+                hoverColor: pressed,
+                highlightColor: pressed,
+                focusColor: Colors.transparent,
+                autofocus: widget.isAutoFocus,
+                // When isDisabled is True the tap is null and the button can not be
+                // focused. When isPending is True, _handleTap ignores the tap but
+                // the button stays focusable, as in Spectrum 2.
+                onTap: isDisabled ? null : _handleTap,
+                onHover: (value) => setState(() => _isHovered = value),
+                onHighlightChanged: (value) => setState(() => _isPressed = value && !widget.isPending),
+                onFocusChange: (value) => setState(() => _isFocused = value),
+                child: Container(
+                  height: 32,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  // widthFactor 1 keeps the button with the width of its content,
+                  // only stretching when the parent forces it, like an Expanded.
+                  child: Center(
+                    widthFactor: 1,
+                    child: IconTheme.merge(
+                      data: IconThemeData(color: content),
+                      // One line with ellipsis keeps the button 32px high when its text
+                      // gets less width than it needs, instead of wrapping and being cut.
+                      child: DefaultTextStyle.merge(
+                        style: TextStyle(color: content),
+                        maxLines: 1,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                        // The Stack keeps the content in the layout while pending, so the
+                        // button does not change its width when the loading circle appears.
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Visibility(
+                              visible: !_isSpinnerVisible,
+                              maintainSize: true,
+                              maintainAnimation: true,
+                              maintainState: true,
+                              child: Row(spacing: 6, mainAxisSize: MainAxisSize.min, children: [?widget.icon, ?text]),
+                            ),
+                            Visibility(
+                              visible: _isSpinnerVisible,
+                              // liveRegion makes screen readers announce the pending state when it appears.
+                              child: Semantics(
+                                label: 'Pending',
+                                liveRegion: true,
+                                child: SizedBox.square(
+                                  dimension: 16,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: spinner,
+                                    backgroundColor: track,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  // Spectrum "hold affordance": a small triangle in the bottom right
-                  // corner, shown only when onLongPress is set, telling the user
-                  // that a long press opens more options.
-                  Positioned(
-                    right: 3,
-                    bottom: 3,
-                    child: Visibility(
-                      visible: widget.onLongPress != null,
-                      child: CustomPaint(size: const Size.square(5), painter: _CornerTrianglePainter(content)),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),

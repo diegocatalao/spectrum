@@ -51,9 +51,9 @@ Widget BuildActionButtonGroupPresentation(BuildContext context) {
         .toList(),
     onChanged: (value) => log('BuildActionButtonGroupPresentation selection changed to $value.'),
     children: [
-      SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textBold), label: 'Bold'),
-      SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textItalic), label: 'Italic'),
-      SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textUnderline), label: 'Underline'),
+      SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textBold)),
+      SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textItalic)),
+      SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textUnderline)),
     ],
   );
 }
