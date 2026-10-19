@@ -46,22 +46,12 @@ import 'package:widgetbook_workspace/components/collections/menu/menu_group/menu
     as _widgetbook_workspace_components_collections_menu_menu_group_menu_group;
 import 'package:widgetbook_workspace/components/collections/menu/menu_item/menu_item.dart'
     as _widgetbook_workspace_components_collections_menu_menu_item_menu_item;
-import 'package:widgetbook_workspace/components/containers/contextual_help/contextual_help.dart'
-    as _widgetbook_workspace_components_containers_contextual_help_contextual_help;
-import 'package:widgetbook_workspace/components/containers/dialog/dialog.dart'
-    as _widgetbook_workspace_components_containers_dialog_dialog;
 import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
     as _widgetbook_workspace_components_containers_divider_divider;
-import 'package:widgetbook_workspace/components/containers/fullscreen_dialog/fullscreen_dialog.dart'
-    as _widgetbook_workspace_components_containers_fullscreen_dialog_fullscreen_dialog;
 import 'package:widgetbook_workspace/components/containers/image/image.dart'
     as _widgetbook_workspace_components_containers_image_image;
-import 'package:widgetbook_workspace/components/containers/popover/popover.dart'
-    as _widgetbook_workspace_components_containers_popover_popover;
 import 'package:widgetbook_workspace/components/containers/tray/tray.dart'
     as _widgetbook_workspace_components_containers_tray_tray;
-import 'package:widgetbook_workspace/components/feedback/alert_dialog/alert_dialog.dart'
-    as _widgetbook_workspace_components_feedback_alert_dialog_alert_dialog;
 import 'package:widgetbook_workspace/components/feedback/coach_mark/coach_mark.dart'
     as _widgetbook_workspace_components_feedback_coach_mark_coach_mark;
 import 'package:widgetbook_workspace/components/feedback/color_loupe/color_loupe.dart'
@@ -72,8 +62,6 @@ import 'package:widgetbook_workspace/components/feedback/inline_alert/inline_ale
     as _widgetbook_workspace_components_feedback_inline_alert_inline_alert;
 import 'package:widgetbook_workspace/components/feedback/toast/toast.dart'
     as _widgetbook_workspace_components_feedback_toast_toast;
-import 'package:widgetbook_workspace/components/feedback/tooltip/tooltip.dart'
-    as _widgetbook_workspace_components_feedback_tooltip_tooltip;
 import 'package:widgetbook_workspace/components/inputs/calendar/calendar.dart'
     as _widgetbook_workspace_components_inputs_calendar_calendar;
 import 'package:widgetbook_workspace/components/inputs/checkbox/checkbox.dart'
@@ -154,6 +142,18 @@ import 'package:widgetbook_workspace/components/navigation/tag/tag.dart'
     as _widgetbook_workspace_components_navigation_tag_tag;
 import 'package:widgetbook_workspace/components/navigation/tag_group/tag_group.dart'
     as _widgetbook_workspace_components_navigation_tag_group_tag_group;
+import 'package:widgetbook_workspace/components/overlays/contextual_help/contextual_help.dart'
+    as _widgetbook_workspace_components_overlays_contextual_help_contextual_help;
+import 'package:widgetbook_workspace/components/overlays/dialog/alert_dialog/alert_dialog.dart'
+    as _widgetbook_workspace_components_overlays_dialog_alert_dialog_alert_dialog;
+import 'package:widgetbook_workspace/components/overlays/dialog/dialog.dart'
+    as _widgetbook_workspace_components_overlays_dialog_dialog;
+import 'package:widgetbook_workspace/components/overlays/dialog/fullscreen_dialog/fullscreen_dialog.dart'
+    as _widgetbook_workspace_components_overlays_dialog_fullscreen_dialog_fullscreen_dialog;
+import 'package:widgetbook_workspace/components/overlays/popover/popover.dart'
+    as _widgetbook_workspace_components_overlays_popover_popover;
+import 'package:widgetbook_workspace/components/overlays/tooltip/tooltip.dart'
+    as _widgetbook_workspace_components_overlays_tooltip_tooltip;
 import 'package:widgetbook_workspace/components/patterns/card/card.dart'
     as _widgetbook_workspace_components_patterns_card_card;
 import 'package:widgetbook_workspace/components/patterns/card_view/card_view.dart'
@@ -487,38 +487,6 @@ final directories = <_widgetbook.WidgetbookNode>[
         name: 'containers',
         children: [
           _widgetbook.WidgetbookFolder(
-            name: 'contextual_help',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumContextualHelp',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_containers_contextual_help_contextual_help
-                            .BuildContextualHelpPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'dialog',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumDialog',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_containers_dialog_dialog
-                            .BuildDialogPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'divider',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -535,22 +503,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'fullscreen_dialog',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumFullscreenDialog',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_containers_fullscreen_dialog_fullscreen_dialog
-                            .BuildFullscreenDialogPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'image',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -561,22 +513,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_containers_image_image
                             .BuildImagePresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'popover',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumPopover',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_containers_popover_popover
-                            .BuildPopoverPresentation,
                   ),
                 ],
               ),
@@ -603,22 +539,6 @@ final directories = <_widgetbook.WidgetbookNode>[
       _widgetbook.WidgetbookFolder(
         name: 'feedback',
         children: [
-          _widgetbook.WidgetbookFolder(
-            name: 'alert_dialog',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumAlertDialog',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_feedback_alert_dialog_alert_dialog
-                            .BuildAlertDialogPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
           _widgetbook.WidgetbookFolder(
             name: 'coach_mark',
             children: [
@@ -694,22 +614,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_feedback_toast_toast
                             .BuildToastPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'tooltip',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTooltip',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_feedback_tooltip_tooltip
-                            .BuildTooltipPresentation,
                   ),
                 ],
               ),
@@ -1388,6 +1292,107 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_navigation_tag_group_tag_group
                             .BuildTagGroupPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'overlays',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'contextual_help',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumContextualHelp',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_overlays_contextual_help_contextual_help
+                            .BuildContextualHelpPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'dialog',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDialog',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_overlays_dialog_dialog
+                            .BuildDialogPresentation,
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'alert_dialog',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumAlertDialog',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_overlays_dialog_alert_dialog_alert_dialog
+                                .BuildAlertDialogPresentation,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'fullscreen_dialog',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumFullscreenDialog',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_overlays_dialog_fullscreen_dialog_fullscreen_dialog
+                                .BuildFullscreenDialogPresentation,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'popover',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumPopover',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_overlays_popover_popover
+                            .BuildPopoverPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tooltip',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTooltip',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_overlays_tooltip_tooltip
+                            .BuildTooltipPresentation,
                   ),
                 ],
               ),

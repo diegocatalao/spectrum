@@ -4,6 +4,7 @@ export 'containers/containers.dart';
 export 'feedback/feedback.dart';
 export 'inputs/inputs.dart';
 export 'navigation/navigation.dart';
+export 'overlays/overlays.dart';
 export 'patterns/patterns.dart';
 export 'status/status.dart';
 export 'visualization/visualization.dart';
