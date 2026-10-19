@@ -1196,6 +1196,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumMenu',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Groups',
+                builder:
+                    _widgetbook_workspace_components_menu_menu.BuildMenuGroups,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_menu_menu
                     .BuildMenuPresentation,
