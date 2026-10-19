@@ -1,0 +1,18 @@
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Gradient">
+<path id="Vector" opacity="0.9" d="M2 3H3V15H2V3Z" fill="black"/>
+<path id="Vector_2" opacity="0.8" d="M3 3H4V15H3V3Z" fill="black"/>
+<path id="Vector_3" opacity="0.7" d="M4 3H5V15H4V3Z" fill="black"/>
+<path id="Vector_4" opacity="0.6" d="M5 3H6V15H5V3Z" fill="black"/>
+<path id="Vector_5" opacity="0.5" d="M6 3H7V15H6V3Z" fill="black"/>
+<path id="Vector_6" opacity="0.4" d="M7 3H8V15H7V3Z" fill="black"/>
+<path id="Vector_7" opacity="0.25" d="M10 3H11V15H10V3Z" fill="black"/>
+<path id="Vector_8" opacity="0.3" d="M9 3H10V15H9V3Z" fill="black"/>
+<path id="Vector_9" opacity="0.35" d="M8 3H9V15H8V3Z" fill="black"/>
+<path id="Vector_10" opacity="0.2" d="M11 3H12V15H11V3Z" fill="black"/>
+<path id="Vector_11" opacity="0.15" d="M12 3H13V15H12V3Z" fill="black"/>
+<path id="Vector_12" opacity="0.1" d="M13 3H14V15H13V3Z" fill="black"/>
+<path id="Vector_13" opacity="0.05" d="M14 3H15V15H14V3Z" fill="black"/>
+<path id="Vector_14" d="M1 2.5V15.5C1 15.6326 1.05268 15.7598 1.14645 15.8536C1.24021 15.9473 1.36739 16 1.5 16H16.5C16.6326 16 16.7598 15.9473 16.8536 15.8536C16.9473 15.7598 17 15.6326 17 15.5V2.5C17 2.36739 16.9473 2.24021 16.8536 2.14645C16.7598 2.05268 16.6326 2 16.5 2H1.5C1.36739 2 1.24021 2.05268 1.14645 2.14645C1.05268 2.24021 1 2.36739 1 2.5ZM16 15H2V3H16V15Z" fill="black"/>
+</g>
+</svg>
