@@ -2,6 +2,7 @@ export 'action_bar/action_bar.dart';
 export 'action_button/action_button.dart';
 export 'action_group/action_group.dart';
 export 'icon_button/icon_button.dart';
+export 'menu/menu.dart';
 export 'menu/menu_group/menu_group.dart';
 export 'menu/menu_item/menu_item.dart';
 export 'selects.dart';
