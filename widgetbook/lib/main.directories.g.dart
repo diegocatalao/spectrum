@@ -64,6 +64,20 @@ import 'package:widgetbook_workspace/components/containers/popover/popover.dart'
     as _widgetbook_workspace_components_containers_popover_popover;
 import 'package:widgetbook_workspace/components/containers/tray/tray.dart'
     as _widgetbook_workspace_components_containers_tray_tray;
+import 'package:widgetbook_workspace/components/feedback/alert_dialog/alert_dialog.dart'
+    as _widgetbook_workspace_components_feedback_alert_dialog_alert_dialog;
+import 'package:widgetbook_workspace/components/feedback/coach_mark/coach_mark.dart'
+    as _widgetbook_workspace_components_feedback_coach_mark_coach_mark;
+import 'package:widgetbook_workspace/components/feedback/color_loupe/color_loupe.dart'
+    as _widgetbook_workspace_components_feedback_color_loupe_color_loupe;
+import 'package:widgetbook_workspace/components/feedback/illustrated_message/illustrated_message.dart'
+    as _widgetbook_workspace_components_feedback_illustrated_message_illustrated_message;
+import 'package:widgetbook_workspace/components/feedback/inline_alert/inline_alert.dart'
+    as _widgetbook_workspace_components_feedback_inline_alert_inline_alert;
+import 'package:widgetbook_workspace/components/feedback/toast/toast.dart'
+    as _widgetbook_workspace_components_feedback_toast_toast;
+import 'package:widgetbook_workspace/components/feedback/tooltip/tooltip.dart'
+    as _widgetbook_workspace_components_feedback_tooltip_tooltip;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -504,6 +518,123 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_containers_tray_tray
                             .BuildTrayPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'feedback',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'alert_dialog',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumAlertDialog',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_alert_dialog_alert_dialog
+                            .BuildAlertDialogPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'coach_mark',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCoachMark',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_coach_mark_coach_mark
+                            .BuildCoachMarkPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'color_loupe',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorLoupe',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_color_loupe_color_loupe
+                            .BuildColorLoupePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'illustrated_message',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumIllustratedMessage',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_illustrated_message_illustrated_message
+                            .BuildIllustratedMessagePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'inline_alert',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumInlineAlert',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_inline_alert_inline_alert
+                            .BuildInlineAlertPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'toast',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumToast',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_toast_toast
+                            .BuildToastPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tooltip',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTooltip',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_feedback_tooltip_tooltip
+                            .BuildTooltipPresentation,
                   ),
                 ],
               ),
