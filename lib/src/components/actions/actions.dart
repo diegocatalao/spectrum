@@ -1,6 +1,7 @@
 export 'action_bar/action_bar.dart';
 export 'action_button/action_button.dart';
 export 'action_group/action_group.dart';
+export 'action_menu/action_menu.dart';
 export 'icon_button/icon_button.dart';
 export 'menu/menu.dart';
 export 'menu/menu_group/menu_group.dart';
