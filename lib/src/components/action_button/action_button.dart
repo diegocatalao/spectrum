@@ -115,7 +115,7 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
   /// the button with the new colors. In both cases, the onTap passed
   /// by the user is called after it.
   void _handleTap() {
-    final group = SpectrumActionGroup.itemOf(context);
+    final group = SpectrumActionButtonGroup.itemOf(context);
 
     // Inside a group with selection, the group decides the selection
     // and the button only tells it was tapped.
@@ -138,17 +138,17 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
     final neutral = _isHovered || _isPressed ? colors.inverseSurface : colors.onSurface;
 
     // The button is quiet when isQuiet is True or when it is inside
-    // a quiet SpectrumActionGroup, like the ones in the Action Bar.
-    final quiet = widget.isQuiet || SpectrumActionGroup.isQuietOf(context);
-    final emphasized = widget.isEmphasized || SpectrumActionGroup.isEmphasizedOf(context);
+    // a quiet SpectrumActionButtonGroup, like the ones in the Action Bar.
+    final quiet = widget.isQuiet || SpectrumActionButtonGroup.isQuietOf(context);
+    final emphasized = widget.isEmphasized || SpectrumActionButtonGroup.isEmphasizedOf(context);
 
     // Inside a group with selection, the selection comes from the group.
     // Otherwise, the button keeps its own selection.
-    final group = SpectrumActionGroup.itemOf(context);
+    final group = SpectrumActionButtonGroup.itemOf(context);
     final isSelected = group?.selected ?? _isSelected;
 
     // Inside a compact group, the group decides which corners are rounded.
-    final borderRadius = SpectrumActionGroup.borderRadiusOf(context) ?? BorderRadius.circular(8);
+    final borderRadius = SpectrumActionButtonGroup.borderRadiusOf(context) ?? BorderRadius.circular(8);
 
     if (widget.isDisabled && quiet) {
       // When isDisabled and isQuiet are True, the gray color

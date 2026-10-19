@@ -5,9 +5,9 @@ import 'package:spectrum/spectrum.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Presentation', type: SpectrumActionGroup)
-Widget BuildActionGroupPresentation(BuildContext context) {
-  return SpectrumActionGroup(
+@widgetbook.UseCase(name: 'Presentation', type: SpectrumActionButtonGroup)
+Widget BuildActionButtonGroupPresentation(BuildContext context) {
+  return SpectrumActionButtonGroup(
     label: 'Text formatting',
     isQuiet: context.knobs.object.segmented<bool>(
       label: 'isQuiet',
@@ -49,7 +49,7 @@ Widget BuildActionGroupPresentation(BuildContext context) {
           description: 'Indexes of the selected buttons.',
         )
         .toList(),
-    onChanged: (value) => log('BuildActionGroupPresentation selection changed to $value.'),
+    onChanged: (value) => log('BuildActionButtonGroupPresentation selection changed to $value.'),
     children: [
       SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textBold), label: 'Bold'),
       SpectrumActionButton(icon: SpectrumIcon(SpectrumIcons.textItalic), label: 'Italic'),

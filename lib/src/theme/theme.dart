@@ -24,8 +24,8 @@ abstract final class SpectrumTheme {
       listTileTheme: ListTileThemeData(
         titleTextStyle: theme.textTheme.titleMedium?.copyWith(
           fontWeight: FontWeight.w600,
-          color: colorScheme.inverseSurface
-        )
+          color: colorScheme.inverseSurface,
+        ),
       ),
       scaffoldBackgroundColor: colorScheme.surfaceContainerLow,
       hoverColor: colorScheme.inverseSurface.withValues(alpha: 0.1),

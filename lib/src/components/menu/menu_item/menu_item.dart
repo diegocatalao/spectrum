@@ -125,10 +125,7 @@ class SpectrumMenuItem extends StatelessWidget {
         }),
         // Rounded 8px corners, without border, for the hover background.
         shape: WidgetStatePropertyAll(
-          RoundedRectangleBorder(
-            side: BorderSide.none,
-            borderRadius: BorderRadius.circular(8),
-          ),
+          RoundedRectangleBorder(side: BorderSide.none, borderRadius: BorderRadius.circular(8)),
         ),
       ),
       // When isDisabled is True, the tap is null and the item is skipped by the keyboard.

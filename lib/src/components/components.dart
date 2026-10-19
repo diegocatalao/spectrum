@@ -2,7 +2,7 @@ export 'accordion/accordion.dart';
 export 'accordion/accordion_item/accordion_item.dart';
 export 'action_bar/action_bar.dart';
 export 'action_button/action_button.dart';
-export 'action_group/action_group.dart';
+export 'action_button_group/action_button_group.dart';
 export 'action_menu/action_menu.dart';
 export 'avatar/avatar.dart';
 export 'avatar_group/avatar_group.dart';

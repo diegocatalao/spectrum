@@ -13,10 +13,7 @@ class SpectrumDivider extends StatelessWidget {
     return Container(
       width: vertical ? thickness : double.infinity,
       height: vertical ? double.infinity : thickness,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(thickness / 2),
-      ),
+      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(thickness / 2)),
     );
   }
 }

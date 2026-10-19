@@ -20,8 +20,8 @@ import 'package:widgetbook_workspace/components/action_bar/action_bar.dart'
     as _widgetbook_workspace_components_action_bar_action_bar;
 import 'package:widgetbook_workspace/components/action_button/action_button.dart'
     as _widgetbook_workspace_components_action_button_action_button;
-import 'package:widgetbook_workspace/components/action_group/action_group.dart'
-    as _widgetbook_workspace_components_action_group_action_group;
+import 'package:widgetbook_workspace/components/action_button_group/action_button_group.dart'
+    as _widgetbook_workspace_components_action_button_group_action_button_group;
 import 'package:widgetbook_workspace/components/action_menu/action_menu.dart'
     as _widgetbook_workspace_components_action_menu_action_menu;
 import 'package:widgetbook_workspace/components/avatar/avatar.dart'
@@ -303,16 +303,16 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
-        name: 'action_group',
+        name: 'action_button_group',
         children: [
           _widgetbook.WidgetbookComponent(
-            name: 'SpectrumActionGroup',
+            name: 'SpectrumActionButtonGroup',
             useCases: [
               _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder:
-                    _widgetbook_workspace_components_action_group_action_group
-                        .BuildActionGroupPresentation,
+                    _widgetbook_workspace_components_action_button_group_action_button_group
+                        .BuildActionButtonGroupPresentation,
               ),
             ],
           ),
