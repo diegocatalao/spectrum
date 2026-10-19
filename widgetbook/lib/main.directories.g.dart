@@ -30,12 +30,6 @@ import 'package:widgetbook_workspace/components/actions/close_button/close_butto
     as _widgetbook_workspace_components_actions_close_button_close_button;
 import 'package:widgetbook_workspace/components/actions/icon_button/icon_button.dart'
     as _widgetbook_workspace_components_actions_icon_button_icon_button;
-import 'package:widgetbook_workspace/components/actions/menu/menu.dart'
-    as _widgetbook_workspace_components_actions_menu_menu;
-import 'package:widgetbook_workspace/components/actions/menu/menu_group/menu_group.dart'
-    as _widgetbook_workspace_components_actions_menu_menu_group_menu_group;
-import 'package:widgetbook_workspace/components/actions/menu/menu_item/menu_item.dart'
-    as _widgetbook_workspace_components_actions_menu_menu_item_menu_item;
 import 'package:widgetbook_workspace/components/actions/quick_actions/quick_actions.dart'
     as _widgetbook_workspace_components_actions_quick_actions_quick_actions;
 import 'package:widgetbook_workspace/components/actions/segmented_control/segmented_control.dart'
@@ -46,6 +40,12 @@ import 'package:widgetbook_workspace/components/actions/toggle_button_group/togg
     as _widgetbook_workspace_components_actions_toggle_button_group_toggle_button_group;
 import 'package:widgetbook_workspace/components/actions/toolbar/toolbar.dart'
     as _widgetbook_workspace_components_actions_toolbar_toolbar;
+import 'package:widgetbook_workspace/components/collections/menu/menu.dart'
+    as _widgetbook_workspace_components_collections_menu_menu;
+import 'package:widgetbook_workspace/components/collections/menu/menu_group/menu_group.dart'
+    as _widgetbook_workspace_components_collections_menu_menu_group_menu_group;
+import 'package:widgetbook_workspace/components/collections/menu/menu_item/menu_item.dart'
+    as _widgetbook_workspace_components_collections_menu_menu_item_menu_item;
 import 'package:widgetbook_workspace/components/containers/contextual_help/contextual_help.dart'
     as _widgetbook_workspace_components_containers_contextual_help_contextual_help;
 import 'package:widgetbook_workspace/components/containers/dialog/dialog.dart'
@@ -349,53 +349,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'menu',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumMenu',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder: _widgetbook_workspace_components_actions_menu_menu
-                        .BuildMenuPresentation,
-                  ),
-                ],
-              ),
-              _widgetbook.WidgetbookFolder(
-                name: 'menu_group',
-                children: [
-                  _widgetbook.WidgetbookComponent(
-                    name: 'SpectrumMenuGroup',
-                    useCases: [
-                      _widgetbook.WidgetbookUseCase(
-                        name: 'Presentation',
-                        builder:
-                            _widgetbook_workspace_components_actions_menu_menu_group_menu_group
-                                .BuildMenuGroupPresentation,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              _widgetbook.WidgetbookFolder(
-                name: 'menu_item',
-                children: [
-                  _widgetbook.WidgetbookComponent(
-                    name: 'SpectrumMenuItem',
-                    useCases: [
-                      _widgetbook.WidgetbookUseCase(
-                        name: 'Presentation',
-                        builder:
-                            _widgetbook_workspace_components_actions_menu_menu_item_menu_item
-                                .BuildMenuItemPresentation,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'quick_actions',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -470,6 +423,59 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_actions_toolbar_toolbar
                             .BuildToolbarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'collections',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'menu',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumMenu',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_menu_menu
+                            .BuildMenuPresentation,
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'menu_group',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumMenuGroup',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_collections_menu_menu_group_menu_group
+                                .BuildMenuGroupPresentation,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'menu_item',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumMenuItem',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_collections_menu_menu_item_menu_item
+                                .BuildMenuItemPresentation,
+                      ),
+                    ],
                   ),
                 ],
               ),
