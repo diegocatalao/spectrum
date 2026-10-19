@@ -24,6 +24,10 @@ import 'package:widgetbook_workspace/components/actions/button/button.dart'
     as _widgetbook_workspace_components_actions_button_button;
 import 'package:widgetbook_workspace/components/actions/button_group/button_group.dart'
     as _widgetbook_workspace_components_actions_button_group_button_group;
+import 'package:widgetbook_workspace/components/actions/clear_button/clear_button.dart'
+    as _widgetbook_workspace_components_actions_clear_button_clear_button;
+import 'package:widgetbook_workspace/components/actions/close_button/close_button.dart'
+    as _widgetbook_workspace_components_actions_close_button_close_button;
 import 'package:widgetbook_workspace/components/actions/icon_button/icon_button.dart'
     as _widgetbook_workspace_components_actions_icon_button_icon_button;
 import 'package:widgetbook_workspace/components/actions/menu/menu.dart'
@@ -42,10 +46,6 @@ import 'package:widgetbook_workspace/components/actions/toggle_button_group/togg
     as _widgetbook_workspace_components_actions_toggle_button_group_toggle_button_group;
 import 'package:widgetbook_workspace/components/actions/toolbar/toolbar.dart'
     as _widgetbook_workspace_components_actions_toolbar_toolbar;
-import 'package:widgetbook_workspace/components/button/clear_button.dart'
-    as _widgetbook_workspace_components_button_clear_button;
-import 'package:widgetbook_workspace/components/button/close_button.dart'
-    as _widgetbook_workspace_components_button_close_button;
 import 'package:widgetbook_workspace/components/containers/contextual_help/contextual_help.dart'
     as _widgetbook_workspace_components_containers_contextual_help_contextual_help;
 import 'package:widgetbook_workspace/components/containers/dialog/dialog.dart'
@@ -301,6 +301,38 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
+            name: 'clear_button',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumClearButton',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_clear_button_clear_button
+                            .BuildClearButtonPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'close_button',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCloseButton',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_close_button_close_button
+                            .BuildCloseButtonPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
             name: 'icon_button',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -440,31 +472,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                             .BuildToolbarPresentation,
                   ),
                 ],
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
-        name: 'button',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumClearButton',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder: _widgetbook_workspace_components_button_clear_button
-                    .BuildClearButtonPresentation,
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumCloseButton',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder: _widgetbook_workspace_components_button_close_button
-                    .BuildCloseButtonPresentation,
               ),
             ],
           ),
