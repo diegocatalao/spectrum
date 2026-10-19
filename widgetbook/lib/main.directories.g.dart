@@ -48,8 +48,6 @@ import 'package:widgetbook_workspace/components/collections/menu/menu_item/menu_
     as _widgetbook_workspace_components_collections_menu_menu_item_menu_item;
 import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
     as _widgetbook_workspace_components_containers_divider_divider;
-import 'package:widgetbook_workspace/components/containers/image/image.dart'
-    as _widgetbook_workspace_components_containers_image_image;
 import 'package:widgetbook_workspace/components/containers/tray/tray.dart'
     as _widgetbook_workspace_components_containers_tray_tray;
 import 'package:widgetbook_workspace/components/feedback/coach_mark/coach_mark.dart'
@@ -118,14 +116,16 @@ import 'package:widgetbook_workspace/components/inputs/text_field/text_field.dar
     as _widgetbook_workspace_components_inputs_text_field_text_field;
 import 'package:widgetbook_workspace/components/inputs/time_field/time_field.dart'
     as _widgetbook_workspace_components_inputs_time_field_time_field;
+import 'package:widgetbook_workspace/components/media/avatar/avatar.dart'
+    as _widgetbook_workspace_components_media_avatar_avatar;
+import 'package:widgetbook_workspace/components/media/avatar_group/avatar_group.dart'
+    as _widgetbook_workspace_components_media_avatar_group_avatar_group;
+import 'package:widgetbook_workspace/components/media/image/image.dart'
+    as _widgetbook_workspace_components_media_image_image;
 import 'package:widgetbook_workspace/components/navigation/accordion/accordion.dart'
     as _widgetbook_workspace_components_navigation_accordion_accordion;
 import 'package:widgetbook_workspace/components/navigation/accordion/accordion_item/accordion_item.dart'
     as _widgetbook_workspace_components_navigation_accordion_accordion_item_accordion_item;
-import 'package:widgetbook_workspace/components/navigation/avatar/avatar.dart'
-    as _widgetbook_workspace_components_navigation_avatar_avatar;
-import 'package:widgetbook_workspace/components/navigation/avatar_group/avatar_group.dart'
-    as _widgetbook_workspace_components_navigation_avatar_group_avatar_group;
 import 'package:widgetbook_workspace/components/navigation/breadcrumbs/breadcrumbs.dart'
     as _widgetbook_workspace_components_navigation_breadcrumbs_breadcrumbs;
 import 'package:widgetbook_workspace/components/navigation/link/link.dart'
@@ -497,22 +497,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_containers_divider_divider
                             .BuildDividerPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'image',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumImage',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_containers_image_image
-                            .BuildImagePresentation,
                   ),
                 ],
               ),
@@ -1074,6 +1058,58 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
+        name: 'media',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'avatar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumAvatar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_media_avatar_avatar
+                            .BuildAvatarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'avatar_group',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumAvatarGroup',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_media_avatar_group_avatar_group
+                            .BuildAvatarGroupPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'image',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumImage',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder: _widgetbook_workspace_components_media_image_image
+                        .BuildImagePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
         name: 'navigation',
         children: [
           _widgetbook.WidgetbookFolder(
@@ -1133,38 +1169,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                                 .BuildAccordionItemPresentation,
                       ),
                     ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'avatar',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumAvatar',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_navigation_avatar_avatar
-                            .BuildAvatarPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'avatar_group',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumAvatarGroup',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_navigation_avatar_group_avatar_group
-                            .BuildAvatarGroupPresentation,
                   ),
                 ],
               ),
