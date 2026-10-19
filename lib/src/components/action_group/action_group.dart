@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:spectrum/src/components/actions/selects.dart';
+import 'package:spectrum/src/utils/selects.dart';
 
 /// Spectrum Action Group: places action buttons side by side (or stacked),
 /// passes shared options down to them and can manage their selection.

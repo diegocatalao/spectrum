@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:spectrum/src/components/actions/selects.dart';
+import 'package:spectrum/src/utils/selects.dart';
 
 /// Spectrum Menu Group: a section of a menu, with an optional bold title
 /// above its options, that can manage the selection of its items.

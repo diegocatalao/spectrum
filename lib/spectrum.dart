@@ -19,4 +19,6 @@ export 'src/motion/shimmer.dart';
 export 'src/icons/icons.dart';
 export 'src/icons/icon.dart';
 
+export 'src/utils/selects.dart';
+
 export 'src/components/components.dart';
