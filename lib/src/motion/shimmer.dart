@@ -1,0 +1,1 @@
+// Efeito shimmer para loading
