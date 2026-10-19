@@ -212,9 +212,7 @@ Widget BuildAccordionRichPanel(BuildContext context) {
                   onTap: () => log("BuildAccordionRichPanel button 'CANCEL' was tapped."),
                 ),
                 SpectrumActionButton(
-                  isEmphasized: true,
-                  isSelected: true,
-                  child: Text("Save"),
+                                    child: Text("Save"),
                   onTap: () => log("BuildAccordionRichPanel button 'SAVE' was tapped."),
                 ),
               ],

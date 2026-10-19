@@ -23,6 +23,15 @@ bool _IsDisabledKnobsFn(BuildContext context) {
   );
 }
 
+bool _IsPendingKnobsFn(BuildContext context) {
+  return context.knobs.object.segmented<bool>(
+    label: 'isPending',
+    options: [true, false],
+    initialOption: false,
+    description: 'Whether the button shows a loading circle after one second and ignores taps.',
+  );
+}
+
 @widgetbook.UseCase(name: 'Presentation', type: SpectrumActionButton)
 Widget BuildActionButtonPresentation(BuildContext context) {
   return SpectrumActionButton(
@@ -35,47 +44,29 @@ Widget BuildActionButtonPresentation(BuildContext context) {
         description: 'The icon shown on the left of the text.',
       ),
     ),
-    label: 'Edit',
-    toggles: context.knobs.object.segmented<bool>(
-      label: 'toggles',
-      options: [true, false],
-      initialOption: false,
-      description: 'Whether each tap switches the selection on and off.',
-    ),
-    isEmphasized: context.knobs.object.segmented<bool>(
-      label: 'isEmphasized',
-      options: [true, false],
-      initialOption: false,
-      description: 'Whether the selected button uses the accent blue.',
-    ),
     isQuiet: _IsQuietKnobsFn(context),
     isDisabled: _IsDisabledKnobsFn(context),
+    isPending: _IsPendingKnobsFn(context),
+    staticColor: context.knobs.objectOrNull.dropdown<SpectrumStaticColor>(
+      label: 'staticColor',
+      options: SpectrumStaticColor.values,
+      labelBuilder: (SpectrumStaticColor value) => value.name,
+      description: 'Fixed white or black colors for buttons over images or colored backgrounds.',
+    ),
     onTap: () => log('BuildActionButtonPresentation button was tapped.'),
-    child: Text(context.knobs.string(label: 'content', initialValue: 'Edit', description: 'The text of the button.')),
+    child: Text(
+      context.knobs.string(label: 'content', initialValue: 'Edit', description: 'The text of the button.'),
+    ),
   );
 }
 
 @widgetbook.UseCase(name: 'Icon Only', type: SpectrumActionButton)
 Widget BuildActionButtonIconOnly(BuildContext context) {
-  // Without a text, the label is the only name screen readers can read.
   return SpectrumActionButton(
     icon: SpectrumIcon(SpectrumIcons.textBold),
-    label: 'Bold',
-    toggles: true,
     isQuiet: _IsQuietKnobsFn(context),
     isDisabled: _IsDisabledKnobsFn(context),
-  );
-}
-
-@widgetbook.UseCase(name: 'Hold', type: SpectrumActionButton)
-Widget BuildActionButtonHold(BuildContext context) {
-  // onLongPress shows the hold affordance triangle in the bottom right corner.
-  return SpectrumActionButton(
-    icon: SpectrumIcon(SpectrumIcons.more),
-    label: 'More',
-    isQuiet: _IsQuietKnobsFn(context),
-    isDisabled: _IsDisabledKnobsFn(context),
-    onTap: () => log('BuildActionButtonHold button was tapped.'),
-    onLongPress: () => log('BuildActionButtonHold button was held.'),
+    isPending: _IsPendingKnobsFn(context),
+    onTap: () => log('BuildActionButtonIconOnly button was tapped.'),
   );
 }

@@ -43,17 +43,14 @@ Widget BuildActionBarPresentation(BuildContext context) {
     children: [
       SpectrumActionButton(
         icon: SpectrumIcon(SpectrumIcons.edit),
-        label: "Edit",
         onTap: () => log("BuildActionBarPresentation button 'EDIT' was tapped."),
       ),
       SpectrumActionButton(
         icon: SpectrumIcon(SpectrumIcons.delete),
-        label: "Delete",
         onTap: () => log("BuildActionBarPresentation button 'DELETE' was tapped."),
       ),
       SpectrumActionButton(
         icon: SpectrumIcon(SpectrumIcons.more),
-        label: "More",
         onTap: () => log("BuildActionBarPresentation button 'MORE' was tapped."),
       ),
     ],

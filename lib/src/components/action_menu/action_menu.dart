@@ -55,9 +55,7 @@ class SpectrumActionMenu extends StatelessWidget {
         // The button opens the menu, and a second tap closes it. While the
         // menu is open the button is selected, as sp-action-menu does on the web.
         return SpectrumActionButton(
-          isSelected: controller.isOpen,
           icon: icon,
-          label: label,
           isQuiet: isQuiet,
           isDisabled: isDisabled,
           onTap: () => controller.isOpen ? controller.close() : controller.open(),
