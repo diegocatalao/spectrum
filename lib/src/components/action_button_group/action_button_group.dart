@@ -1,53 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:spectrum/spectrum.dart';
 
-import 'package:spectrum/src/utils/selects.dart';
-
-/// Spectrum Action Button Group: places action buttons side by side (or stacked),
-/// passes shared options down to them and can manage their selection.
+/// Spectrum Action Button Group: places related action buttons side by side
+/// (or stacked) and shares the quiet, disabled and static color options with them.
 class SpectrumActionButtonGroup extends StatelessWidget {
   /// The action buttons of the group.
-  final List<Widget> children;
+  final List<SpectrumActionButton> children;
 
-  /// Makes every action button inside the group quiet.
+  /// Direction of the buttons, horizontal by default.
+  final Axis axis;
+
+  /// Compact keeps 2px between the buttons, standard keeps 8px.
+  final VisualDensity density;
+
+  /// Fixed white or black colors applied to every button of the group,
+  /// for groups over images or colored backgrounds.
+  final SpectrumStaticColor? staticColor;
+
+  /// Makes every button of the group quiet.
   final bool isQuiet;
 
-  /// Makes every action button inside the group use the accent blue when selected.
-  final bool isEmphasized;
-
-  /// Stacks the buttons in a column instead of a row.
-  final bool isVertical;
-
-  /// Stretches the buttons to fill the available width.
-  final bool isJustified;
-
-  /// Removes the gap between the buttons and keeps only the outer corners
-  /// of the group rounded, joining the buttons in one block.
-  final bool isCompact;
-
-  /// How the group manages the selection. With none, each button behaves on its own.
-  final SpectrumSelects selects;
-
-  /// Indexes of the selected buttons, used when selects is single or multiple.
-  final List<int> selected;
-
-  /// Called with the new selected indexes when the user taps a button.
-  final ValueChanged<List<int>>? onChanged;
-
-  /// Text read by screen readers to describe the group.
-  final String? label;
+  /// Disables every button of the group.
+  final bool isDisabled;
 
   const SpectrumActionButtonGroup({
     super.key,
     this.children = const [],
+    this.axis = Axis.horizontal,
+    this.density = VisualDensity.standard,
+    this.staticColor,
     this.isQuiet = false,
-    this.isEmphasized = false,
-    this.isVertical = false,
-    this.isJustified = false,
-    this.isCompact = false,
-    this.selects = SpectrumSelects.none,
-    this.selected = const [],
-    this.onChanged,
-    this.label,
+    this.isDisabled = false,
   });
 
   /// Returns True when the widget is inside a quiet group.
@@ -55,9 +38,9 @@ class SpectrumActionButtonGroup extends StatelessWidget {
     return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupScope>()?.isQuiet ?? false;
   }
 
-  /// Returns True when the widget is inside an emphasized group.
-  static bool isEmphasizedOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupScope>()?.isEmphasized ?? false;
+  /// Returns True when the widget is inside a disabled group.
+  static bool isDisabledOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupScope>()?.isDisabled ?? false;
   }
 
   /// Returns the corners of the button inside a compact group,
@@ -66,118 +49,100 @@ class SpectrumActionButtonGroup extends StatelessWidget {
     return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupCornerScope>()?.borderRadius;
   }
 
-  /// Returns the selection of the button inside a group with selection,
-  /// or null when the group does not manage the selection.
-  static ({bool selected, VoidCallback onSelect})? itemOf(BuildContext context) {
-    final item = context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupItemScope>();
-    if (item == null) return null;
-    return (selected: item.selected, onSelect: item.onSelect);
-  }
-
-  /// In multiple, the tap adds or removes the index from the selection.
-  /// In single, the tapped index becomes the only selected one, and tapping
-  /// it again keeps it selected, as a radio button.
-  void _select(int index) {
-    if (selects == SpectrumSelects.multiple && selected.contains(index)) {
-      onChanged?.call([...selected]..remove(index));
-    } else if (selects == SpectrumSelects.multiple) {
-      onChanged?.call([...selected, index]);
-    } else {
-      onChanged?.call([index]);
-    }
-  }
-
   /// Rounds only the outer corners of the first and the last button,
-  /// following the direction of the group.
+  /// following the axis of the group, so a compact group looks like one piece.
   BorderRadius _cornersOf(int index) {
     const radius = Radius.circular(8);
     final isFirst = index == 0;
     final isLast = index == children.length - 1;
+    final BorderRadius corners;
 
-    if (isVertical) {
-      return BorderRadius.vertical(top: isFirst ? radius : Radius.zero, bottom: isLast ? radius : Radius.zero);
+    if (isFirst && isLast) {
+      // When the group has a single button, all its corners are rounded.
+      corners = const BorderRadius.all(radius);
+    } else if (isFirst && axis == Axis.horizontal) {
+      // When the button is the first of a row, only its left corners are rounded.
+      corners = const BorderRadius.horizontal(left: radius);
+    } else if (isLast && axis == Axis.horizontal) {
+      // When the button is the last of a row, only its right corners are rounded.
+      corners = const BorderRadius.horizontal(right: radius);
+    } else if (isFirst) {
+      // When the button is the first of a column, only its top corners are rounded.
+      corners = const BorderRadius.vertical(top: radius);
+    } else if (isLast) {
+      // When the button is the last of a column, only its bottom corners are rounded.
+      corners = const BorderRadius.vertical(bottom: radius);
     } else {
-      return BorderRadius.horizontal(left: isFirst ? radius : Radius.zero, right: isLast ? radius : Radius.zero);
+      // Otherwise the button is in the middle and keeps square corners.
+      corners = BorderRadius.zero;
     }
+
+    return corners;
+  }
+
+  /// Returns the static color of the group, or null when it has none.
+  static SpectrumStaticColor? staticColorOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<_ActionButtonGroupScope>()?.staticColor;
   }
 
   @override
   Widget build(BuildContext context) {
-    final items = <Widget>[];
+    final double spacing;
+    final List<Widget> buttons;
 
-    for (final (index, child) in children.indexed) {
-      Widget item = child;
-
-      // When the group has a selection, each button receives if it is
-      // selected and how to select itself. In single selection, screen
-      // readers also announce the buttons as mutually exclusive.
-      if (selects != SpectrumSelects.none) {
-        item = _ActionButtonGroupItemScope(
-          selected: selected.contains(index),
-          onSelect: () => _select(index),
-          child: Semantics(inMutuallyExclusiveGroup: selects == SpectrumSelects.single, child: item),
-        );
-      }
-
-      // When isCompact is True, the buttons are joined in one block, even when
-      // quiet: the first and the last keep the outer rounded corners and every
-      // corner between two buttons becomes square, so hover and selection fit together.
-      if (isCompact) {
-        item = _ActionButtonGroupCornerScope(borderRadius: _cornersOf(index), child: item);
-      }
-
-      // Horizontal and justified: every button takes the same share of the row.
-      if (isJustified && !isVertical) {
-        items.add(Expanded(child: item));
-      } else {
-        items.add(item);
-      }
+    if (density == VisualDensity.compact) {
+      // When density is compact, the buttons keep only 2px between them
+      // and only the outer corners of the group are rounded, so the
+      // middle buttons are square, as the compact Spectrum 2 group.
+      spacing = 2;
+      buttons = children.indexed.map((e) {
+        return _ActionButtonGroupCornerScope(borderRadius: _cornersOf(e.$1), child: e.$2);
+      }).toList();
+    } else {
+      // Otherwise the buttons keep the regular 8px gap of the M size
+      // and their own rounded corners.
+      spacing = 8;
+      buttons = children;
     }
 
-    return Semantics(
-      container: true,
-      explicitChildNodes: true,
-      label: label,
-      child: _ActionButtonGroupScope(
-        isQuiet: isQuiet,
-        isEmphasized: isEmphasized,
-        child: Flex(
-          direction: isVertical ? Axis.vertical : Axis.horizontal,
-          spacing: isCompact ? 0 : 8,
-          // Horizontal and justified fills the row. Vertical and justified
-          // stretches the buttons to the column width instead.
-          mainAxisSize: isJustified && !isVertical ? MainAxisSize.max : MainAxisSize.min,
-          crossAxisAlignment: isJustified && isVertical ? CrossAxisAlignment.stretch : CrossAxisAlignment.center,
-          children: items,
-        ),
+    // Flexible lets each button shrink with an ellipsis when the parent
+    // is narrower than their contents, instead of overflowing.
+    final items = [for (final button in buttons) Flexible(child: button)];
+
+    // The scope lets every SpectrumActionButton inside read the group options,
+    // and Flex places the buttons in a row or in a column following the axis.
+    return _ActionButtonGroupScope(
+      isQuiet: isQuiet,
+      isDisabled: isDisabled,
+      staticColor: staticColor,
+      child: Flex(
+        direction: axis,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: spacing,
+        children: items,
       ),
     );
   }
 }
 
-/// Shares the group options with the action buttons below it in the tree,
-/// as the sp-action-group does with its children on the web.
+/// Shares the group options with the action buttons below it in the tree.
 class _ActionButtonGroupScope extends InheritedWidget {
   final bool isQuiet;
-  final bool isEmphasized;
+  final bool isDisabled;
+  final SpectrumStaticColor? staticColor;
 
-  const _ActionButtonGroupScope({required this.isQuiet, required this.isEmphasized, required super.child});
+  const _ActionButtonGroupScope({
+    required this.isQuiet,
+    required this.isDisabled,
+    required this.staticColor,
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(_ActionButtonGroupScope oldWidget) {
-    return oldWidget.isQuiet != isQuiet || oldWidget.isEmphasized != isEmphasized;
+    return oldWidget.isQuiet != isQuiet || oldWidget.isDisabled != isDisabled || oldWidget.staticColor != staticColor;
   }
-}
-
-/// Shares the selection of one button of the group with that button.
-class _ActionButtonGroupItemScope extends InheritedWidget {
-  final bool selected;
-  final VoidCallback onSelect;
-
-  const _ActionButtonGroupItemScope({required this.selected, required this.onSelect, required super.child});
-
-  @override
-  bool updateShouldNotify(_ActionButtonGroupItemScope oldWidget) => oldWidget.selected != selected;
 }
 
 /// Shares the corners of one button of a compact group with that button.

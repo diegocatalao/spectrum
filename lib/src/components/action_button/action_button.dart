@@ -129,8 +129,10 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
     final quiet = widget.isQuiet || SpectrumActionButtonGroup.isQuietOf(context);
 
     // A pending button looks disabled, as in Spectrum 2, once the loading circle appears.
-    final isDisabled = widget.isDisabled;
-    final staticColor = widget.staticColor;
+    // Inside a disabled group the button is disabled too, and it takes the
+    // static color of the group when it has none of its own.
+    final isDisabled = widget.isDisabled || SpectrumActionButtonGroup.isDisabledOf(context);
+    final staticColor = widget.staticColor ?? SpectrumActionButtonGroup.staticColorOf(context);
     final isInactive = isDisabled || _isSpinnerVisible;
 
     // Inside a compact group, the group decides which corners are rounded.
