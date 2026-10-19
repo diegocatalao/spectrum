@@ -154,6 +154,20 @@ import 'package:widgetbook_workspace/components/navigation/tag/tag.dart'
     as _widgetbook_workspace_components_navigation_tag_tag;
 import 'package:widgetbook_workspace/components/navigation/tag_group/tag_group.dart'
     as _widgetbook_workspace_components_navigation_tag_group_tag_group;
+import 'package:widgetbook_workspace/components/patterns/card/card.dart'
+    as _widgetbook_workspace_components_patterns_card_card;
+import 'package:widgetbook_workspace/components/patterns/card_view/card_view.dart'
+    as _widgetbook_workspace_components_patterns_card_view_card_view;
+import 'package:widgetbook_workspace/components/patterns/labeled_value/labeled_value.dart'
+    as _widgetbook_workspace_components_patterns_labeled_value_labeled_value;
+import 'package:widgetbook_workspace/components/patterns/list_box/list_box.dart'
+    as _widgetbook_workspace_components_patterns_list_box_list_box;
+import 'package:widgetbook_workspace/components/patterns/list_view/list_view.dart'
+    as _widgetbook_workspace_components_patterns_list_view_list_view;
+import 'package:widgetbook_workspace/components/patterns/table/table.dart'
+    as _widgetbook_workspace_components_patterns_table_table;
+import 'package:widgetbook_workspace/components/patterns/tree_view/tree_view.dart'
+    as _widgetbook_workspace_components_patterns_tree_view_tree_view;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -1327,6 +1341,122 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_navigation_tag_group_tag_group
                             .BuildTagGroupPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'patterns',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'card',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCard',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder: _widgetbook_workspace_components_patterns_card_card
+                        .BuildCardPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'card_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCardView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_patterns_card_view_card_view
+                            .BuildCardViewPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'labeled_value',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumLabeledValue',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_patterns_labeled_value_labeled_value
+                            .BuildLabeledValuePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'list_box',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumListBox',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_patterns_list_box_list_box
+                            .BuildListBoxPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'list_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumListView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_patterns_list_view_list_view
+                            .BuildListViewPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'table',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTable',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_patterns_table_table
+                            .BuildTablePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tree_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTreeView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_patterns_tree_view_tree_view
+                            .BuildTreeViewPresentation,
                   ),
                 ],
               ),
