@@ -281,6 +281,18 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumActionButton',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Hold',
+                builder:
+                    _widgetbook_workspace_components_action_button_action_button
+                        .BuildActionButtonHold,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Icon Only',
+                builder:
+                    _widgetbook_workspace_components_action_button_action_button
+                        .BuildActionButtonIconOnly,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder:
                     _widgetbook_workspace_components_action_button_action_button
