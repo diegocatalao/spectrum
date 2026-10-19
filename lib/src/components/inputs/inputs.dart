@@ -4,7 +4,7 @@ export 'drop_zone/drop_zone.dart';
 export 'form/form.dart';
 export 'labeled_value/labeled_value.dart';
 export 'number_field/number_field.dart';
-export 'radio_button/radio_button.dart';
+export 'radio_group/radio/radio.dart';
 export 'radio_group/radio_group.dart';
 export 'range_slider/range_slider.dart';
 export 'rating/rating.dart';

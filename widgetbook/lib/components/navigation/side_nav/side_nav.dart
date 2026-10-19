@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spectrum/spectrum.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Presentation', type: SpectrumRadioButton)
-Widget BuildRadioButtonPresentation(BuildContext context) {
+@widgetbook.UseCase(name: 'Presentation', type: SpectrumSideNav)
+Widget BuildSideNavPresentation(BuildContext context) {
   return SizedBox();
 }

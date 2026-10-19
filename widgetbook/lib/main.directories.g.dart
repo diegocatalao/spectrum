@@ -116,8 +116,8 @@ import 'package:widgetbook_workspace/components/inputs/labeled_value/labeled_val
     as _widgetbook_workspace_components_inputs_labeled_value_labeled_value;
 import 'package:widgetbook_workspace/components/inputs/number_field/number_field.dart'
     as _widgetbook_workspace_components_inputs_number_field_number_field;
-import 'package:widgetbook_workspace/components/inputs/radio_button/radio_button.dart'
-    as _widgetbook_workspace_components_inputs_radio_button_radio_button;
+import 'package:widgetbook_workspace/components/inputs/radio_group/radio/radio.dart'
+    as _widgetbook_workspace_components_inputs_radio_group_radio_radio;
 import 'package:widgetbook_workspace/components/inputs/radio_group/radio_group.dart'
     as _widgetbook_workspace_components_inputs_radio_group_radio_group;
 import 'package:widgetbook_workspace/components/inputs/range_slider/range_slider.dart'
@@ -150,8 +150,8 @@ import 'package:widgetbook_workspace/components/navigation/link/link.dart'
     as _widgetbook_workspace_components_navigation_link_link;
 import 'package:widgetbook_workspace/components/navigation/scroll_zoom_bar/scroll_zoom_bar.dart'
     as _widgetbook_workspace_components_navigation_scroll_zoom_bar_scroll_zoom_bar;
-import 'package:widgetbook_workspace/components/navigation/side_navigation/side_navigation.dart'
-    as _widgetbook_workspace_components_navigation_side_navigation_side_navigation;
+import 'package:widgetbook_workspace/components/navigation/side_nav/side_nav.dart'
+    as _widgetbook_workspace_components_navigation_side_nav_side_nav;
 import 'package:widgetbook_workspace/components/navigation/tab_bar/tab_bar.dart'
     as _widgetbook_workspace_components_navigation_tab_bar_tab_bar;
 import 'package:widgetbook_workspace/components/navigation/tabs/tabs.dart'
@@ -1066,22 +1066,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'radio_button',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumRadioButton',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_radio_button_radio_button
-                            .BuildRadioButtonPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'radio_group',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -1092,6 +1076,22 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_inputs_radio_group_radio_group
                             .BuildRadioGroupPresentation,
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'radio',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumRadio',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_inputs_radio_group_radio_radio
+                                .BuildRadioPresentation,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -1377,16 +1377,16 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'side_navigation',
+            name: 'side_nav',
             children: [
               _widgetbook.WidgetbookComponent(
-                name: 'SpectrumSideNavigation',
+                name: 'SpectrumSideNav',
                 useCases: [
                   _widgetbook.WidgetbookUseCase(
                     name: 'Presentation',
                     builder:
-                        _widgetbook_workspace_components_navigation_side_navigation_side_navigation
-                            .BuildSideNavigationPresentation,
+                        _widgetbook_workspace_components_navigation_side_nav_side_nav
+                            .BuildSideNavPresentation,
                   ),
                 ],
               ),
