@@ -78,6 +78,20 @@ import 'package:widgetbook_workspace/components/feedback/toast/toast.dart'
     as _widgetbook_workspace_components_feedback_toast_toast;
 import 'package:widgetbook_workspace/components/feedback/tooltip/tooltip.dart'
     as _widgetbook_workspace_components_feedback_tooltip_tooltip;
+import 'package:widgetbook_workspace/components/inputs/drop_zone/drop_zone.dart'
+    as _widgetbook_workspace_components_inputs_drop_zone_drop_zone;
+import 'package:widgetbook_workspace/components/inputs/form/form.dart'
+    as _widgetbook_workspace_components_inputs_form_form;
+import 'package:widgetbook_workspace/components/inputs/number_field/number_field.dart'
+    as _widgetbook_workspace_components_inputs_number_field_number_field;
+import 'package:widgetbook_workspace/components/inputs/range_slider/range_slider.dart'
+    as _widgetbook_workspace_components_inputs_range_slider_range_slider;
+import 'package:widgetbook_workspace/components/inputs/search_field/search_field.dart'
+    as _widgetbook_workspace_components_inputs_search_field_search_field;
+import 'package:widgetbook_workspace/components/inputs/slider/slider.dart'
+    as _widgetbook_workspace_components_inputs_slider_slider;
+import 'package:widgetbook_workspace/components/inputs/text_field/text_field.dart'
+    as _widgetbook_workspace_components_inputs_text_field_text_field;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -635,6 +649,122 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_feedback_tooltip_tooltip
                             .BuildTooltipPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'inputs',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'drop_zone',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDropZone',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_drop_zone_drop_zone
+                            .BuildDropZonePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'form',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumForm',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder: _widgetbook_workspace_components_inputs_form_form
+                        .BuildFormPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'number_field',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumNumberField',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_number_field_number_field
+                            .BuildNumberFieldPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'range_slider',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumRangeSlider',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_range_slider_range_slider
+                            .BuildRangeSliderPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'search_field',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumSearchField',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_search_field_search_field
+                            .BuildSearchFieldPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'slider',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumSlider',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_slider_slider
+                            .BuildSliderPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'text_field',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTextField',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_text_field_text_field
+                            .BuildTextFieldPresentation,
                   ),
                 ],
               ),
