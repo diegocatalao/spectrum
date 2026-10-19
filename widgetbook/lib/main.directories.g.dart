@@ -46,6 +46,8 @@ import 'package:widgetbook_workspace/components/actions/toggle_button_group/togg
     as _widgetbook_workspace_components_actions_toggle_button_group_toggle_button_group;
 import 'package:widgetbook_workspace/components/actions/toolbar/toolbar.dart'
     as _widgetbook_workspace_components_actions_toolbar_toolbar;
+import 'package:widgetbook_workspace/components/button/clear_button.dart'
+    as _widgetbook_workspace_components_button_clear_button;
 import 'package:widgetbook_workspace/components/button/close_button.dart'
     as _widgetbook_workspace_components_button_close_button;
 import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
@@ -358,6 +360,16 @@ final directories = <_widgetbook.WidgetbookNode>[
       _widgetbook.WidgetbookFolder(
         name: 'button',
         children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumClearButton',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_components_button_clear_button
+                    .BuildClearButtonPresentation,
+              ),
+            ],
+          ),
           _widgetbook.WidgetbookComponent(
             name: 'SpectrumCloseButton',
             useCases: [
