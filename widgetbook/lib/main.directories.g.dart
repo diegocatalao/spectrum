@@ -134,6 +134,26 @@ import 'package:widgetbook_workspace/components/inputs/text_field/text_field.dar
     as _widgetbook_workspace_components_inputs_text_field_text_field;
 import 'package:widgetbook_workspace/components/inputs/time_field/time_field.dart'
     as _widgetbook_workspace_components_inputs_time_field_time_field;
+import 'package:widgetbook_workspace/components/navigation/avatar/avatar.dart'
+    as _widgetbook_workspace_components_navigation_avatar_avatar;
+import 'package:widgetbook_workspace/components/navigation/avatar_group/avatar_group.dart'
+    as _widgetbook_workspace_components_navigation_avatar_group_avatar_group;
+import 'package:widgetbook_workspace/components/navigation/breadcrumbs/breadcrumbs.dart'
+    as _widgetbook_workspace_components_navigation_breadcrumbs_breadcrumbs;
+import 'package:widgetbook_workspace/components/navigation/link/link.dart'
+    as _widgetbook_workspace_components_navigation_link_link;
+import 'package:widgetbook_workspace/components/navigation/scroll_zoom_bar/scroll_zoom_bar.dart'
+    as _widgetbook_workspace_components_navigation_scroll_zoom_bar_scroll_zoom_bar;
+import 'package:widgetbook_workspace/components/navigation/side_navigation/side_navigation.dart'
+    as _widgetbook_workspace_components_navigation_side_navigation_side_navigation;
+import 'package:widgetbook_workspace/components/navigation/tab_bar/tab_bar.dart'
+    as _widgetbook_workspace_components_navigation_tab_bar_tab_bar;
+import 'package:widgetbook_workspace/components/navigation/tabs/tabs.dart'
+    as _widgetbook_workspace_components_navigation_tabs_tabs;
+import 'package:widgetbook_workspace/components/navigation/tag/tag.dart'
+    as _widgetbook_workspace_components_navigation_tag_tag;
+import 'package:widgetbook_workspace/components/navigation/tag_group/tag_group.dart'
+    as _widgetbook_workspace_components_navigation_tag_group_tag_group;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -1143,6 +1163,170 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_inputs_time_field_time_field
                             .BuildTimeFieldPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'navigation',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'avatar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumAvatar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_avatar_avatar
+                            .BuildAvatarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'avatar_group',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumAvatarGroup',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_avatar_group_avatar_group
+                            .BuildAvatarGroupPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'breadcrumbs',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumBreadcrumbs',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_breadcrumbs_breadcrumbs
+                            .BuildBreadcrumbsPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'link',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumLink',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_link_link
+                            .BuildLinkPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'scroll_zoom_bar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumScrollZoomBar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_scroll_zoom_bar_scroll_zoom_bar
+                            .BuildScrollZoomBarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'side_navigation',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumSideNavigation',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_side_navigation_side_navigation
+                            .BuildSideNavigationPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tab_bar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTabBar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_tab_bar_tab_bar
+                            .BuildTabBarPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tabs',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTabs',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_tabs_tabs
+                            .BuildTabsPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tag',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTag',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder: _widgetbook_workspace_components_navigation_tag_tag
+                        .BuildTagPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tag_group',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTagGroup',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_tag_group_tag_group
+                            .BuildTagGroupPresentation,
                   ),
                 ],
               ),
