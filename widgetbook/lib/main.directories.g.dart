@@ -50,8 +50,20 @@ import 'package:widgetbook_workspace/components/button/clear_button.dart'
     as _widgetbook_workspace_components_button_clear_button;
 import 'package:widgetbook_workspace/components/button/close_button.dart'
     as _widgetbook_workspace_components_button_close_button;
+import 'package:widgetbook_workspace/components/containers/contextual_help/contextual_help.dart'
+    as _widgetbook_workspace_components_containers_contextual_help_contextual_help;
+import 'package:widgetbook_workspace/components/containers/dialog/dialog.dart'
+    as _widgetbook_workspace_components_containers_dialog_dialog;
 import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
     as _widgetbook_workspace_components_containers_divider_divider;
+import 'package:widgetbook_workspace/components/containers/fullscreen_dialog/fullscreen_dialog.dart'
+    as _widgetbook_workspace_components_containers_fullscreen_dialog_fullscreen_dialog;
+import 'package:widgetbook_workspace/components/containers/image/image.dart'
+    as _widgetbook_workspace_components_containers_image_image;
+import 'package:widgetbook_workspace/components/containers/popover/popover.dart'
+    as _widgetbook_workspace_components_containers_popover_popover;
+import 'package:widgetbook_workspace/components/containers/tray/tray.dart'
+    as _widgetbook_workspace_components_containers_tray_tray;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -386,6 +398,38 @@ final directories = <_widgetbook.WidgetbookNode>[
         name: 'containers',
         children: [
           _widgetbook.WidgetbookFolder(
+            name: 'contextual_help',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumContextualHelp',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_containers_contextual_help_contextual_help
+                            .BuildContextualHelpPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'dialog',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDialog',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_containers_dialog_dialog
+                            .BuildDialogPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
             name: 'divider',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -396,6 +440,70 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_containers_divider_divider
                             .BuildDividerPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'fullscreen_dialog',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumFullscreenDialog',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_containers_fullscreen_dialog_fullscreen_dialog
+                            .BuildFullscreenDialogPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'image',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumImage',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_containers_image_image
+                            .BuildImagePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'popover',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumPopover',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_containers_popover_popover
+                            .BuildPopoverPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tray',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTray',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_containers_tray_tray
+                            .BuildTrayPresentation,
                   ),
                 ],
               ),
