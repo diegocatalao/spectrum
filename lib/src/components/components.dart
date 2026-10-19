@@ -8,6 +8,5 @@ export 'inputs/inputs.dart';
 export 'media/media.dart';
 export 'navigation/navigation.dart';
 export 'overlays/overlays.dart';
-export 'patterns/patterns.dart';
 export 'status/status.dart';
 export 'visualization/visualization.dart';

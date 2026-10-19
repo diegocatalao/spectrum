@@ -40,12 +40,32 @@ import 'package:widgetbook_workspace/components/actions/toggle_button_group/togg
     as _widgetbook_workspace_components_actions_toggle_button_group_toggle_button_group;
 import 'package:widgetbook_workspace/components/actions/toolbar/toolbar.dart'
     as _widgetbook_workspace_components_actions_toolbar_toolbar;
+import 'package:widgetbook_workspace/components/collections/card/card.dart'
+    as _widgetbook_workspace_components_collections_card_card;
+import 'package:widgetbook_workspace/components/collections/card_view/card_view.dart'
+    as _widgetbook_workspace_components_collections_card_view_card_view;
+import 'package:widgetbook_workspace/components/collections/combo_box/combo_box.dart'
+    as _widgetbook_workspace_components_collections_combo_box_combo_box;
+import 'package:widgetbook_workspace/components/collections/list_box/list_box.dart'
+    as _widgetbook_workspace_components_collections_list_box_list_box;
+import 'package:widgetbook_workspace/components/collections/list_view/list_view.dart'
+    as _widgetbook_workspace_components_collections_list_view_list_view;
 import 'package:widgetbook_workspace/components/collections/menu/menu.dart'
     as _widgetbook_workspace_components_collections_menu_menu;
 import 'package:widgetbook_workspace/components/collections/menu/menu_group/menu_group.dart'
     as _widgetbook_workspace_components_collections_menu_menu_group_menu_group;
 import 'package:widgetbook_workspace/components/collections/menu/menu_item/menu_item.dart'
     as _widgetbook_workspace_components_collections_menu_menu_item_menu_item;
+import 'package:widgetbook_workspace/components/collections/picker/picker.dart'
+    as _widgetbook_workspace_components_collections_picker_picker;
+import 'package:widgetbook_workspace/components/collections/table_view/table_view.dart'
+    as _widgetbook_workspace_components_collections_table_view_table_view;
+import 'package:widgetbook_workspace/components/collections/tag_group/tag/tag.dart'
+    as _widgetbook_workspace_components_collections_tag_group_tag_tag;
+import 'package:widgetbook_workspace/components/collections/tag_group/tag_group.dart'
+    as _widgetbook_workspace_components_collections_tag_group_tag_group;
+import 'package:widgetbook_workspace/components/collections/tree_view/tree_view.dart'
+    as _widgetbook_workspace_components_collections_tree_view_tree_view;
 import 'package:widgetbook_workspace/components/color/color_area/color_area.dart'
     as _widgetbook_workspace_components_color_color_area_color_area;
 import 'package:widgetbook_workspace/components/color/color_field/color_field.dart'
@@ -88,16 +108,14 @@ import 'package:widgetbook_workspace/components/inputs/checkbox/checkbox.dart'
     as _widgetbook_workspace_components_inputs_checkbox_checkbox;
 import 'package:widgetbook_workspace/components/inputs/checkbox_group/checkbox_group.dart'
     as _widgetbook_workspace_components_inputs_checkbox_group_checkbox_group;
-import 'package:widgetbook_workspace/components/inputs/combo_box/combo_box.dart'
-    as _widgetbook_workspace_components_inputs_combo_box_combo_box;
 import 'package:widgetbook_workspace/components/inputs/drop_zone/drop_zone.dart'
     as _widgetbook_workspace_components_inputs_drop_zone_drop_zone;
 import 'package:widgetbook_workspace/components/inputs/form/form.dart'
     as _widgetbook_workspace_components_inputs_form_form;
+import 'package:widgetbook_workspace/components/inputs/labeled_value/labeled_value.dart'
+    as _widgetbook_workspace_components_inputs_labeled_value_labeled_value;
 import 'package:widgetbook_workspace/components/inputs/number_field/number_field.dart'
     as _widgetbook_workspace_components_inputs_number_field_number_field;
-import 'package:widgetbook_workspace/components/inputs/picker/picker.dart'
-    as _widgetbook_workspace_components_inputs_picker_picker;
 import 'package:widgetbook_workspace/components/inputs/radio_button/radio_button.dart'
     as _widgetbook_workspace_components_inputs_radio_button_radio_button;
 import 'package:widgetbook_workspace/components/inputs/radio_group/radio_group.dart'
@@ -138,10 +156,6 @@ import 'package:widgetbook_workspace/components/navigation/tab_bar/tab_bar.dart'
     as _widgetbook_workspace_components_navigation_tab_bar_tab_bar;
 import 'package:widgetbook_workspace/components/navigation/tabs/tabs.dart'
     as _widgetbook_workspace_components_navigation_tabs_tabs;
-import 'package:widgetbook_workspace/components/navigation/tag/tag.dart'
-    as _widgetbook_workspace_components_navigation_tag_tag;
-import 'package:widgetbook_workspace/components/navigation/tag_group/tag_group.dart'
-    as _widgetbook_workspace_components_navigation_tag_group_tag_group;
 import 'package:widgetbook_workspace/components/overlays/contextual_help/contextual_help.dart'
     as _widgetbook_workspace_components_overlays_contextual_help_contextual_help;
 import 'package:widgetbook_workspace/components/overlays/dialog/alert_dialog/alert_dialog.dart'
@@ -154,20 +168,6 @@ import 'package:widgetbook_workspace/components/overlays/popover/popover.dart'
     as _widgetbook_workspace_components_overlays_popover_popover;
 import 'package:widgetbook_workspace/components/overlays/tooltip/tooltip.dart'
     as _widgetbook_workspace_components_overlays_tooltip_tooltip;
-import 'package:widgetbook_workspace/components/patterns/card/card.dart'
-    as _widgetbook_workspace_components_patterns_card_card;
-import 'package:widgetbook_workspace/components/patterns/card_view/card_view.dart'
-    as _widgetbook_workspace_components_patterns_card_view_card_view;
-import 'package:widgetbook_workspace/components/patterns/labeled_value/labeled_value.dart'
-    as _widgetbook_workspace_components_patterns_labeled_value_labeled_value;
-import 'package:widgetbook_workspace/components/patterns/list_box/list_box.dart'
-    as _widgetbook_workspace_components_patterns_list_box_list_box;
-import 'package:widgetbook_workspace/components/patterns/list_view/list_view.dart'
-    as _widgetbook_workspace_components_patterns_list_view_list_view;
-import 'package:widgetbook_workspace/components/patterns/table/table.dart'
-    as _widgetbook_workspace_components_patterns_table_table;
-import 'package:widgetbook_workspace/components/patterns/tree_view/tree_view.dart'
-    as _widgetbook_workspace_components_patterns_tree_view_tree_view;
 import 'package:widgetbook_workspace/components/status/badge/badge.dart'
     as _widgetbook_workspace_components_status_badge_badge;
 import 'package:widgetbook_workspace/components/status/meter/meter.dart'
@@ -434,6 +434,86 @@ final directories = <_widgetbook.WidgetbookNode>[
         name: 'collections',
         children: [
           _widgetbook.WidgetbookFolder(
+            name: 'card',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCard',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_card_card
+                            .BuildCardPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'card_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCardView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_card_view_card_view
+                            .BuildCardViewPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'combo_box',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumComboBox',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_combo_box_combo_box
+                            .BuildComboBoxPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'list_box',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumListBox',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_list_box_list_box
+                            .BuildListBoxPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'list_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumListView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_list_view_list_view
+                            .BuildListViewPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
             name: 'menu',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -476,6 +556,86 @@ final directories = <_widgetbook.WidgetbookNode>[
                                 .BuildMenuItemPresentation,
                       ),
                     ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'picker',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumPicker',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_picker_picker
+                            .BuildPickerPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'table_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTableView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_table_view_table_view
+                            .BuildTableViewPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tag_group',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTagGroup',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_tag_group_tag_group
+                            .BuildTagGroupPresentation,
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'tag',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumTag',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_collections_tag_group_tag_tag
+                                .BuildTagPresentation,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'tree_view',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumTreeView',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_collections_tree_view_tree_view
+                            .BuildTreeViewPresentation,
                   ),
                 ],
               ),
@@ -843,22 +1003,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'combo_box',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumComboBox',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_combo_box_combo_box
-                            .BuildComboBoxPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'drop_zone',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -890,6 +1034,22 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
+            name: 'labeled_value',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumLabeledValue',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_inputs_labeled_value_labeled_value
+                            .BuildLabeledValuePresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
             name: 'number_field',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -900,22 +1060,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_inputs_number_field_number_field
                             .BuildNumberFieldPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'picker',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumPicker',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_picker_picker
-                            .BuildPickerPresentation,
                   ),
                 ],
               ),
@@ -1280,37 +1424,6 @@ final directories = <_widgetbook.WidgetbookNode>[
               ),
             ],
           ),
-          _widgetbook.WidgetbookFolder(
-            name: 'tag',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTag',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder: _widgetbook_workspace_components_navigation_tag_tag
-                        .BuildTagPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'tag_group',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTagGroup',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_navigation_tag_group_tag_group
-                            .BuildTagGroupPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
         ],
       ),
       _widgetbook.WidgetbookFolder(
@@ -1407,122 +1520,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_overlays_tooltip_tooltip
                             .BuildTooltipPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
-        name: 'patterns',
-        children: [
-          _widgetbook.WidgetbookFolder(
-            name: 'card',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumCard',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder: _widgetbook_workspace_components_patterns_card_card
-                        .BuildCardPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'card_view',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumCardView',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_patterns_card_view_card_view
-                            .BuildCardViewPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'labeled_value',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumLabeledValue',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_patterns_labeled_value_labeled_value
-                            .BuildLabeledValuePresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'list_box',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumListBox',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_patterns_list_box_list_box
-                            .BuildListBoxPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'list_view',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumListView',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_patterns_list_view_list_view
-                            .BuildListViewPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'table',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTable',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_patterns_table_table
-                            .BuildTablePresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'tree_view',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTreeView',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_patterns_tree_view_tree_view
-                            .BuildTreeViewPresentation,
                   ),
                 ],
               ),

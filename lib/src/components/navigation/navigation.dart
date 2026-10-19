@@ -6,5 +6,3 @@ export 'scroll_zoom_bar/scroll_zoom_bar.dart';
 export 'side_navigation/side_navigation.dart';
 export 'tab_bar/tab_bar.dart';
 export 'tabs/tabs.dart';
-export 'tag/tag.dart';
-export 'tag_group/tag_group.dart';

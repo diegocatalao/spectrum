@@ -1,10 +1,9 @@
 export 'checkbox/checkbox.dart';
 export 'checkbox_group/checkbox_group.dart';
-export 'combo_box/combo_box.dart';
 export 'drop_zone/drop_zone.dart';
 export 'form/form.dart';
+export 'labeled_value/labeled_value.dart';
 export 'number_field/number_field.dart';
-export 'picker/picker.dart';
 export 'radio_button/radio_button.dart';
 export 'radio_group/radio_group.dart';
 export 'range_slider/range_slider.dart';

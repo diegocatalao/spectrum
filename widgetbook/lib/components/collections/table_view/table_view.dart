@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spectrum/spectrum.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Presentation', type: SpectrumTable)
-Widget BuildTablePresentation(BuildContext context) {
+@widgetbook.UseCase(name: 'Presentation', type: SpectrumTableView)
+Widget BuildTableViewPresentation(BuildContext context) {
   return SizedBox();
 }
