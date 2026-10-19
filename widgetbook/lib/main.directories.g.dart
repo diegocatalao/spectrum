@@ -1112,6 +1112,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumLink',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Inside Text',
+                builder: _widgetbook_workspace_components_link_link
+                    .BuildLinkInsideText,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_link_link
                     .BuildLinkPresentation,
