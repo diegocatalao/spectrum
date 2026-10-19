@@ -389,9 +389,19 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumButton',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Auto Focus',
+                builder: _widgetbook_workspace_components_button_button
+                    .BuildButtonAutoFocus,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_button_button
                     .BuildButtonPresentation,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Static Color',
+                builder: _widgetbook_workspace_components_button_button
+                    .BuildButtonStaticColor,
               ),
             ],
           ),
