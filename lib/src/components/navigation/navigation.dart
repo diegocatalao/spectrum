@@ -1,7 +1,5 @@
 export 'accordion/accordion.dart';
 export 'accordion/accordion_item/accordion_item.dart';
-export 'avatar/avatar.dart';
-export 'avatar_group/avatar_group.dart';
 export 'breadcrumbs/breadcrumbs.dart';
 export 'link/link.dart';
 export 'scroll_zoom_bar/scroll_zoom_bar.dart';

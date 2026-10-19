@@ -3,6 +3,7 @@ export 'collections/collections.dart';
 export 'containers/containers.dart';
 export 'feedback/feedback.dart';
 export 'inputs/inputs.dart';
+export 'media/media.dart';
 export 'navigation/navigation.dart';
 export 'overlays/overlays.dart';
 export 'patterns/patterns.dart';
