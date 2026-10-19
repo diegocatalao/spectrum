@@ -186,7 +186,9 @@ class _SpectrumButtonState extends State<SpectrumButton> {
     }
 
     // A pending button looks disabled, as in Spectrum 2, once the loading circle appears.
-    final isInactive = widget.isDisabled || _isSpinnerVisible;
+    // Inside a disabled SpectrumButtonGroup, the button is disabled too.
+    final isDisabled = widget.isDisabled || SpectrumButtonGroup.isDisabledOf(context);
+    final isInactive = isDisabled || _isSpinnerVisible;
 
     if (widget.staticColor != null && isInactive && widget.isOutline) {
       // When staticColor is set and isDisabled (or isPending) and isOutline are True,
@@ -288,7 +290,7 @@ class _SpectrumButtonState extends State<SpectrumButton> {
     // Tells screen readers that this is a button, its text and if it is enabled.
     return Semantics(
       button: true,
-      enabled: !widget.isDisabled,
+      enabled: !isDisabled,
       label: widget.content,
       child: Stack(
         // passthrough keeps the size of the button, and Clip.none lets
@@ -314,7 +316,7 @@ class _SpectrumButtonState extends State<SpectrumButton> {
                 // When isDisabled is True the tap is null and the button can not be
                 // focused. When isPending is True, _handleTap ignores the tap but
                 // the button stays focusable, as in Spectrum 2.
-                onTap: widget.isDisabled ? null : _handleTap,
+                onTap: isDisabled ? null : _handleTap,
                 onHighlightChanged: (value) => setState(() => _isPressed = value && !widget.isPending),
                 onFocusChange: (value) => setState(() => _isFocused = value),
                 child: Container(
@@ -337,9 +339,15 @@ class _SpectrumButtonState extends State<SpectrumButton> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               ?widget.icon,
-                              Text(
-                                widget.content,
-                                style: TextStyle(color: content, fontWeight: FontWeight.w700),
+                              // Flexible lets the text shrink with an ellipsis when the button
+                              // gets less width than its content, like inside a narrow group.
+                              Flexible(
+                                child: Text(
+                                  widget.content,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: content, fontWeight: FontWeight.w700),
+                                ),
                               ),
                             ],
                           ),

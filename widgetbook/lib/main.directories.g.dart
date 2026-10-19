@@ -416,6 +416,12 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumButtonGroup',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Overflow',
+                builder:
+                    _widgetbook_workspace_components_button_group_button_group
+                        .BuildButtonGroupOverflow,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder:
                     _widgetbook_workspace_components_button_group_button_group
