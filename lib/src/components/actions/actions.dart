@@ -7,7 +7,6 @@ export 'button_group/button_group.dart';
 export 'clear_button/clear_button.dart';
 export 'close_button/close_button.dart';
 export 'icon_button/icon_button.dart';
-export 'quick_actions/quick_actions.dart';
 export 'segmented_control/segmented_control.dart';
 export 'selects.dart';
 export 'toggle_button/toggle_button.dart';

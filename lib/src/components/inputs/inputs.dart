@@ -7,7 +7,6 @@ export 'number_field/number_field.dart';
 export 'radio_group/radio/radio.dart';
 export 'radio_group/radio_group.dart';
 export 'range_slider/range_slider.dart';
-export 'rating/rating.dart';
 export 'search_field/search_field.dart';
 export 'select_box_group/select_box_group.dart';
 export 'slider/slider.dart';
