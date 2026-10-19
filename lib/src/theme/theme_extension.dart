@@ -2,30 +2,36 @@ import 'package:flutter/material.dart';
 
 import '../foundations/colors.dart';
 
-// Tokens do Spectrum que não têm lugar no ColorScheme do Material.
+// Spectrum tokens that have no place in the Material ColorScheme.
 class SpectrumThemeExtension extends ThemeExtension<SpectrumThemeExtension> {
-  /// accent-background-color-hover/down: azul de hover e clique dos elementos em destaque.
+  /// accent-background-color-hover/down: blue of hovered and pressed accent elements.
   final Color accentHover;
 
-  /// focus-indicator-color: azul do anel de foco do teclado.
+  /// negative-background-color-hover/down: red of hovered and pressed negative elements.
+  final Color negativeHover;
+
+  /// focus-indicator-color: blue of the keyboard focus ring.
   final Color focusIndicator;
 
-  const SpectrumThemeExtension({required this.accentHover, required this.focusIndicator});
+  const SpectrumThemeExtension({required this.accentHover, required this.negativeHover, required this.focusIndicator});
 
   static const light = SpectrumThemeExtension(
     accentHover: SpectrumColors.blue1000,
+    negativeHover: SpectrumColors.red1000,
     focusIndicator: SpectrumColors.blue800,
   );
 
   static const dark = SpectrumThemeExtension(
     accentHover: SpectrumDarkColors.blue700,
+    negativeHover: SpectrumDarkColors.red700,
     focusIndicator: SpectrumDarkColors.blue800,
   );
 
   @override
-  SpectrumThemeExtension copyWith({Color? accentHover, Color? focusIndicator}) {
+  SpectrumThemeExtension copyWith({Color? accentHover, Color? negativeHover, Color? focusIndicator}) {
     return SpectrumThemeExtension(
       accentHover: accentHover ?? this.accentHover,
+      negativeHover: negativeHover ?? this.negativeHover,
       focusIndicator: focusIndicator ?? this.focusIndicator,
     );
   }
@@ -35,6 +41,7 @@ class SpectrumThemeExtension extends ThemeExtension<SpectrumThemeExtension> {
     if (other == null) return this;
     return SpectrumThemeExtension(
       accentHover: Color.lerp(accentHover, other.accentHover, t)!,
+      negativeHover: Color.lerp(negativeHover, other.negativeHover, t)!,
       focusIndicator: Color.lerp(focusIndicator, other.focusIndicator, t)!,
     );
   }
