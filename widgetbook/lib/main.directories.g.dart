@@ -12,10 +12,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
 import 'package:widgetbook/widgetbook.dart' as _widgetbook;
-import 'package:widgetbook_workspace/components/accordion/accordion.dart'
-    as _widgetbook_workspace_components_accordion_accordion;
-import 'package:widgetbook_workspace/components/accordion/accordion_item/accordion_item.dart'
-    as _widgetbook_workspace_components_accordion_accordion_item_accordion_item;
 import 'package:widgetbook_workspace/components/actions/action_bar/action_bar.dart'
     as _widgetbook_workspace_components_actions_action_bar_action_bar;
 import 'package:widgetbook_workspace/components/actions/action_button/action_button.dart'
@@ -134,6 +130,10 @@ import 'package:widgetbook_workspace/components/inputs/text_field/text_field.dar
     as _widgetbook_workspace_components_inputs_text_field_text_field;
 import 'package:widgetbook_workspace/components/inputs/time_field/time_field.dart'
     as _widgetbook_workspace_components_inputs_time_field_time_field;
+import 'package:widgetbook_workspace/components/navigation/accordion/accordion.dart'
+    as _widgetbook_workspace_components_navigation_accordion_accordion;
+import 'package:widgetbook_workspace/components/navigation/accordion/accordion_item/accordion_item.dart'
+    as _widgetbook_workspace_components_navigation_accordion_accordion_item_accordion_item;
 import 'package:widgetbook_workspace/components/navigation/avatar/avatar.dart'
     as _widgetbook_workspace_components_navigation_avatar_avatar;
 import 'package:widgetbook_workspace/components/navigation/avatar_group/avatar_group.dart'
@@ -201,62 +201,6 @@ final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
     name: 'components',
     children: [
-      _widgetbook.WidgetbookFolder(
-        name: 'accordion',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumAccordion',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Actions',
-                builder: _widgetbook_workspace_components_accordion_accordion
-                    .BuildAccordionActions,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Disabled Item',
-                builder: _widgetbook_workspace_components_accordion_accordion
-                    .BuildAccordionDisabledItem,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Expanding',
-                builder: _widgetbook_workspace_components_accordion_accordion
-                    .BuildAccordionExpanding,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Long Title',
-                builder: _widgetbook_workspace_components_accordion_accordion
-                    .BuildAccordionLongTitle,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder: _widgetbook_workspace_components_accordion_accordion
-                    .BuildAccordionPresentation,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Rich Panel',
-                builder: _widgetbook_workspace_components_accordion_accordion
-                    .BuildAccordionRichPanel,
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'accordion_item',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumAccordionItem',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_accordion_accordion_item_accordion_item
-                            .BuildAccordionItemPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
       _widgetbook.WidgetbookFolder(
         name: 'actions',
         children: [
@@ -1215,6 +1159,68 @@ final directories = <_widgetbook.WidgetbookNode>[
       _widgetbook.WidgetbookFolder(
         name: 'navigation',
         children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'accordion',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumAccordion',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Actions',
+                    builder:
+                        _widgetbook_workspace_components_navigation_accordion_accordion
+                            .BuildAccordionActions,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Disabled Item',
+                    builder:
+                        _widgetbook_workspace_components_navigation_accordion_accordion
+                            .BuildAccordionDisabledItem,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Expanding',
+                    builder:
+                        _widgetbook_workspace_components_navigation_accordion_accordion
+                            .BuildAccordionExpanding,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Long Title',
+                    builder:
+                        _widgetbook_workspace_components_navigation_accordion_accordion
+                            .BuildAccordionLongTitle,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_navigation_accordion_accordion
+                            .BuildAccordionPresentation,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Rich Panel',
+                    builder:
+                        _widgetbook_workspace_components_navigation_accordion_accordion
+                            .BuildAccordionRichPanel,
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'accordion_item',
+                children: [
+                  _widgetbook.WidgetbookComponent(
+                    name: 'SpectrumAccordionItem',
+                    useCases: [
+                      _widgetbook.WidgetbookUseCase(
+                        name: 'Presentation',
+                        builder:
+                            _widgetbook_workspace_components_navigation_accordion_accordion_item_accordion_item
+                                .BuildAccordionItemPresentation,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
           _widgetbook.WidgetbookFolder(
             name: 'avatar',
             children: [
