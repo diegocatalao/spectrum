@@ -1,10 +1,5 @@
 export 'checkbox/checkbox.dart';
 export 'checkbox_group/checkbox_group.dart';
-export 'color_area/color_area.dart';
-export 'color_field/color_field.dart';
-export 'color_slider/color_slider.dart';
-export 'color_swatch_picker/color_swatch_picker.dart';
-export 'color_wheel/color_wheel.dart';
 export 'combo_box/combo_box.dart';
 export 'drop_zone/drop_zone.dart';
 export 'form/form.dart';
@@ -17,6 +12,5 @@ export 'rating/rating.dart';
 export 'search_field/search_field.dart';
 export 'select_box_group/select_box_group.dart';
 export 'slider/slider.dart';
-export 'swatch/swatch.dart';
 export 'switch/switch.dart';
 export 'text_field/text_field.dart';

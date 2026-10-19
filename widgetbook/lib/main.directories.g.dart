@@ -46,6 +46,18 @@ import 'package:widgetbook_workspace/components/collections/menu/menu_group/menu
     as _widgetbook_workspace_components_collections_menu_menu_group_menu_group;
 import 'package:widgetbook_workspace/components/collections/menu/menu_item/menu_item.dart'
     as _widgetbook_workspace_components_collections_menu_menu_item_menu_item;
+import 'package:widgetbook_workspace/components/color/color_area/color_area.dart'
+    as _widgetbook_workspace_components_color_color_area_color_area;
+import 'package:widgetbook_workspace/components/color/color_field/color_field.dart'
+    as _widgetbook_workspace_components_color_color_field_color_field;
+import 'package:widgetbook_workspace/components/color/color_slider/color_slider.dart'
+    as _widgetbook_workspace_components_color_color_slider_color_slider;
+import 'package:widgetbook_workspace/components/color/color_swatch/color_swatch.dart'
+    as _widgetbook_workspace_components_color_color_swatch_color_swatch;
+import 'package:widgetbook_workspace/components/color/color_swatch_picker/color_swatch_picker.dart'
+    as _widgetbook_workspace_components_color_color_swatch_picker_color_swatch_picker;
+import 'package:widgetbook_workspace/components/color/color_wheel/color_wheel.dart'
+    as _widgetbook_workspace_components_color_color_wheel_color_wheel;
 import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
     as _widgetbook_workspace_components_containers_divider_divider;
 import 'package:widgetbook_workspace/components/containers/tray/tray.dart'
@@ -76,16 +88,6 @@ import 'package:widgetbook_workspace/components/inputs/checkbox/checkbox.dart'
     as _widgetbook_workspace_components_inputs_checkbox_checkbox;
 import 'package:widgetbook_workspace/components/inputs/checkbox_group/checkbox_group.dart'
     as _widgetbook_workspace_components_inputs_checkbox_group_checkbox_group;
-import 'package:widgetbook_workspace/components/inputs/color_area/color_area.dart'
-    as _widgetbook_workspace_components_inputs_color_area_color_area;
-import 'package:widgetbook_workspace/components/inputs/color_field/color_field.dart'
-    as _widgetbook_workspace_components_inputs_color_field_color_field;
-import 'package:widgetbook_workspace/components/inputs/color_slider/color_slider.dart'
-    as _widgetbook_workspace_components_inputs_color_slider_color_slider;
-import 'package:widgetbook_workspace/components/inputs/color_swatch_picker/color_swatch_picker.dart'
-    as _widgetbook_workspace_components_inputs_color_swatch_picker_color_swatch_picker;
-import 'package:widgetbook_workspace/components/inputs/color_wheel/color_wheel.dart'
-    as _widgetbook_workspace_components_inputs_color_wheel_color_wheel;
 import 'package:widgetbook_workspace/components/inputs/combo_box/combo_box.dart'
     as _widgetbook_workspace_components_inputs_combo_box_combo_box;
 import 'package:widgetbook_workspace/components/inputs/drop_zone/drop_zone.dart'
@@ -110,8 +112,6 @@ import 'package:widgetbook_workspace/components/inputs/select_box_group/select_b
     as _widgetbook_workspace_components_inputs_select_box_group_select_box_group;
 import 'package:widgetbook_workspace/components/inputs/slider/slider.dart'
     as _widgetbook_workspace_components_inputs_slider_slider;
-import 'package:widgetbook_workspace/components/inputs/swatch/swatch.dart'
-    as _widgetbook_workspace_components_inputs_swatch_swatch;
 import 'package:widgetbook_workspace/components/inputs/switch/switch.dart'
     as _widgetbook_workspace_components_inputs_switch_switch;
 import 'package:widgetbook_workspace/components/inputs/text_field/text_field.dart'
@@ -484,6 +484,107 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
+        name: 'color',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'color_area',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorArea',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_color_color_area_color_area
+                            .BuildColorAreaPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'color_field',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorField',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_color_color_field_color_field
+                            .BuildColorFieldPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'color_slider',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorSlider',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_color_color_slider_color_slider
+                            .BuildColorSliderPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'color_swatch',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorSwatch',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_color_color_swatch_color_swatch
+                            .BuildColorSwatchPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'color_swatch_picker',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorSwatchPicker',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_color_color_swatch_picker_color_swatch_picker
+                            .BuildColorSwatchPickerPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'color_wheel',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumColorWheel',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_color_color_wheel_color_wheel
+                            .BuildColorWheelPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
         name: 'containers',
         children: [
           _widgetbook.WidgetbookFolder(
@@ -742,86 +843,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'color_area',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumColorArea',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_color_area_color_area
-                            .BuildColorAreaPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'color_field',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumColorField',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_color_field_color_field
-                            .BuildColorFieldPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'color_slider',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumColorSlider',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_color_slider_color_slider
-                            .BuildColorSliderPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'color_swatch_picker',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumColorSwatchPicker',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_color_swatch_picker_color_swatch_picker
-                            .BuildColorSwatchPickerPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'color_wheel',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumColorWheel',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_color_wheel_color_wheel
-                            .BuildColorWheelPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
             name: 'combo_box',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -1007,22 +1028,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_inputs_slider_slider
                             .BuildSliderPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'swatch',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumSwatch',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_inputs_swatch_swatch
-                            .BuildSwatchPresentation,
                   ),
                 ],
               ),
