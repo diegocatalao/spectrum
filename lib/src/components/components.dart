@@ -5,6 +5,7 @@ export 'containers/containers.dart';
 export 'feedback/feedback.dart';
 export 'inputs/inputs.dart';
 export 'navigation/navigation.dart';
+export 'status/status.dart';
 export 'patterns/patterns.dart';
 export 'button/clear_button.dart';
 export 'button/close_button.dart';
