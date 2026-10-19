@@ -24,6 +24,10 @@ import 'package:widgetbook_workspace/components/actions/action_group/action_grou
     as _widgetbook_workspace_components_actions_action_group_action_group;
 import 'package:widgetbook_workspace/components/actions/action_menu/action_menu.dart'
     as _widgetbook_workspace_components_actions_action_menu_action_menu;
+import 'package:widgetbook_workspace/components/actions/button/button.dart'
+    as _widgetbook_workspace_components_actions_button_button;
+import 'package:widgetbook_workspace/components/actions/button_group/button_group.dart'
+    as _widgetbook_workspace_components_actions_button_group_button_group;
 import 'package:widgetbook_workspace/components/actions/icon_button/icon_button.dart'
     as _widgetbook_workspace_components_actions_icon_button_icon_button;
 import 'package:widgetbook_workspace/components/actions/menu/menu.dart'
@@ -32,6 +36,16 @@ import 'package:widgetbook_workspace/components/actions/menu/menu_group/menu_gro
     as _widgetbook_workspace_components_actions_menu_menu_group_menu_group;
 import 'package:widgetbook_workspace/components/actions/menu/menu_item/menu_item.dart'
     as _widgetbook_workspace_components_actions_menu_menu_item_menu_item;
+import 'package:widgetbook_workspace/components/actions/quick_actions/quick_actions.dart'
+    as _widgetbook_workspace_components_actions_quick_actions_quick_actions;
+import 'package:widgetbook_workspace/components/actions/segmented_control/segmented_control.dart'
+    as _widgetbook_workspace_components_actions_segmented_control_segmented_control;
+import 'package:widgetbook_workspace/components/actions/toggle_button/toggle_button.dart'
+    as _widgetbook_workspace_components_actions_toggle_button_toggle_button;
+import 'package:widgetbook_workspace/components/actions/toggle_button_group/toggle_button_group.dart'
+    as _widgetbook_workspace_components_actions_toggle_button_group_toggle_button_group;
+import 'package:widgetbook_workspace/components/actions/toolbar/toolbar.dart'
+    as _widgetbook_workspace_components_actions_toolbar_toolbar;
 import 'package:widgetbook_workspace/components/button/close_button.dart'
     as _widgetbook_workspace_components_button_close_button;
 import 'package:widgetbook_workspace/components/containers/divider/divider.dart'
@@ -165,6 +179,38 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookFolder(
+            name: 'button',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumButton',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_button_button
+                            .BuildButtonPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'button_group',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumButtonGroup',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_button_group_button_group
+                            .BuildButtonGroupPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
             name: 'icon_button',
             children: [
               _widgetbook.WidgetbookComponent(
@@ -222,6 +268,86 @@ final directories = <_widgetbook.WidgetbookNode>[
                                 .BuildMenuItemPresentation,
                       ),
                     ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'quick_actions',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumQuickActions',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_quick_actions_quick_actions
+                            .BuildQuickActionsPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'segmented_control',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumSegmentedControl',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_segmented_control_segmented_control
+                            .BuildSegmentedControlPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'toggle_button',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumToggleButton',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_toggle_button_toggle_button
+                            .BuildToggleButtonPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'toggle_button_group',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumToggleButtonGroup',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_toggle_button_group_toggle_button_group
+                            .BuildToggleButtonGroupPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'toolbar',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumToolbar',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_actions_toolbar_toolbar
+                            .BuildToolbarPresentation,
                   ),
                 ],
               ),
