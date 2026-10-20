@@ -95,4 +95,5 @@ export 'toggle_button/toggle_button.dart';
 export 'toggle_button_group/toggle_button_group.dart';
 export 'toolbar/toolbar.dart';
 export 'tooltip/tooltip.dart';
+export 'tooltip/tooltip_trigger/tooltip_trigger.dart';
 export 'tree_view/tree_view.dart';

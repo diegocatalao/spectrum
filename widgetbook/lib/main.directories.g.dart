@@ -1793,6 +1793,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumTooltip',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Long Text',
+                builder: _widgetbook_workspace_components_tooltip_tooltip
+                    .BuildTooltipLongText,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_tooltip_tooltip
                     .BuildTooltipPresentation,
