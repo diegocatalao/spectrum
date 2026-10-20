@@ -300,10 +300,8 @@ class _SpectrumButtonState extends State<SpectrumButton> {
         children: [
           // Spectrum 2 "press scale": the button shrinks a little while it is
           // pressed and grows back when released, giving a physical feedback.
-          AnimatedScale(
-            scale: _isPressed ? 0.95 : 1,
-            duration: const Duration(milliseconds: 130),
-            curve: Curves.easeInOut,
+          SpectrumPressScale(
+            isPressed: _isPressed,
             child: Material(
               shape: shape,
               color: background,

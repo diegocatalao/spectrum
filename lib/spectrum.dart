@@ -15,6 +15,7 @@ export 'src/theme/context_ext.dart';
 export 'src/motion/page_transitions.dart';
 export 'src/motion/fade_in.dart';
 export 'src/motion/shimmer.dart';
+export 'src/motion/press_scale.dart';
 
 export 'src/icons/icons.dart';
 export 'src/icons/icon.dart';
