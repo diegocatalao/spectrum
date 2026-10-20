@@ -1613,6 +1613,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_switch_switch
                     .BuildSwitchPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'States',
+                builder: _widgetbook_workspace_components_switch_switch
+                    .BuildSwitchStates,
+              ),
             ],
           ),
         ],
