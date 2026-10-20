@@ -1511,6 +1511,18 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumSegmentedControl',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Icons',
+                builder:
+                    _widgetbook_workspace_components_segmented_control_segmented_control
+                        .BuildSegmentedControlIcons,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Justified',
+                builder:
+                    _widgetbook_workspace_components_segmented_control_segmented_control
+                        .BuildSegmentedControlJustified,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder:
                     _widgetbook_workspace_components_segmented_control_segmented_control
