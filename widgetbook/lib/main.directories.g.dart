@@ -1224,10 +1224,40 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'SpectrumMenuItem',
                 useCases: [
                   _widgetbook.WidgetbookUseCase(
+                    name: 'Image',
+                    builder:
+                        _widgetbook_workspace_components_menu_menu_item_menu_item
+                            .BuildMenuItemImage,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Keyboard Shortcut',
+                    builder:
+                        _widgetbook_workspace_components_menu_menu_item_menu_item
+                            .BuildMenuItemKeyboardShortcut,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Link',
+                    builder:
+                        _widgetbook_workspace_components_menu_menu_item_menu_item
+                            .BuildMenuItemLink,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
                     name: 'Presentation',
                     builder:
                         _widgetbook_workspace_components_menu_menu_item_menu_item
                             .BuildMenuItemPresentation,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Value',
+                    builder:
+                        _widgetbook_workspace_components_menu_menu_item_menu_item
+                            .BuildMenuItemValue,
+                  ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'With Description Text',
+                    builder:
+                        _widgetbook_workspace_components_menu_menu_item_menu_item
+                            .BuildMenuItemWithText,
                   ),
                 ],
               ),
