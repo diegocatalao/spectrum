@@ -4,7 +4,8 @@ import 'package:spectrum/spectrum.dart';
 /// Spectrum Accordion: a list of items that expand or collapse to
 /// reveal the content associated with each one.
 class SpectrumAccordion extends StatefulWidget {
-  /// Items of the accordion, shown in order from top to bottom.
+  /// Items of the accordion, shown in order from top to bottom. Each one is a
+  /// SpectrumDisclosure whose expansion is decided by the accordion.
   final List<SpectrumAccordionItem> items;
 
   /// Vertical and horizontal compactness passed to every item.
@@ -31,6 +32,26 @@ class SpectrumAccordion extends StatefulWidget {
     this.isDisabled = false,
     this.onExpansionChange,
   });
+
+  /// Returns the expansion and the shared options of the item inside an
+  /// accordion, or null when the disclosure is on its own.
+  static ({bool isExpanded, bool isQuiet, bool isDisabled, VisualDensity density, VoidCallback onToggle})? itemOf(
+    BuildContext context,
+  ) {
+    final scope = context.dependOnInheritedWidgetOfExactType<_AccordionItemScope>();
+
+    if (scope == null) {
+      return null;
+    }
+
+    return (
+      isExpanded: scope.isExpanded,
+      isQuiet: scope.isQuiet,
+      isDisabled: scope.isDisabled,
+      density: scope.density,
+      onToggle: scope.onToggle,
+    );
+  }
 
   @override
   State<SpectrumAccordion> createState() => _SpectrumAccordionState();
@@ -102,26 +123,46 @@ class _SpectrumAccordionState extends State<SpectrumAccordion> {
         // The top divider closes the list from above, since each item only
         // draws the divider below itself. When isQuiet is True, there are no
         // dividers, so the top one is not added either.
-        if (!widget.isQuiet) const SpectrumDivider(),
+        Visibility(visible: !widget.isQuiet, child: const SpectrumDivider()),
         ...List.generate(widget.items.length, (int index) {
-          final item = widget.items[index];
-
-          // The items are rebuilt with the expansion kept by the accordion.
-          // isQuiet and isDisabled of the accordion apply to every item,
-          // and otherwise each item keeps its own value.
-          return SpectrumAccordionItem(
-            key: item.key,
-            density: widget.density,
-            title: item.title,
-            panel: item.panel,
+          // Each item receives the expansion kept by the accordion and the
+          // options of the accordion, which apply together with its own.
+          return _AccordionItemScope(
             isExpanded: _opened.contains(index),
-            isQuiet: widget.isQuiet || item.isQuiet,
-            isDisabled: widget.isDisabled || item.isDisabled,
-            actions: item.actions,
-            onTap: () => _handleToggle(index),
+            isQuiet: widget.isQuiet,
+            isDisabled: widget.isDisabled,
+            density: widget.density,
+            onToggle: () => _handleToggle(index),
+            child: widget.items[index],
           );
         }),
       ],
     );
+  }
+}
+
+/// Shares the expansion of one item and the options of the accordion with that item.
+class _AccordionItemScope extends InheritedWidget {
+  final bool isExpanded;
+  final bool isQuiet;
+  final bool isDisabled;
+  final VisualDensity density;
+  final VoidCallback onToggle;
+
+  const _AccordionItemScope({
+    required this.isExpanded,
+    required this.isQuiet,
+    required this.isDisabled,
+    required this.density,
+    required this.onToggle,
+    required super.child,
+  });
+
+  @override
+  bool updateShouldNotify(_AccordionItemScope oldWidget) {
+    return oldWidget.isExpanded != isExpanded ||
+        oldWidget.isQuiet != isQuiet ||
+        oldWidget.isDisabled != isDisabled ||
+        oldWidget.density != density;
   }
 }

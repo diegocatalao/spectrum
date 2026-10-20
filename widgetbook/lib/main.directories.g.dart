@@ -14,8 +14,6 @@
 import 'package:widgetbook/widgetbook.dart' as _widgetbook;
 import 'package:widgetbook_workspace/components/accordion/accordion.dart'
     as _widgetbook_workspace_components_accordion_accordion;
-import 'package:widgetbook_workspace/components/accordion/accordion_item/accordion_item.dart'
-    as _widgetbook_workspace_components_accordion_accordion_item_accordion_item;
 import 'package:widgetbook_workspace/components/action_bar/action_bar.dart'
     as _widgetbook_workspace_components_action_bar_action_bar;
 import 'package:widgetbook_workspace/components/action_button/action_button.dart'
@@ -78,6 +76,8 @@ import 'package:widgetbook_workspace/components/dialog/dialog.dart'
     as _widgetbook_workspace_components_dialog_dialog;
 import 'package:widgetbook_workspace/components/dialog/fullscreen_dialog/fullscreen_dialog.dart'
     as _widgetbook_workspace_components_dialog_fullscreen_dialog_fullscreen_dialog;
+import 'package:widgetbook_workspace/components/disclosure/disclosure.dart'
+    as _widgetbook_workspace_components_disclosure_disclosure;
 import 'package:widgetbook_workspace/components/divider/divider.dart'
     as _widgetbook_workspace_components_divider_divider;
 import 'package:widgetbook_workspace/components/drop_zone/drop_zone.dart'
@@ -240,22 +240,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Rich Panel',
                 builder: _widgetbook_workspace_components_accordion_accordion
                     .BuildAccordionRichPanel,
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'accordion_item',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumAccordionItem',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_accordion_accordion_item_accordion_item
-                            .BuildAccordionItemPresentation,
-                  ),
-                ],
               ),
             ],
           ),
@@ -762,6 +746,21 @@ final directories = <_widgetbook.WidgetbookNode>[
                             .BuildFullscreenDialogPresentation,
                   ),
                 ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'disclosure',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumDisclosure',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_components_disclosure_disclosure
+                    .BuildDisclosurePresentation,
               ),
             ],
           ),

@@ -10,7 +10,7 @@ bool _IsExpandedKnobsFn(BuildContext context) {
     label: 'isExpanded',
     options: [true, false],
     initialOption: false,
-    description: 'Whether the panel is shown and the chevron points down.',
+    description: 'Whether the panel starts expanded.',
   );
 }
 
@@ -19,7 +19,7 @@ bool _IsQuietKnobsFn(BuildContext context) {
     label: 'isQuiet',
     options: [true, false],
     initialOption: false,
-    description: 'Whether the item should be displayed with a quiet style.',
+    description: 'Whether the disclosure should be displayed with a quiet style.',
   );
 }
 
@@ -28,7 +28,7 @@ bool _IsDisabledKnobsFn(BuildContext context) {
     label: 'isDisabled',
     options: [true, false],
     initialOption: false,
-    description: 'Whether the item is grayed out and ignores hover and tap.',
+    description: 'Whether the disclosure is grayed out and ignores hover and tap.',
   );
 }
 
@@ -71,10 +71,8 @@ VisualDensity _DensityKnobsFn(BuildContext context) {
   );
 }
 
-/// The item keeps no state, so it only opens through the isExpanded knob.
-/// Opening and closing on tap is shown in the SpectrumAccordion use cases.
-@widgetbook.UseCase(name: 'Presentation', type: SpectrumAccordionItem)
-Widget BuildAccordionItemPresentation(BuildContext context) {
+@widgetbook.UseCase(name: 'Presentation', type: SpectrumDisclosure)
+Widget BuildDisclosurePresentation(BuildContext context) {
   final List<SpectrumActionButton> actions;
 
   if (_HasActionsKnobsFn(context)) {
@@ -85,23 +83,25 @@ Widget BuildAccordionItemPresentation(BuildContext context) {
       SpectrumActionButton(
         icon: SpectrumIcon(SpectrumIcons.edit),
         child: Text("Edit"),
-        onTap: () => log("BuildAccordionItemPresentation button 'EDIT' was tapped."),
+        onTap: () => log("BuildDisclosurePresentation button 'EDIT' was tapped."),
       ),
     ];
   } else {
     // When the actions knob is False, the header only has
-    // the chevron and the title, as in most accordions.
+    // the chevron and the title, as in most disclosures.
     actions = [];
   }
 
-  return SpectrumAccordionItem(
+  return SpectrumDisclosure(
     density: _DensityKnobsFn(context),
     isExpanded: _IsExpandedKnobsFn(context),
     isQuiet: _IsQuietKnobsFn(context),
     isDisabled: _IsDisabledKnobsFn(context),
-    title: Text(_TitleKnobsFn(context)),
-    panel: Text('Personal information from here.'),
-    actions: actions,
-    onTap: () => log("BuildAccordionItemPresentation header was tapped."),
+    onExpandedChange: (value) => log("BuildDisclosurePresentation expanded: $value."),
+    header: SpectrumDisclosureHeader(
+      actions: actions,
+      child: SpectrumDisclosureTitle(child: Text(_TitleKnobsFn(context))),
+    ),
+    panel: SpectrumDisclosurePanel(child: Text('Personal information from here.')),
   );
 }
