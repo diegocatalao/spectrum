@@ -51,6 +51,7 @@ export 'form/form.dart';
 export 'icon_button/icon_button.dart';
 export 'illustrated_message/illustrated_message.dart';
 export 'image/image.dart';
+export 'image/image_coordinator/image_coordinator.dart';
 export 'inline_alert/inline_alert.dart';
 export 'labeled_value/labeled_value.dart';
 export 'link/link.dart';
