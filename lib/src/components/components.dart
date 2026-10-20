@@ -78,6 +78,7 @@ export 'range_calendar/range_calendar.dart';
 export 'range_slider/range_slider.dart';
 export 'search_field/search_field.dart';
 export 'segmented_control/segmented_control.dart';
+export 'segmented_control/segmented_control_item/segmented_control_item.dart';
 export 'select_box_group/select_box_group.dart';
 export 'side_nav/side_nav.dart';
 export 'skeleton/skeleton.dart';
