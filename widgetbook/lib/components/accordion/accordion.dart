@@ -63,8 +63,14 @@ Widget BuildAccordionPresentation(BuildContext context) {
     isDisabled: _IsDisabledKnobsFn(context),
     onExpansionChange: (index, expanded) => log("BuildAccordionPresentation item $index expanded: $expanded."),
     items: [
-      SpectrumAccordionItem(title: Text('Personal Information'), panel: Text('Personal information from here.')),
-      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Personal Information'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Personal information from here.')),
+      ),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Billing Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Billing Address from here.')),
+      ),
     ],
   );
 }
@@ -79,10 +85,13 @@ Widget BuildAccordionExpanding(BuildContext context) {
     items: [
       SpectrumAccordionItem(
         isExpanded: true,
-        title: Text('Personal Information'),
-        panel: Text('Personal information expanded from here.'),
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Personal Information'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Personal information expanded from here.')),
       ),
-      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Billing Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Billing Address from here.')),
+      ),
     ],
   );
 }
@@ -96,23 +105,28 @@ Widget BuildAccordionActions(BuildContext context) {
     isDisabled: _IsDisabledKnobsFn(context),
     items: [
       SpectrumAccordionItem(
-        title: Text('Personal Information'),
-        panel: Text('Personal information expanded from here.'),
-        actions: [
-          SpectrumActionButton(
-            icon: SpectrumIcon(SpectrumIcons.edit),
-            child: Text("Edit"),
-            onTap: () => log("BuildAccordionActions button 'EDIT' was tapped."),
-          ),
-          SpectrumActionButton(
-            icon: SpectrumIcon(SpectrumIcons.delete),
-            isQuiet: _IsQuietKnobsFn(context),
-            child: Text("Remove"),
-            onTap: () => log("BuildAccordionActions button 'REMOVE' was tapped."),
-          ),
-        ],
+        header: SpectrumAccordionItemHeader(
+          actions: [
+            SpectrumActionButton(
+              icon: SpectrumIcon(SpectrumIcons.edit),
+              child: Text("Edit"),
+              onTap: () => log("BuildAccordionActions button 'EDIT' was tapped."),
+            ),
+            SpectrumActionButton(
+              icon: SpectrumIcon(SpectrumIcons.delete),
+              isQuiet: _IsQuietKnobsFn(context),
+              child: Text("Remove"),
+              onTap: () => log("BuildAccordionActions button 'REMOVE' was tapped."),
+            ),
+          ],
+          child: SpectrumAccordionItemTitle(child: Text('Personal Information')),
+        ),
+        panel: SpectrumAccordionItemPanel(child: Text('Personal information expanded from here.')),
       ),
-      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Billing Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Billing Address from here.')),
+      ),
     ],
   );
 }
@@ -124,13 +138,19 @@ Widget BuildAccordionDisabledItem(BuildContext context) {
     isQuiet: _IsQuietKnobsFn(context),
     allowMultiple: _AllowMultipleKnobsFn(context),
     items: [
-      SpectrumAccordionItem(title: Text('Personal Information'), panel: Text('Personal information from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Personal Information'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Personal information from here.')),
+      ),
       SpectrumAccordionItem(
         isDisabled: true,
-        title: Text('Billing Address'),
-        panel: Text('Billing Address from here.'),
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Billing Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Billing Address from here.')),
       ),
-      SpectrumAccordionItem(title: Text('Shipping Address'), panel: Text('Shipping Address from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Shipping Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Shipping Address from here.')),
+      ),
     ],
   );
 }
@@ -144,23 +164,30 @@ Widget BuildAccordionLongTitle(BuildContext context) {
     isDisabled: _IsDisabledKnobsFn(context),
     items: [
       SpectrumAccordionItem(
-        title: Text(
-          context.knobs.string(
-            label: 'title',
-            initialValue: 'Personal Information, contact details and the preferences used across every project',
-            description: 'Title of the first item, to check how a long text wraps or overflows.',
+        header: SpectrumAccordionItemHeader(
+          actions: [
+            SpectrumActionButton(
+              icon: SpectrumIcon(SpectrumIcons.edit),
+              child: Text("Edit"),
+              onTap: () => log("BuildAccordionLongTitle button 'EDIT' was tapped."),
+            ),
+          ],
+          child: SpectrumAccordionItemTitle(
+            child: Text(
+              context.knobs.string(
+                label: 'title',
+                initialValue: 'Personal Information, contact details and the preferences used across every project',
+                description: 'Title of the first item, to check how a long text wraps or overflows.',
+              ),
+            ),
           ),
         ),
-        panel: Text('Personal information from here.'),
-        actions: [
-          SpectrumActionButton(
-            icon: SpectrumIcon(SpectrumIcons.edit),
-            child: Text("Edit"),
-            onTap: () => log("BuildAccordionLongTitle button 'EDIT' was tapped."),
-          ),
-        ],
+        panel: SpectrumAccordionItemPanel(child: Text('Personal information from here.')),
       ),
-      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Billing Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Billing Address from here.')),
+      ),
     ],
   );
 }
@@ -175,32 +202,37 @@ Widget BuildAccordionRichPanel(BuildContext context) {
     items: [
       SpectrumAccordionItem(
         isExpanded: true,
-        title: Text('Personal Information'),
-        panel: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8,
-          children: [
-            Text('Name: Jane Doe'),
-            Text('Email: jane.doe@example.com'),
-            Text('Phone: +1 555 0100'),
-            const SpectrumDivider(),
-            Row(
-              spacing: 8,
-              children: [
-                SpectrumActionButton(
-                  child: Text("Cancel"),
-                  onTap: () => log("BuildAccordionRichPanel button 'CANCEL' was tapped."),
-                ),
-                SpectrumActionButton(
-                  child: Text("Save"),
-                  onTap: () => log("BuildAccordionRichPanel button 'SAVE' was tapped."),
-                ),
-              ],
-            ),
-          ],
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Personal Information'))),
+        panel: SpectrumAccordionItemPanel(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 8,
+            children: [
+              Text('Name: Jane Doe'),
+              Text('Email: jane.doe@example.com'),
+              Text('Phone: +1 555 0100'),
+              const SpectrumDivider(),
+              Row(
+                spacing: 8,
+                children: [
+                  SpectrumActionButton(
+                    child: Text("Cancel"),
+                    onTap: () => log("BuildAccordionRichPanel button 'CANCEL' was tapped."),
+                  ),
+                  SpectrumActionButton(
+                    child: Text("Save"),
+                    onTap: () => log("BuildAccordionRichPanel button 'SAVE' was tapped."),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-      SpectrumAccordionItem(title: Text('Billing Address'), panel: Text('Billing Address from here.')),
+      SpectrumAccordionItem(
+        header: SpectrumAccordionItemHeader(child: SpectrumAccordionItemTitle(child: Text('Billing Address'))),
+        panel: SpectrumAccordionItemPanel(child: Text('Billing Address from here.')),
+      ),
     ],
   );
 }
