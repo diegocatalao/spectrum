@@ -88,8 +88,8 @@ class SpectrumAccordionItem extends StatelessWidget {
                       visualDensity: density,
                       leading: AnimatedRotation(
                         turns: turns,
-                        duration: const Duration(milliseconds: 130),
-                        curve: Curves.easeInOut,
+                        duration: SpectrumMotion.duration,
+                        curve: SpectrumMotion.curve,
                         child: SpectrumIcon(SpectrumIcons.chevronRight),
                       ),
                     ),
@@ -115,8 +115,8 @@ class SpectrumAccordionItem extends StatelessWidget {
           child: AnimatedAlign(
             alignment: AlignmentDirectional.topStart,
             heightFactor: heightFactor,
-            duration: const Duration(milliseconds: 130),
-            curve: Curves.easeInOut,
+            duration: SpectrumMotion.duration,
+            curve: SpectrumMotion.curve,
             // The infinite width stretches the content, as the
             // CrossAxisAlignment.stretch of the Column does.
             child: SizedBox(
