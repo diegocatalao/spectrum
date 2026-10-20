@@ -1535,6 +1535,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_skeleton_skeleton
                     .BuildSkeletonPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Simulated Loading',
+                builder: _widgetbook_workspace_components_skeleton_skeleton
+                    .BuildSkeletonSimulatedLoading,
+              ),
             ],
           ),
         ],
