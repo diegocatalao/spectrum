@@ -81,6 +81,12 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
     widget.onChanged?.call(_isSelected);
   }
 
+  /// Inside a disabled SpectrumForm the control is disabled too.
+  bool get _isDisabled => widget.isDisabled || SpectrumForm.isDisabledOf(context);
+
+  /// Inside an emphasized SpectrumForm the control is emphasized too.
+  bool get _isEmphasized => widget.isEmphasized || SpectrumForm.isEmphasizedOf(context);
+
   /// Whether the box is hovered or pressed, which darkens it.
   bool get _isActive => _isHovered || _isPressed;
 
@@ -89,23 +95,23 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
   Color _fillOf(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    if (widget.isDisabled) {
+    if (_isDisabled) {
       return colors.outline;
-    } else if (widget.isEmphasized) {
+    } else if (_isEmphasized) {
       return _isActive ? context.spectrum.accentHover : colors.primary;
     } else {
       return _isActive ? colors.inverseSurface : colors.onSurface;
     }
   }
 
-  /// Spectrum 2 checkbox box: 14px with 2px corners and a 2px border, changing
+  /// Spectrum 2 checkbox box: 16px in the M size, with 2px corners and a 2px border, changing
   /// its colors with the default 130ms transition.
   Widget _box({required Color color, required Color border, Widget? child}) {
     return AnimatedContainer(
       duration: SpectrumMotion.duration,
       curve: SpectrumMotion.curve,
-      width: 14,
-      height: 14,
+      width: 16,
+      height: 16,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(3),
@@ -132,7 +138,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
     final colors = Theme.of(context).colorScheme;
     final Color border;
 
-    if (widget.isDisabled) {
+    if (_isDisabled) {
       border = colors.outline;
     } else if (_isActive) {
       border = colors.inverseSurface;
@@ -179,7 +185,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
     final style = Theme.of(context).textTheme.bodySmall ?? const TextStyle();
     final Color content;
 
-    if (widget.isDisabled) {
+    if (_isDisabled) {
       // When isDisabled is True, the label turns gray-400 like the box.
       content = colors.outline;
     } else if (_isActive) {
@@ -216,7 +222,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
         Semantics(
           checked: _isSelected,
           mixed: widget.isIndeterminate,
-          enabled: !widget.isDisabled,
+          enabled: !_isDisabled,
           // The box and the label react to hover and tap together, as in Spectrum 2.
           // The description is outside, so tapping it does not toggle the box.
           child: Material(
@@ -228,7 +234,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
               focusColor: Colors.transparent,
               // When isDisabled is True the tap is null, so the checkbox ignores
               // hover and tap and can not be focused.
-              onTap: widget.isDisabled ? null : _handleTap,
+              onTap: _isDisabled ? null : _handleTap,
               onHover: (value) => setState(() => _isHovered = value),
               onHighlightChanged: (value) => setState(() => _isPressed = value),
               onFocusChange: (value) => setState(() => _isFocused = value),
