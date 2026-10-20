@@ -118,6 +118,8 @@ import 'package:widgetbook_workspace/components/illustrated_message/illustrated_
     as _widgetbook_workspace_components_illustrated_message_illustrated_message;
 import 'package:widgetbook_workspace/components/image/image.dart'
     as _widgetbook_workspace_components_image_image;
+import 'package:widgetbook_workspace/components/image/image_coordinator/image_coordinator.dart'
+    as _widgetbook_workspace_components_image_image_coordinator_image_coordinator;
 import 'package:widgetbook_workspace/components/inline_alert/inline_alert.dart'
     as _widgetbook_workspace_components_inline_alert_inline_alert;
 import 'package:widgetbook_workspace/components/labeled_value/labeled_value.dart'
@@ -1077,9 +1079,30 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumImage',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Loading error',
+                builder: _widgetbook_workspace_components_image_image
+                    .BuildImageOnError,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_image_image
                     .BuildImagePresentation,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'image_coordinator',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumImageCoordinator',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_image_image_coordinator_image_coordinator
+                            .BuildImageCoordinatorPresentation,
+                  ),
+                ],
               ),
             ],
           ),
