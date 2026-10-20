@@ -70,6 +70,12 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
     widget.onChanged?.call(_isSelected);
   }
 
+  /// Inside a disabled SpectrumForm the control is disabled too.
+  bool get _isDisabled => widget.isDisabled || SpectrumForm.isDisabledOf(context);
+
+  /// Inside an emphasized SpectrumForm the control is emphasized too.
+  bool get _isEmphasized => widget.isEmphasized || SpectrumForm.isEmphasizedOf(context);
+
   /// Whether the switch is hovered or pressed, which darkens it.
   bool get _isActive => _isHovered || _isPressed;
 
@@ -78,23 +84,23 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
   Color _fillOf(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    if (widget.isDisabled) {
+    if (_isDisabled) {
       return colors.outline;
-    } else if (widget.isEmphasized) {
+    } else if (_isEmphasized) {
       return _isActive ? context.spectrum.accentHover : colors.primary;
     } else {
       return _isActive ? colors.inverseSurface : colors.onSurface;
     }
   }
 
-  /// Spectrum 2 switch track: 26x14px pill with a 2px border, and the handle
-  /// inside it, in a 10px square at the start or at the end of the track.
+  /// Spectrum 2 switch track: 26x16px pill in the M size with a 2px border, and the
+  /// handle inside it, in a 12px square at the start or at the end of the track.
   Widget _track({required Color color, required Color border, required Color handle, required double size}) {
     return AnimatedContainer(
       duration: SpectrumMotion.duration,
       curve: SpectrumMotion.curve,
       width: 26,
-      height: 14,
+      height: 16,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(999),
@@ -105,7 +111,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
         curve: SpectrumMotion.curve,
         alignment: _isSelected ? Alignment.centerRight : Alignment.centerLeft,
         child: SizedBox.square(
-          dimension: 10,
+          dimension: 12,
           child: Center(
             // Spectrum 2 "press scale": the handle shrinks a little while pressed.
             child: SpectrumPressScale(
@@ -124,20 +130,20 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
     );
   }
 
-  /// On: the track is filled and the handle is an 8px light dot at the end.
+  /// On: the track is filled and the handle is a 10px light dot at the end.
   Widget _buildSelected(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    return _track(color: _fillOf(context), border: Colors.transparent, handle: colors.surface, size: 8);
+    return _track(color: _fillOf(context), border: Colors.transparent, handle: colors.surface, size: 10);
   }
 
   /// Off: the opposite of the on track, empty with a border, and the handle is a
-  /// 6px dot at the start in the color of the border.
+  /// 8px dot at the start in the color of the border.
   Widget _buildUnselected(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final Color border;
 
-    if (widget.isDisabled) {
+    if (_isDisabled) {
       border = colors.outline;
     } else if (_isActive) {
       border = colors.inverseSurface;
@@ -145,7 +151,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
       border = colors.onSurface;
     }
 
-    return _track(color: colors.surface, border: border, handle: border, size: 6);
+    return _track(color: colors.surface, border: border, handle: border, size: 8);
   }
 
   @override
@@ -166,7 +172,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
       track = _buildUnselected(context);
     }
 
-    if (widget.isDisabled) {
+    if (_isDisabled) {
       // When isDisabled is True, the texts turn gray-400 like the track.
       content = colors.outline;
     } else if (_isActive) {
@@ -205,7 +211,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
         // Tells screen readers that this is a switch, if it is on and enabled.
         Semantics(
           toggled: _isSelected,
-          enabled: !widget.isDisabled,
+          enabled: !_isDisabled,
           // The track and the label react to hover and tap together, as in Spectrum 2.
           // The description is outside, so tapping it does not toggle the switch.
           child: Material(
@@ -217,7 +223,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
               focusColor: Colors.transparent,
               // When isDisabled is True the tap is null, so the switch ignores
               // hover and tap and can not be focused.
-              onTap: widget.isDisabled ? null : _handleTap,
+              onTap: _isDisabled ? null : _handleTap,
               onHover: (value) => setState(() => _isHovered = value),
               onHighlightChanged: (value) => setState(() => _isPressed = value),
               onFocusChange: (value) => setState(() => _isFocused = value),
