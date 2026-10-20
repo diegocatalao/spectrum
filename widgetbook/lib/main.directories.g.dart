@@ -1129,6 +1129,12 @@ final directories = <_widgetbook.WidgetbookNode>[
                     _widgetbook_workspace_components_inline_alert_inline_alert
                         .BuildInlineAlertPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder:
+                    _widgetbook_workspace_components_inline_alert_inline_alert
+                        .BuildInlineAlertVariants,
+              ),
             ],
           ),
         ],
