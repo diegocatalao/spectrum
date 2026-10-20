@@ -1386,6 +1386,18 @@ final directories = <_widgetbook.WidgetbookNode>[
                     _widgetbook_workspace_components_progress_bar_progress_bar
                         .BuildProgressBarPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Static Color',
+                builder:
+                    _widgetbook_workspace_components_progress_bar_progress_bar
+                        .BuildProgressBarStaticColor,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Value Label',
+                builder:
+                    _widgetbook_workspace_components_progress_bar_progress_bar
+                        .BuildProgressBarValueLabel,
+              ),
             ],
           ),
         ],
