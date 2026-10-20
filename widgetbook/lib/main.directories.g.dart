@@ -1538,10 +1538,28 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumStatusLight',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Categorical Variants',
+                builder:
+                    _widgetbook_workspace_components_status_light_status_light
+                        .BuildStatusLightCategoricalVariants,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Long Label',
+                builder:
+                    _widgetbook_workspace_components_status_light_status_light
+                        .BuildStatusLightLongLabel,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder:
                     _widgetbook_workspace_components_status_light_status_light
                         .BuildStatusLightPresentation,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Semantic Variants',
+                builder:
+                    _widgetbook_workspace_components_status_light_status_light
+                        .BuildStatusLightSemanticVariants,
               ),
             ],
           ),
