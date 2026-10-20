@@ -479,6 +479,16 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_checkbox_checkbox
                     .BuildCheckboxPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Select All',
+                builder: _widgetbook_workspace_components_checkbox_checkbox
+                    .BuildCheckboxSelectAll,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'States',
+                builder: _widgetbook_workspace_components_checkbox_checkbox
+                    .BuildCheckboxStates,
+              ),
             ],
           ),
         ],
