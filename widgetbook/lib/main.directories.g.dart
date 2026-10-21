@@ -1464,6 +1464,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_picker_picker
                     .BuildPickerPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Sections',
+                builder: _widgetbook_workspace_components_picker_picker
+                    .BuildPickerSections,
+              ),
             ],
           ),
         ],

@@ -77,6 +77,8 @@ export 'meter/meter.dart';
 export 'notification_badge/notification_badge.dart';
 export 'number_field/number_field.dart';
 export 'picker/picker.dart';
+export 'picker/picker_item/picker_item.dart';
+export 'picker/picker_section/picker_section.dart';
 export 'popover/popover.dart';
 export 'progress_bar/progress_bar.dart';
 export 'progress_circle/progress_circle.dart';
