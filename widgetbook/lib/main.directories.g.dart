@@ -859,7 +859,7 @@ final directories = <_widgetbook.WidgetbookNode>[
         name: 'drop_zone',
         children: [
           _widgetbook.WidgetbookComponent(
-            name: 'SpectrumDropZone',
+            name: 'SpectrumDropZone<Object>',
             useCases: [
               _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
