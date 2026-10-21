@@ -55,6 +55,12 @@ class SpectrumPopover extends StatefulWidget {
     this.onOpenChange,
   });
 
+  /// Returns the function that closes the popover around the widget, so its content
+  /// can close it, like a calendar after a date is picked.
+  static VoidCallback? closeOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<_PopoverCloseScope>()?.onClose;
+  }
+
   @override
   State<SpectrumPopover> createState() => _SpectrumPopoverState();
 }
@@ -251,7 +257,7 @@ class _SpectrumPopoverState extends State<SpectrumPopover> {
                         side: isDark ? BorderSide(color: colors.outlineVariant) : BorderSide.none,
                       ),
                     ),
-                    child: widget.child,
+                    child: _PopoverCloseScope(onClose: _close, child: widget.child),
                   ),
                 ),
               ),
@@ -374,4 +380,14 @@ class _PopoverBorder extends ShapeBorder {
 
   @override
   ShapeBorder scale(double t) => this;
+}
+
+/// Shares the close function of the popover with its content.
+class _PopoverCloseScope extends InheritedWidget {
+  final VoidCallback onClose;
+
+  const _PopoverCloseScope({required this.onClose, required super.child});
+
+  @override
+  bool updateShouldNotify(_PopoverCloseScope oldWidget) => false;
 }
