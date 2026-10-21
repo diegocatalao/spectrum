@@ -87,6 +87,8 @@ export 'segmented_control/segmented_control_item/segmented_control_item.dart';
 export 'select_box_group/select_box/select_box.dart';
 export 'select_box_group/select_box_group.dart';
 export 'side_nav/side_nav.dart';
+export 'side_nav/side_nav_item/side_nav_item.dart';
+export 'side_nav/side_nav_section/side_nav_section.dart';
 export 'skeleton/skeleton.dart';
 export 'slider/slider.dart';
 export 'status_light/status_light.dart';
