@@ -376,6 +376,12 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumBreadcrumbs',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Collapsed',
+                builder:
+                    _widgetbook_workspace_components_breadcrumbs_breadcrumbs
+                        .BuildBreadcrumbsCollapsed,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder:
                     _widgetbook_workspace_components_breadcrumbs_breadcrumbs
