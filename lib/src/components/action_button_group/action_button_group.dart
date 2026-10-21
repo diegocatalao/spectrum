@@ -4,8 +4,8 @@ import 'package:spectrum/spectrum.dart';
 /// Spectrum Action Button Group: places related action buttons side by side
 /// (or stacked) and shares the quiet, disabled and static color options with them.
 class SpectrumActionButtonGroup extends StatelessWidget {
-  /// The action buttons of the group.
-  final List<SpectrumActionButton> children;
+  /// The buttons of the group, usually SpectrumActionButton or SpectrumToggleButton.
+  final List<Widget> children;
 
   /// Direction of the buttons, horizontal by default.
   final Axis axis;
