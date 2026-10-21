@@ -1330,6 +1330,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_meter_meter
                     .BuildMeterPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Value Label',
+                builder: _widgetbook_workspace_components_meter_meter
+                    .BuildMeterValueLabel,
+              ),
             ],
           ),
         ],
