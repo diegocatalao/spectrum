@@ -12,6 +12,8 @@ class SpectrumMenuSection extends StatefulWidget {
   final SpectrumSelects selects;
 
   /// Indexes of the items selected at start. When the parent changes them, the section follows.
+  /// Inside a popover, like a SpectrumActionMenu, the section is built again every time the
+  /// menu opens, so keep the selection in the parent and pass it here.
   final List<int> selected;
 
   /// Called with the new selected indexes when the user taps an item.
@@ -72,19 +74,29 @@ class _SpectrumMenuSectionState extends State<SpectrumMenuSection> {
   /// the tapped index becomes the only selected one, and tapping it again keeps it
   /// selected, as a radio button.
   void _select(int index) {
-    setState(() {
-      if (widget.selects == SpectrumSelects.multiple && _selected.contains(index)) {
-        _selected.remove(index);
-      } else if (widget.selects == SpectrumSelects.multiple) {
-        _selected.add(index);
-      } else {
+    final selected = {..._selected};
+
+    if (widget.selects == SpectrumSelects.multiple && selected.contains(index)) {
+      selected.remove(index);
+    } else if (widget.selects == SpectrumSelects.multiple) {
+      selected.add(index);
+    } else {
+      selected
+        ..clear()
+        ..add(index);
+    }
+
+    // Inside a popover, the menu closes before the tap is handled, so the section
+    // may be gone: the new selection is still sent to the parent.
+    if (mounted) {
+      setState(() {
         _selected
           ..clear()
-          ..add(index);
-      }
-    });
+          ..addAll(selected);
+      });
+    }
 
-    widget.onSelectionChange?.call(_selected.toList()..sort());
+    widget.onSelectionChange?.call(selected.toList()..sort());
   }
 
   @override
