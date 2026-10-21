@@ -1709,6 +1709,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumSlider',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Fill Offset',
+                builder: _widgetbook_workspace_components_slider_slider
+                    .BuildSliderFillOffset,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_slider_slider
                     .BuildSliderPresentation,
