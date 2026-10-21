@@ -72,8 +72,12 @@ import 'package:widgetbook_workspace/components/date_range_picker/date_range_pic
     as _widgetbook_workspace_components_date_range_picker_date_range_picker;
 import 'package:widgetbook_workspace/components/dialog/alert_dialog/alert_dialog.dart'
     as _widgetbook_workspace_components_dialog_alert_dialog_alert_dialog;
+import 'package:widgetbook_workspace/components/dialog/custom_dialog/custom_dialog.dart'
+    as _widgetbook_workspace_components_dialog_custom_dialog_custom_dialog;
 import 'package:widgetbook_workspace/components/dialog/dialog.dart'
     as _widgetbook_workspace_components_dialog_dialog;
+import 'package:widgetbook_workspace/components/dialog/dialog_trigger/dialog_trigger.dart'
+    as _widgetbook_workspace_components_dialog_dialog_trigger_dialog_trigger;
 import 'package:widgetbook_workspace/components/dialog/fullscreen_dialog/fullscreen_dialog.dart'
     as _widgetbook_workspace_components_dialog_fullscreen_dialog_fullscreen_dialog;
 import 'package:widgetbook_workspace/components/disclosure/disclosure.dart'
@@ -764,6 +768,38 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_dialog_alert_dialog_alert_dialog
                             .BuildAlertDialogPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'custom_dialog',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumCustomDialog',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_dialog_custom_dialog_custom_dialog
+                            .BuildCustomDialogPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'dialog_trigger',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumDialogTrigger',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_dialog_dialog_trigger_dialog_trigger
+                            .BuildDialogTriggerPresentation,
                   ),
                 ],
               ),
