@@ -887,6 +887,12 @@ final directories = <_widgetbook.WidgetbookNode>[
                         _widgetbook_workspace_components_extras_area_chart_area_chart
                             .BuildAreaChartPresentation,
                   ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Single Series',
+                    builder:
+                        _widgetbook_workspace_components_extras_area_chart_area_chart
+                            .BuildAreaChartSingleSeries,
+                  ),
                 ],
               ),
             ],
