@@ -67,6 +67,7 @@ export 'link/link.dart';
 export 'link_button/link_button.dart';
 export 'list_box/list_box.dart';
 export 'list_view/list_view.dart';
+export 'list_view/list_view_item/list_view_item.dart';
 export 'menu/menu.dart';
 export 'menu/menu_header/menu_header.dart';
 export 'menu/menu_item/menu_item.dart';
