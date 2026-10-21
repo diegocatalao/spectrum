@@ -1822,6 +1822,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_tag_group_tag_group
                     .BuildTagGroupPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Removable',
+                builder: _widgetbook_workspace_components_tag_group_tag_group
+                    .BuildTagGroupRemovable,
+              ),
             ],
           ),
           _widgetbook.WidgetbookFolder(
