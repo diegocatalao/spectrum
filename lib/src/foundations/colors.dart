@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-// Paleta gerada a partir de @spectrum-css/tokens (Spectrum 2).
+// Palette generated from @spectrum-css/tokens (Spectrum 2).
 abstract final class SpectrumColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
@@ -324,6 +324,23 @@ abstract final class SpectrumColors {
   static const Color silver1400 = Color(0xFF272727);
   static const Color silver1500 = Color(0xFF1C1C1C);
   static const Color silver1600 = Color(0xFF0C0C0C);
+
+  /// Categorical palette of the Spectrum data visualization, used in order by the
+  /// series of the charts. It is the same in the light and dark themes.
+  static const List<Color> categorical = [
+    Color(0xFF0FB5AE),
+    Color(0xFF4046CA),
+    Color(0xFFF68511),
+    Color(0xFFDE3D82),
+    Color(0xFF7E84FA),
+    Color(0xFF72E06A),
+    Color(0xFF147AF3),
+    Color(0xFF7326D3),
+    Color(0xFFE8C600),
+    Color(0xFFCB5D00),
+    Color(0xFF008F5D),
+    Color(0xFFBCE931),
+  ];
 }
 
 abstract final class SpectrumDarkColors {
@@ -649,4 +666,7 @@ abstract final class SpectrumDarkColors {
   static const Color silver1400 = Color(0xFFE5E5E5);
   static const Color silver1500 = Color(0xFFF4F4F4);
   static const Color silver1600 = Color(0xFFFFFFFF);
+
+  /// Categorical palette of the Spectrum data visualization, the same as the light theme.
+  static const List<Color> categorical = SpectrumColors.categorical;
 }

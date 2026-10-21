@@ -8,6 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  fl_chart: ^1.2.0
   flutter:
     sdk: flutter
   flutter_svg: ^2.3.0
