@@ -169,6 +169,21 @@ class _SpectrumCardState extends State<SpectrumCard> {
       ),
     );
 
+    // Inside a SpectrumCardView with selection, the card view selects the card, which
+    // shows a 2px border and, in multiple selection, a checkbox at its top left.
+    final view = SpectrumCardView.cardOf(context);
+    final isSelected = view?.isSelected ?? false;
+    final VoidCallback? onTap;
+
+    if (view != null) {
+      onTap = () {
+        view.onToggle();
+        widget.onTap?.call();
+      };
+    } else {
+      onTap = widget.onTap;
+    }
+
     final card = Opacity(
       opacity: widget.isDisabled ? 0.5 : 1,
       // Spectrum 2 card in the M size: 240px wide with 10px corners.
@@ -193,7 +208,7 @@ class _SpectrumCardState extends State<SpectrumCard> {
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,
-            onTap: widget.isDisabled ? null : widget.onTap,
+            onTap: widget.isDisabled ? null : onTap,
             onHover: (value) => setState(() => _isHovered = value),
             onHighlightChanged: (value) => setState(() => _isPressed = value),
             onFocusChange: (value) => setState(() => _isFocused = value),
@@ -214,9 +229,42 @@ class _SpectrumCardState extends State<SpectrumCard> {
     // Spectrum 2 "press scale" when the card is interactive.
     return Semantics(
       container: true,
-      button: widget.onTap != null,
+      button: onTap != null,
+      selected: view != null ? isSelected : null,
       enabled: !widget.isDisabled,
-      child: SpectrumPressScale(isPressed: _isPressed && widget.onTap != null, child: card),
+      child: SpectrumPressScale(
+        isPressed: _isPressed && onTap != null,
+        child: Stack(
+          children: [
+            card,
+            // The selection border, 2px of gray-1000 over the card.
+            Positioned.fill(
+              child: IgnorePointer(
+                child: AnimatedOpacity(
+                  opacity: isSelected ? 1 : 0,
+                  duration: SpectrumMotion.duration,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Theme.of(context).colorScheme.inverseSurface, width: 2),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Visibility(
+                visible: view?.isMultiple ?? false,
+                child: IgnorePointer(
+                  child: ExcludeSemantics(child: SpectrumCheckbox(isSelected: isSelected)),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
