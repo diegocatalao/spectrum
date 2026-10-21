@@ -600,6 +600,12 @@ final directories = <_widgetbook.WidgetbookNode>[
                     _widgetbook_workspace_components_color_swatch_color_swatch
                         .BuildColorSwatchPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Transparent and Empty',
+                builder:
+                    _widgetbook_workspace_components_color_swatch_color_swatch
+                        .BuildColorSwatchTransparent,
+              ),
             ],
           ),
         ],
