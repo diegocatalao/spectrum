@@ -162,7 +162,7 @@ packages:
     source: hosted
     version: "3.1.14"
   device_frame_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: device_frame_plus
       sha256: ccc94abccd4d9f0a9f19ef239001b3a59896e678ad42601371d7065889f2bf78
