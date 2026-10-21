@@ -552,6 +552,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_color_area_color_area
                     .BuildColorAreaPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'With Wheel',
+                builder: _widgetbook_workspace_components_color_area_color_area
+                    .BuildColorAreaWithWheel,
+              ),
             ],
           ),
         ],
