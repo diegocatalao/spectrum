@@ -138,6 +138,12 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
     // Inside a compact group, the group decides which corners are rounded.
     final borderRadius = SpectrumActionButtonGroup.borderRadiusOf(context) ?? BorderRadius.circular(8);
 
+    // Inside a SpectrumToggleButton, the button can be selected, and the selected
+    // button is filled with the neutral gray or, when emphasized, the accent blue.
+    final toggle = SpectrumToggleButton.stateOf(context);
+    final isSelected = toggle?.isSelected ?? false;
+    final isEmphasized = toggle?.isEmphasized ?? false;
+
     if (staticColor == SpectrumStaticColor.black) {
       // When staticColor is black, the button uses black tones over light images.
       tone = SpectrumColors.black;
@@ -160,6 +166,12 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
       background = tone.withValues(alpha: 0.1);
       pressed = tone.withValues(alpha: 0.1);
       content = tone.withValues(alpha: 0.4);
+    } else if (staticColor != null && isSelected) {
+      // When staticColor is set and the toggle button is selected, the background is
+      // the static tone at 80%, stronger on hover and tap, with the opposite tone as text.
+      background = tone.withValues(alpha: 0.8);
+      pressed = tone.withValues(alpha: 0.9);
+      content = tone == SpectrumColors.white ? SpectrumColors.black : SpectrumColors.white;
     } else if (staticColor != null && quiet) {
       // When staticColor is set and isQuiet is True, the background is
       // transparent and a translucent tone only appears on hover and tap.
@@ -185,6 +197,18 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
       background = colors.surfaceContainerHigh;
       pressed = colors.surfaceContainerHigh;
       content = colors.outline;
+    } else if (isSelected && isEmphasized) {
+      // When the toggle button is selected and emphasized, it is filled with the
+      // accent blue, darker on hover and tap, with a white content.
+      background = colors.primary;
+      pressed = context.spectrum.accentHover;
+      content = colors.onPrimary;
+    } else if (isSelected) {
+      // When the toggle button is selected, it is filled with the neutral gray-800,
+      // darker (gray-900) on hover and tap, with a gray-25 content.
+      background = colors.onSurface;
+      pressed = colors.inverseSurface;
+      content = colors.surface;
     } else if (quiet) {
       // When isQuiet is True, the gray color inside the button will be
       // transparent, and the gray background just appears on hover
@@ -233,6 +257,8 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
     // Tells screen readers that this is a button and if it is enabled.
     return Semantics(
       button: true,
+      // Inside a SpectrumToggleButton, screen readers also announce if it is selected.
+      toggled: toggle?.isSelected,
       enabled: !isDisabled,
       child: Stack(
         // passthrough keeps the width given by the parent, so the button
