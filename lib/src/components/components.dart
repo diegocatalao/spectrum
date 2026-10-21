@@ -92,6 +92,7 @@ export 'select_box_group/select_box_group.dart';
 export 'side_nav/side_nav.dart';
 export 'side_nav/side_nav_item/side_nav_item.dart';
 export 'side_nav/side_nav_section/side_nav_section.dart';
+export 'side_nav_panel/side_nav_panel.dart';
 export 'skeleton/skeleton.dart';
 export 'slider/slider.dart';
 export 'status_light/status_light.dart';
