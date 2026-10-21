@@ -23,5 +23,6 @@ export 'src/icons/icon.dart';
 export 'src/utils/selects.dart';
 export 'src/utils/static_color.dart';
 export 'src/utils/color_handle.dart';
+export 'src/utils/calendar_grid.dart';
 
 export 'src/components/components.dart';
