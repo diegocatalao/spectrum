@@ -192,6 +192,8 @@ import 'package:widgetbook_workspace/components/tag_group/tag/tag.dart'
     as _widgetbook_workspace_components_tag_group_tag_tag;
 import 'package:widgetbook_workspace/components/tag_group/tag_group.dart'
     as _widgetbook_workspace_components_tag_group_tag_group;
+import 'package:widgetbook_workspace/components/text_area/text_area.dart'
+    as _widgetbook_workspace_components_text_area_text_area;
 import 'package:widgetbook_workspace/components/text_field/text_field.dart'
     as _widgetbook_workspace_components_text_field_text_field;
 import 'package:widgetbook_workspace/components/time_field/time_field.dart'
@@ -1811,6 +1813,21 @@ final directories = <_widgetbook.WidgetbookNode>[
                         .BuildTagPresentation,
                   ),
                 ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'text_area',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumTextArea',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_components_text_area_text_area
+                    .BuildTextAreaPresentation,
               ),
             ],
           ),
