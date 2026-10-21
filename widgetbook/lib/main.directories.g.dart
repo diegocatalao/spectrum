@@ -999,6 +999,12 @@ final directories = <_widgetbook.WidgetbookNode>[
                         _widgetbook_workspace_components_extras_line_chart_line_chart
                             .BuildLineChartPresentation,
                   ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Single Series',
+                    builder:
+                        _widgetbook_workspace_components_extras_line_chart_line_chart
+                            .BuildLineChartSingleSeries,
+                  ),
                 ],
               ),
             ],
