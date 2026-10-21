@@ -909,6 +909,12 @@ final directories = <_widgetbook.WidgetbookNode>[
                         _widgetbook_workspace_components_extras_bar_chart_bar_chart
                             .BuildBarChartPresentation,
                   ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Single Series',
+                    builder:
+                        _widgetbook_workspace_components_extras_bar_chart_bar_chart
+                            .BuildBarChartSingleSeries,
+                  ),
                 ],
               ),
             ],
