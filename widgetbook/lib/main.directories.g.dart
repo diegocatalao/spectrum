@@ -979,6 +979,12 @@ final directories = <_widgetbook.WidgetbookNode>[
                         _widgetbook_workspace_components_extras_donut_chart_donut_chart
                             .BuildDonutChartPresentation,
                   ),
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Without Value',
+                    builder:
+                        _widgetbook_workspace_components_extras_donut_chart_donut_chart
+                            .BuildDonutChartWithoutValue,
+                  ),
                 ],
               ),
             ],
