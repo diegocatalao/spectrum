@@ -30,3 +30,4 @@ export 'src/utils/segmented_input.dart';
 export 'src/utils/chart.dart';
 
 export 'src/components/components.dart';
+export 'src/extras/extras.dart';
