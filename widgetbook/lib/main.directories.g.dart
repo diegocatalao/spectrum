@@ -1823,6 +1823,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumTextField',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Form',
+                builder: _widgetbook_workspace_components_text_field_text_field
+                    .BuildTextFieldForm,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_text_field_text_field
                     .BuildTextFieldPresentation,
