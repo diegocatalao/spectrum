@@ -12,6 +12,8 @@ export 'button/button.dart';
 export 'button_group/button_group.dart';
 export 'calendar/calendar.dart';
 export 'card/card.dart';
+export 'card/card_footer/card_footer.dart';
+export 'card/card_preview/card_preview.dart';
 export 'card_view/card_view.dart';
 export 'checkbox/checkbox.dart';
 export 'checkbox_group/checkbox_group.dart';
