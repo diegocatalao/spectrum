@@ -114,3 +114,4 @@ export 'toolbar/toolbar.dart';
 export 'tooltip/tooltip.dart';
 export 'tooltip/tooltip_trigger/tooltip_trigger.dart';
 export 'tree_view/tree_view.dart';
+export 'tree_view/tree_view_item/tree_view_item.dart';
