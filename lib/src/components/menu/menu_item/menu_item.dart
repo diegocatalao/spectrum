@@ -246,9 +246,10 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
 
   /// Inside a SpectrumMenuSection with selection, the tap first tells the section
   /// to select the item. In both cases, the onTap passed by the user is called,
-  /// and the href is opened when there is one.
-  void _handleTap(BuildContext context, FollowLink? followLink) {
-    SpectrumMenuSection.itemOf(context)?.onSelect();
+  /// and the href is opened when there is one. The section is read during the build,
+  /// since the menu calls this after closing, when the item is no longer in the tree.
+  void _handleTap(VoidCallback? onSelect, FollowLink? followLink) {
+    onSelect?.call();
     widget.onTap?.call();
 
     if (widget.href != null) {
@@ -332,6 +333,8 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
     return Link(
       uri: widget.href,
       builder: (context, followLink) {
+        final onSelect = SpectrumMenuSection.itemOf(context)?.onSelect;
+
         // Tells screen readers that the item is a link when it has an href.
         return Semantics(
           link: widget.href != null,
@@ -346,7 +349,7 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
               overflowAxis: Axis.vertical,
               style: _styleOf(context),
               // When isDisabled is True, the tap is null and the item is skipped by the keyboard.
-              onPressed: widget.isDisabled ? null : () => _handleTap(context, followLink),
+              onPressed: widget.isDisabled ? null : () => _handleTap(onSelect, followLink),
               // Checkmark, icon and text, built above. They are not passed as leadingIcon
               // because the MenuItemButton puts a fixed 12px gap after it.
               child: getContent(context),
