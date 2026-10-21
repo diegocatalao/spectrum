@@ -27,29 +27,30 @@ Widget BuildMenuPresentation(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Groups', type: SpectrumMenu)
-Widget BuildMenuGroups(BuildContext context) {
-  // Groups are separated by dividers and each one can manage its own selection.
+@widgetbook.UseCase(name: 'Sections', type: SpectrumMenu)
+Widget BuildMenuSections(BuildContext context) {
+  // Sections are separated by dividers and each one can manage its own selection.
   return SizedBox(
     width: 240,
     child: SpectrumMenu(
       label: 'View',
       children: [
-        SpectrumMenuGroup(
-          header: Text('Sort by'),
+        SpectrumMenuSection(
+          header: SpectrumMenuHeader(child: Text('Sort by')),
           selects: SpectrumSelects.single,
           selected: [0],
-          onChanged: (value) => log('BuildMenuGroups sort changed to $value.'),
+          onSelectionChange: (value) => log('BuildMenuSections sort changed to $value.'),
           children: [
             SpectrumMenuItem(child: Text('Name')),
             SpectrumMenuItem(child: Text('Date modified')),
           ],
         ),
-        SpectrumMenuGroup(
-          header: Text('Show'),
+        const SpectrumDivider(),
+        SpectrumMenuSection(
+          header: SpectrumMenuHeader(child: Text('Show')),
           selects: SpectrumSelects.multiple,
           selected: [0, 1],
-          onChanged: (value) => log('BuildMenuGroups visibility changed to $value.'),
+          onSelectionChange: (value) => log('BuildMenuSections visibility changed to $value.'),
           children: [
             SpectrumMenuItem(child: Text('Hidden files')),
             SpectrumMenuItem(child: Text('Extensions')),
