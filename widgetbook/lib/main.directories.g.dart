@@ -356,6 +356,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _widgetbook_workspace_components_badge_badge
                     .BuildBadgePresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder: _widgetbook_workspace_components_badge_badge
+                    .BuildBadgeVariants,
+              ),
             ],
           ),
         ],
