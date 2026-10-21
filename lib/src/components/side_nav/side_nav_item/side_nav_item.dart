@@ -63,6 +63,8 @@ class _SpectrumSideNavItemState extends State<SpectrumSideNavItem> {
     final nav = SpectrumSideNav.of(context);
     final level = nav?.level ?? 0;
     final isCurrent = nav?.selectedRoute == widget.id;
+    // Inside a collapsed SpectrumSideNavPanel, only the icons are shown.
+    final isCollapsed = SpectrumSideNavPanel.isCollapsedOf(context);
     final hasChildren = widget.children.isNotEmpty;
     final isCurrentAncestor = _hasCurrent(widget.children, nav?.selectedRoute);
     // A collapsed item shows as current when its current sub item is hidden.
@@ -99,6 +101,7 @@ class _SpectrumSideNavItemState extends State<SpectrumSideNavItem> {
     // 12px from the start plus 16px for each level, the bold text when current.
     final row = Semantics(
       link: true,
+      label: isCollapsed ? widget.child.data : null,
       selected: isCurrent,
       expanded: hasChildren ? _isExpanded : null,
       enabled: !widget.isDisabled,
@@ -148,21 +151,27 @@ class _SpectrumSideNavItemState extends State<SpectrumSideNavItem> {
                         ),
                       ),
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: DefaultTextStyle(
-                            style: (Theme.of(context).textTheme.bodySmall ?? const TextStyle()).copyWith(
-                              color: content,
-                              fontWeight: isMarked ? FontWeight.w700 : FontWeight.w400,
+                        child: Visibility(
+                          visible: !isCollapsed,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: DefaultTextStyle(
+                              style: (Theme.of(context).textTheme.bodySmall ?? const TextStyle()).copyWith(
+                                color: content,
+                                fontWeight: isMarked ? FontWeight.w700 : FontWeight.w400,
+                              ),
+                              child: widget.child,
                             ),
-                            child: widget.child,
                           ),
                         ),
                       ),
-                      Visibility(visible: widget.actions != null, child: widget.actions ?? const SizedBox.shrink()),
+                      Visibility(
+                        visible: widget.actions != null && !isCollapsed,
+                        child: widget.actions ?? const SizedBox.shrink(),
+                      ),
                       // Items with sub items show a quiet chevron that expands them.
                       Visibility(
-                        visible: hasChildren,
+                        visible: hasChildren && !isCollapsed,
                         child: SpectrumActionButton(
                           icon: SpectrumIcon(_isExpanded ? SpectrumIcons.chevronDown : SpectrumIcons.chevronRight),
                           isQuiet: true,
@@ -188,7 +197,7 @@ class _SpectrumSideNavItemState extends State<SpectrumSideNavItem> {
         row,
         // The sub items are one level deeper, shown only when the item is expanded.
         Visibility(
-          visible: hasChildren && _isExpanded,
+          visible: hasChildren && _isExpanded && !isCollapsed,
           child: SpectrumSideNavLevel(
             level: level + 1,
             child: Column(

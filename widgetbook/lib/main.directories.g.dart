@@ -176,6 +176,8 @@ import 'package:widgetbook_workspace/components/select_box_group/select_box_grou
     as _widgetbook_workspace_components_select_box_group_select_box_group;
 import 'package:widgetbook_workspace/components/side_nav/side_nav.dart'
     as _widgetbook_workspace_components_side_nav_side_nav;
+import 'package:widgetbook_workspace/components/side_nav_panel/side_nav_panel.dart'
+    as _widgetbook_workspace_components_side_nav_panel_side_nav_panel;
 import 'package:widgetbook_workspace/components/skeleton/skeleton.dart'
     as _widgetbook_workspace_components_skeleton_skeleton;
 import 'package:widgetbook_workspace/components/slider/slider.dart'
@@ -1659,6 +1661,22 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_side_nav_side_nav
                     .BuildSideNavPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'side_nav_panel',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumSideNavPanel',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder:
+                    _widgetbook_workspace_components_side_nav_panel_side_nav_panel
+                        .BuildSideNavPanelPresentation,
               ),
             ],
           ),
