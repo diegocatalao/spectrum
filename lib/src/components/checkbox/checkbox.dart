@@ -22,6 +22,9 @@ class SpectrumCheckbox extends StatefulWidget {
   /// Grays out the box and ignores hover and tap.
   final bool isDisabled;
 
+  /// Shows the box in the negative red, for an invalid choice.
+  final bool isInvalid;
+
   /// Called with the new value when the box is tapped.
   final ValueChanged<bool>? onChanged;
 
@@ -33,6 +36,7 @@ class SpectrumCheckbox extends StatefulWidget {
     this.isEmphasized = false,
     this.isIndeterminate = false,
     this.isDisabled = false,
+    this.isInvalid = false,
     this.onChanged,
   });
 
@@ -72,6 +76,14 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
   /// Checks or unchecks the box and tells the parent. A tap on an indeterminate
   /// box checks it, as in Spectrum 2.
   void _handleTap() {
+    final group = SpectrumCheckboxGroup.checkboxOf(context);
+
+    // Inside a SpectrumCheckboxGroup, the group keeps the selection.
+    if (group != null) {
+      group.onToggle();
+      return;
+    }
+
     if (widget.isIndeterminate) {
       setState(() => _isSelected = true);
     } else {
@@ -81,11 +93,23 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
     widget.onChanged?.call(_isSelected);
   }
 
-  /// Inside a disabled SpectrumForm the control is disabled too.
-  bool get _isDisabled => widget.isDisabled || SpectrumForm.isDisabledOf(context);
+  /// Inside a SpectrumCheckboxGroup, the group decides if the box is checked.
+  bool get _selected => SpectrumCheckboxGroup.checkboxOf(context)?.isSelected ?? _isSelected;
 
-  /// Inside an emphasized SpectrumForm the control is emphasized too.
-  bool get _isEmphasized => widget.isEmphasized || SpectrumForm.isEmphasizedOf(context);
+  /// Inside a disabled SpectrumForm or group the control is disabled too.
+  bool get _isDisabled =>
+      widget.isDisabled ||
+      SpectrumForm.isDisabledOf(context) ||
+      (SpectrumCheckboxGroup.checkboxOf(context)?.isDisabled ?? false);
+
+  /// Inside an emphasized SpectrumForm or group the control is emphasized too.
+  bool get _isEmphasized =>
+      widget.isEmphasized ||
+      SpectrumForm.isEmphasizedOf(context) ||
+      (SpectrumCheckboxGroup.checkboxOf(context)?.isEmphasized ?? false);
+
+  /// Inside an invalid group the control is invalid too.
+  bool get _isInvalid => widget.isInvalid || (SpectrumCheckboxGroup.checkboxOf(context)?.isInvalid ?? false);
 
   /// Whether the box is hovered or pressed, which darkens it.
   bool get _isActive => _isHovered || _isPressed;
@@ -97,6 +121,9 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
 
     if (_isDisabled) {
       return colors.outline;
+    } else if (_isInvalid) {
+      // When invalid, the box is the negative red, darker on hover and tap.
+      return _isActive ? SpectrumColors.red1000 : colors.error;
     } else if (_isEmphasized) {
       return _isActive ? context.spectrum.accentHover : colors.primary;
     } else {
@@ -140,6 +167,8 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
 
     if (_isDisabled) {
       border = colors.outline;
+    } else if (_isInvalid) {
+      border = _isActive ? SpectrumColors.red1000 : colors.error;
     } else if (_isActive) {
       border = colors.inverseSurface;
     } else {
@@ -169,7 +198,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
       // When isIndeterminate is True, the dash is shown even if the box is
       // selected, since the group below it is only partially checked.
       box = _buildIndeterminate(context);
-    } else if (_isSelected) {
+    } else if (_selected) {
       // When the box is selected, the box is filled with the checkmark.
       box = _buildSelected(context);
     } else {
@@ -220,7 +249,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
         // partially checked (mixed) and enabled. The label is read from the
         // text inside, so it is not repeated here.
         Semantics(
-          checked: _isSelected,
+          checked: _selected,
           mixed: widget.isIndeterminate,
           enabled: !_isDisabled,
           // The box and the label react to hover and tap together, as in Spectrum 2.
