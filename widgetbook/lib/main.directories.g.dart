@@ -1731,6 +1731,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumTabs',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Icons',
+                builder:
+                    _widgetbook_workspace_components_tabs_tabs.BuildTabsIcons,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_tabs_tabs
                     .BuildTabsPresentation,
