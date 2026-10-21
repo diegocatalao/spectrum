@@ -134,10 +134,14 @@ import 'package:widgetbook_workspace/components/list_view/list_view.dart'
     as _widgetbook_workspace_components_list_view_list_view;
 import 'package:widgetbook_workspace/components/menu/menu.dart'
     as _widgetbook_workspace_components_menu_menu;
-import 'package:widgetbook_workspace/components/menu/menu_group/menu_group.dart'
-    as _widgetbook_workspace_components_menu_menu_group_menu_group;
+import 'package:widgetbook_workspace/components/menu/menu_header/menu_header.dart'
+    as _widgetbook_workspace_components_menu_menu_header_menu_header;
 import 'package:widgetbook_workspace/components/menu/menu_item/menu_item.dart'
     as _widgetbook_workspace_components_menu_menu_item_menu_item;
+import 'package:widgetbook_workspace/components/menu/menu_section/menu_section.dart'
+    as _widgetbook_workspace_components_menu_menu_section_menu_section;
+import 'package:widgetbook_workspace/components/menu/submenu_trigger/submenu_trigger.dart'
+    as _widgetbook_workspace_components_menu_submenu_trigger_submenu_trigger;
 import 'package:widgetbook_workspace/components/meter/meter.dart'
     as _widgetbook_workspace_components_meter_meter;
 import 'package:widgetbook_workspace/components/notification_badge/notification_badge.dart'
@@ -1244,28 +1248,28 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'SpectrumMenu',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Groups',
-                builder:
-                    _widgetbook_workspace_components_menu_menu.BuildMenuGroups,
-              ),
-              _widgetbook.WidgetbookUseCase(
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_menu_menu
                     .BuildMenuPresentation,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Sections',
+                builder: _widgetbook_workspace_components_menu_menu
+                    .BuildMenuSections,
+              ),
             ],
           ),
           _widgetbook.WidgetbookFolder(
-            name: 'menu_group',
+            name: 'menu_header',
             children: [
               _widgetbook.WidgetbookComponent(
-                name: 'SpectrumMenuGroup',
+                name: 'SpectrumMenuHeader',
                 useCases: [
                   _widgetbook.WidgetbookUseCase(
                     name: 'Presentation',
                     builder:
-                        _widgetbook_workspace_components_menu_menu_group_menu_group
-                            .BuildMenuGroupPresentation,
+                        _widgetbook_workspace_components_menu_menu_header_menu_header
+                            .BuildMenuHeaderPresentation,
                   ),
                 ],
               ),
@@ -1312,6 +1316,38 @@ final directories = <_widgetbook.WidgetbookNode>[
                     builder:
                         _widgetbook_workspace_components_menu_menu_item_menu_item
                             .BuildMenuItemWithText,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'menu_section',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumMenuSection',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_menu_menu_section_menu_section
+                            .BuildMenuSectionPresentation,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'submenu_trigger',
+            children: [
+              _widgetbook.WidgetbookComponent(
+                name: 'SpectrumSubmenuTrigger',
+                useCases: [
+                  _widgetbook.WidgetbookUseCase(
+                    name: 'Presentation',
+                    builder:
+                        _widgetbook_workspace_components_menu_submenu_trigger_submenu_trigger
+                            .BuildSubmenuTriggerPresentation,
                   ),
                 ],
               ),

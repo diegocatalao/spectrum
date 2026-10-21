@@ -34,21 +34,9 @@ class SpectrumActionMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-
-    // Spectrum popover: background layer 2, gray-400 border, 8px corners,
-    // the drop shadow of the theme and 4px of space above and below the items.
-    final menuStyle = MenuStyle(
-      backgroundColor: WidgetStatePropertyAll(colors.surfaceContainer),
-      side: WidgetStatePropertyAll(BorderSide(color: colors.outline)),
-      shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-      padding: const WidgetStatePropertyAll(EdgeInsets.all(4)),
-      elevation: const WidgetStatePropertyAll(2),
-      shadowColor: WidgetStatePropertyAll(colors.shadow),
-    );
-
     return MenuAnchor(
-      style: menuStyle,
+      // Spectrum 2 popover, the same of the submenus.
+      style: SpectrumSubmenuTrigger.menuStyleOf(context),
       alignmentOffset: const Offset(0, 4),
       menuChildren: children,
       builder: (context, controller, _) {

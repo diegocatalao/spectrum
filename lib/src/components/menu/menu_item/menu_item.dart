@@ -96,34 +96,45 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
   Widget getContent(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    // Inside a SpectrumMenuGroup with selection, the group decides if the item
-    // is selected, and the checkmark space is always kept.
-    final group = SpectrumMenuGroup.itemOf(context);
-    final isSelected = group?.selected ?? widget.isSelected;
-    final isSelectable = group != null;
+    // Inside a SpectrumMenuSection with selection, the section decides if the item
+    // is selected, and the space of the indicator is always kept. An item that opens
+    // a submenu never shows the indicator, as in Spectrum 2.
+    final section = SpectrumMenuSection.itemOf(context);
+    final submenu = SpectrumSubmenuTrigger.menuOf(context);
+    final isSelected = (section?.isSelected ?? widget.isSelected) && submenu == null;
+    final isMultiple = section?.selects == SpectrumSelects.multiple;
+    final isSelectable = section != null;
 
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // When isSelected is True the 10px checkmark is shown. When only the
-        // group is selectable, its space is kept hidden so the texts stay aligned.
+        // When isSelected is True the indicator is shown. When only the section is
+        // selectable, its space is kept so the texts stay aligned. The 20px height is
+        // the same as the icon box, so it is centered on the first line.
         Visibility(
           visible: isSelected || isSelectable,
           child: Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: Visibility(
-              visible: isSelected,
-              maintainSize: true,
-              maintainAnimation: true,
-              maintainState: true,
-              // The 20px height is the same as the icon box, so the checkmark is
-              // centered on the first line, aligned with the icon and the label.
-              child: SizedBox(
-                height: 20,
-                child: Center(
-                  widthFactor: 1,
-                  child: SpectrumIcon(SpectrumIcons.checkmark, size: 10, color: colors.primary),
+            child: SizedBox(
+              height: 20,
+              child: Center(
+                widthFactor: 1,
+                // In multiple selection, every item shows the box of the checkbox,
+                // checked or not. In single selection, only the selected one shows
+                // the 10px accent checkmark.
+                child: Visibility(
+                  visible: isMultiple && submenu == null,
+                  replacement: Visibility(
+                    visible: isSelected,
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    child: SpectrumIcon(SpectrumIcons.checkmark, size: 10, color: colors.primary),
+                  ),
+                  child: IgnorePointer(
+                    child: ExcludeSemantics(child: SpectrumCheckbox(isSelected: isSelected)),
+                  ),
                 ),
               ),
             ),
@@ -201,6 +212,15 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
                     visible: widget.href != null,
                     child: Padding(padding: const EdgeInsets.only(left: 8), child: SpectrumIcon(SpectrumIcons.linkOut)),
                   ),
+                  // Spectrum 2 submenu chevron: the last element of an item that opens a
+                  // submenu, pointing to the side where the submenu opens.
+                  Visibility(
+                    visible: submenu != null,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: SpectrumIcon(SpectrumIcons.chevronRight),
+                    ),
+                  ),
                 ],
               ),
               // Spectrum 2 menu item description: the "ui-sm" font, 12px regular,
@@ -224,11 +244,11 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
     );
   }
 
-  /// Inside a SpectrumMenuGroup with selection, the tap first tells the group
+  /// Inside a SpectrumMenuSection with selection, the tap first tells the section
   /// to select the item. In both cases, the onTap passed by the user is called,
   /// and the href is opened when there is one.
   void _handleTap(BuildContext context, FollowLink? followLink) {
-    SpectrumMenuGroup.itemOf(context)?.onSelect();
+    SpectrumMenuSection.itemOf(context)?.onSelect();
     widget.onTap?.call();
 
     if (widget.href != null) {
@@ -236,9 +256,76 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
     }
   }
 
+  /// Spectrum menu item: 32px high, 12px from the edges, gray-800 text that gets
+  /// lighter on hover, and a 12% gray-1000 background on hover and focus. Shared by
+  /// the item and by the trigger of a submenu.
+  ButtonStyle _styleOf(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return ButtonStyle(
+      // Keeps the Material density from changing the item height.
+      visualDensity: VisualDensity.standard,
+      // Stops Material from growing the item to a 48px touch target.
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      // Spectrum item height of 32px, with the width coming from the content.
+      minimumSize: const WidgetStatePropertyAll(Size(0, 32)),
+      // 12px between the edges of the item and its content, and 7px above and
+      // below, the S2 center padding that keeps a 14px label centered in 32px
+      // and spaces the description when the item grows.
+      padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 12, vertical: 7)),
+      // Body S text, the 14px of the Spectrum menu.
+      textStyle: WidgetStatePropertyAll(Theme.of(context).textTheme.bodySmall),
+      // Removes the Material overlay, since the background below handles hover.
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+      // Background: 12% gray-1000 on hover and keyboard focus, none otherwise.
+      backgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return Colors.transparent;
+        } else if (states.contains(WidgetState.hovered) || states.contains(WidgetState.focused)) {
+          return colors.inverseSurface.withValues(alpha: 0.12);
+        } else {
+          return Colors.transparent;
+        }
+      }),
+      // Text: gray-400 when disabled, gray-900 on hover and focus, gray-800 otherwise.
+      foregroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return colors.outline;
+        } else if (states.contains(WidgetState.hovered) || states.contains(WidgetState.focused)) {
+          return colors.inverseSurface;
+        } else {
+          return colors.onSurface;
+        }
+      }),
+      // Icon: gray-400 when disabled, gray-800 otherwise.
+      iconColor: WidgetStateProperty.resolveWith((states) {
+        return states.contains(WidgetState.disabled) ? colors.outline : colors.onSurface;
+      }),
+      // Rounded 8px corners, without border, for the hover background.
+      shape: WidgetStatePropertyAll(
+        RoundedRectangleBorder(side: BorderSide.none, borderRadius: BorderRadius.circular(8)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final submenu = SpectrumSubmenuTrigger.menuOf(context);
+
+    // Inside a SpectrumSubmenuTrigger, the item opens its submenu on hover, tap
+    // and the right arrow key, instead of running an action.
+    if (submenu != null) {
+      return SpectrumPressScale(
+        isPressed: _isPressed,
+        child: SubmenuButton(
+          statesController: _states,
+          style: _styleOf(context),
+          menuStyle: SpectrumSubmenuTrigger.menuStyleOf(context),
+          menuChildren: submenu,
+          child: getContent(context),
+        ),
+      );
+    }
 
     // Link opens the href in the system browser, and on the web it also gives
     // the item the native link behaviors. Without href, it only builds the item.
@@ -257,52 +344,7 @@ class _SpectrumMenuItemState extends State<SpectrumMenuItem> {
               // Gives the content a bounded width, so the label can be Expanded and push the
               // shortcut to the right. By default the MenuItemButton gives it an infinite width.
               overflowAxis: Axis.vertical,
-              // Spectrum menu item: 32px high, 12px from the edges, gray-800 text that
-              // gets lighter on hover, and a 12% gray-1000 background on hover and focus.
-              style: ButtonStyle(
-                // Keeps the Material density from changing the item height.
-                visualDensity: VisualDensity.standard,
-                // Stops Material from growing the item to a 48px touch target.
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                // Spectrum item height of 32px, with the width coming from the content.
-                minimumSize: const WidgetStatePropertyAll(Size(0, 32)),
-                // 12px between the edges of the item and its content, and 7px above and
-                // below, the S2 center padding that keeps a 14px label centered in 32px
-                // and spaces the description when the item grows.
-                padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 12, vertical: 7)),
-                // Body S text, the 14px of the Spectrum menu.
-                textStyle: WidgetStatePropertyAll(Theme.of(context).textTheme.bodySmall),
-                // Removes the Material overlay, since the background below handles hover.
-                overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-                // Background: 12% gray-1000 on hover and keyboard focus, none otherwise.
-                backgroundColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.disabled)) {
-                    return Colors.transparent;
-                  } else if (states.contains(WidgetState.hovered) || states.contains(WidgetState.focused)) {
-                    return colors.inverseSurface.withValues(alpha: 0.12);
-                  } else {
-                    return Colors.transparent;
-                  }
-                }),
-                // Text: gray-400 when disabled, gray-900 on hover and focus, gray-800 otherwise.
-                foregroundColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.disabled)) {
-                    return colors.outline;
-                  } else if (states.contains(WidgetState.hovered) || states.contains(WidgetState.focused)) {
-                    return colors.inverseSurface;
-                  } else {
-                    return colors.onSurface;
-                  }
-                }),
-                // Icon: gray-400 when disabled, gray-800 otherwise.
-                iconColor: WidgetStateProperty.resolveWith((states) {
-                  return states.contains(WidgetState.disabled) ? colors.outline : colors.onSurface;
-                }),
-                // Rounded 8px corners, without border, for the hover background.
-                shape: WidgetStatePropertyAll(
-                  RoundedRectangleBorder(side: BorderSide.none, borderRadius: BorderRadius.circular(8)),
-                ),
-              ),
+              style: _styleOf(context),
               // When isDisabled is True, the tap is null and the item is skipped by the keyboard.
               onPressed: widget.isDisabled ? null : () => _handleTap(context, followLink),
               // Checkmark, icon and text, built above. They are not passed as leadingIcon
