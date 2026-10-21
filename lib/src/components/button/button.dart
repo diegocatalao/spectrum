@@ -30,9 +30,9 @@ enum SpectrumButtonVariant {
     final colors = Theme.of(context).colorScheme;
 
     if (this == accent) {
-      return context.spectrum.accentHover;
+      return SpectrumThemeExtension.of(context).accentHover;
     } else if (this == negative) {
-      return context.spectrum.negativeHover;
+      return SpectrumThemeExtension.of(context).negativeHover;
     } else if (this == secondary) {
       return colors.surfaceContainerHighest;
     } else {
@@ -381,7 +381,9 @@ class _SpectrumButtonState extends State<SpectrumButton> {
                 visible: showFocusRing,
                 child: DecoratedBox(
                   decoration: ShapeDecoration(
-                    shape: StadiumBorder(side: BorderSide(color: context.spectrum.focusIndicator, width: 2)),
+                    shape: StadiumBorder(
+                      side: BorderSide(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2),
+                    ),
                   ),
                 ),
               ),

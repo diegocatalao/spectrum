@@ -87,7 +87,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
     if (_isDisabled) {
       return colors.outline;
     } else if (_isEmphasized) {
-      return _isActive ? context.spectrum.accentHover : colors.primary;
+      return _isActive ? SpectrumThemeExtension.of(context).accentHover : colors.primary;
     } else {
       return _isActive ? colors.inverseSurface : colors.onSurface;
     }
@@ -251,7 +251,7 @@ class _SpectrumSwitchState extends State<SpectrumSwitch> {
                             child: DecoratedBox(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(999),
-                                border: Border.all(color: context.spectrum.focusIndicator, width: 2),
+                                border: Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2),
                               ),
                             ),
                           ),

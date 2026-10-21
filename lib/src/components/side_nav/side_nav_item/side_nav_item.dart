@@ -121,7 +121,10 @@ class _SpectrumSideNavItemState extends State<SpectrumSideNavItem> {
             constraints: const BoxConstraints(minHeight: 32),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: showFocusRing ? context.spectrum.focusIndicator : Colors.transparent, width: 2),
+              border: Border.all(
+                color: showFocusRing ? SpectrumThemeExtension.of(context).focusIndicator : Colors.transparent,
+                width: 2,
+              ),
             ),
             child: Stack(
               children: [

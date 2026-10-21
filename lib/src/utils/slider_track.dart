@@ -269,7 +269,7 @@ class _SpectrumSliderTrackState extends State<SpectrumSliderTrack> {
               boxShadow: showFocusRing
                   ? [
                       BoxShadow(color: colors.surface, spreadRadius: 2),
-                      BoxShadow(color: context.spectrum.focusIndicator, spreadRadius: 4),
+                      BoxShadow(color: SpectrumThemeExtension.of(context).focusIndicator, spreadRadius: 4),
                     ]
                   : null,
             ),

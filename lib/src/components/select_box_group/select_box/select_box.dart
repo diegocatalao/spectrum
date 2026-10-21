@@ -209,7 +209,7 @@ class _SpectrumSelectBoxState extends State<SpectrumSelectBox> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: context.spectrum.focusIndicator, width: 2),
+                    border: Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2),
                   ),
                 ),
               ),

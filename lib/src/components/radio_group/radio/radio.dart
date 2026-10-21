@@ -46,7 +46,7 @@ class _SpectrumRadioState extends State<SpectrumRadio> {
       content = isActive ? colors.inverseSurface : colors.onSurface;
     } else if (isSelected && isEmphasized) {
       // When selected and emphasized, the ring is the accent blue.
-      border = isActive ? context.spectrum.accentHover : colors.primary;
+      border = isActive ? SpectrumThemeExtension.of(context).accentHover : colors.primary;
       content = isActive ? colors.inverseSurface : colors.onSurface;
     } else {
       // Otherwise the circle is gray-800, gray-900 on hover and tap.
@@ -88,7 +88,7 @@ class _SpectrumRadioState extends State<SpectrumRadio> {
                   boxShadow: showFocusRing
                       ? [
                           BoxShadow(color: colors.surface, spreadRadius: 2),
-                          BoxShadow(color: context.spectrum.focusIndicator, spreadRadius: 4),
+                          BoxShadow(color: SpectrumThemeExtension.of(context).focusIndicator, spreadRadius: 4),
                         ]
                       : null,
                 ),

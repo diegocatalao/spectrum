@@ -10,7 +10,6 @@ export 'src/foundations/motion.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/theme_extension.dart';
 export 'src/theme/theme.dart';
-export 'src/theme/context_ext.dart';
 
 export 'src/motion/page_transitions.dart';
 export 'src/motion/fade_in.dart';

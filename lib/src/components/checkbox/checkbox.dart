@@ -125,7 +125,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
       // When invalid, the box is the negative red, darker on hover and tap.
       return _isActive ? SpectrumColors.red1000 : colors.error;
     } else if (_isEmphasized) {
-      return _isActive ? context.spectrum.accentHover : colors.primary;
+      return _isActive ? SpectrumThemeExtension.of(context).accentHover : colors.primary;
     } else {
       return _isActive ? colors.inverseSurface : colors.onSurface;
     }
@@ -292,7 +292,7 @@ class _SpectrumCheckbox extends State<SpectrumCheckbox> {
                             child: DecoratedBox(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
-                                border: Border.all(color: context.spectrum.focusIndicator, width: 2),
+                                border: Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2),
                               ),
                             ),
                           ),

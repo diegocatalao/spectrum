@@ -80,7 +80,7 @@ class _SpectrumLinkState extends State<SpectrumLink> {
       // When the variant is primary, the link is the accent blue
       // and uses the accent hover blue of the theme extension.
       color = colors.primary;
-      hover = context.spectrum.accentHover;
+      hover = SpectrumThemeExtension.of(context).accentHover;
     }
 
     // The focus ring is only shown for keyboard navigation, as the
@@ -122,7 +122,7 @@ class _SpectrumLinkState extends State<SpectrumLink> {
     if (showFocusRing) {
       // When the link is focused by the keyboard, the Spectrum
       // focus ring is drawn around the text.
-      ring = context.spectrum.focusIndicator;
+      ring = SpectrumThemeExtension.of(context).focusIndicator;
     } else {
       // Otherwise the ring stays transparent, keeping the same size
       // so the text does not move when the focus changes.

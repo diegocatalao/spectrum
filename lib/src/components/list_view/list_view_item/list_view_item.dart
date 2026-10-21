@@ -142,7 +142,9 @@ class _SpectrumListViewItemState extends State<SpectrumListViewItem> {
             ),
           ),
           foregroundDecoration: BoxDecoration(
-            border: showFocusRing ? Border.all(color: context.spectrum.focusIndicator, width: 2) : null,
+            border: showFocusRing
+                ? Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2)
+                : null,
           ),
           child: Row(
             spacing: 8,

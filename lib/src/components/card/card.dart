@@ -197,7 +197,7 @@ class _SpectrumCardState extends State<SpectrumCard> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: shadows,
           border: Border.all(
-            color: showFocusRing ? context.spectrum.focusIndicator : Colors.transparent,
+            color: showFocusRing ? SpectrumThemeExtension.of(context).focusIndicator : Colors.transparent,
             width: showFocusRing ? 2 : 0,
           ),
         ),
