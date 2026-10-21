@@ -1,1 +1,0 @@
-// Raios de borda
