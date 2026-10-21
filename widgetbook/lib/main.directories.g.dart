@@ -84,34 +84,6 @@ import 'package:widgetbook_workspace/components/divider/divider.dart'
     as _widgetbook_workspace_components_divider_divider;
 import 'package:widgetbook_workspace/components/drop_zone/drop_zone.dart'
     as _widgetbook_workspace_components_drop_zone_drop_zone;
-import 'package:widgetbook_workspace/components/extras/area_chart/area_chart.dart'
-    as _widgetbook_workspace_components_extras_area_chart_area_chart;
-import 'package:widgetbook_workspace/components/extras/bar_chart/bar_chart.dart'
-    as _widgetbook_workspace_components_extras_bar_chart_bar_chart;
-import 'package:widgetbook_workspace/components/extras/big_number/big_number.dart'
-    as _widgetbook_workspace_components_extras_big_number_big_number;
-import 'package:widgetbook_workspace/components/extras/coach_mark/coach_mark.dart'
-    as _widgetbook_workspace_components_extras_coach_mark_coach_mark;
-import 'package:widgetbook_workspace/components/extras/color_loupe/color_loupe.dart'
-    as _widgetbook_workspace_components_extras_color_loupe_color_loupe;
-import 'package:widgetbook_workspace/components/extras/donut_chart/donut_chart.dart'
-    as _widgetbook_workspace_components_extras_donut_chart_donut_chart;
-import 'package:widgetbook_workspace/components/extras/histogram/histogram.dart'
-    as _widgetbook_workspace_components_extras_histogram_histogram;
-import 'package:widgetbook_workspace/components/extras/line_chart/line_chart.dart'
-    as _widgetbook_workspace_components_extras_line_chart_line_chart;
-import 'package:widgetbook_workspace/components/extras/quick_actions/quick_actions.dart'
-    as _widgetbook_workspace_components_extras_quick_actions_quick_actions;
-import 'package:widgetbook_workspace/components/extras/rating/rating.dart'
-    as _widgetbook_workspace_components_extras_rating_rating;
-import 'package:widgetbook_workspace/components/extras/scatter_plot/scatter_plot.dart'
-    as _widgetbook_workspace_components_extras_scatter_plot_scatter_plot;
-import 'package:widgetbook_workspace/components/extras/scroll_zoom_bar/scroll_zoom_bar.dart'
-    as _widgetbook_workspace_components_extras_scroll_zoom_bar_scroll_zoom_bar;
-import 'package:widgetbook_workspace/components/extras/tab_bar/tab_bar.dart'
-    as _widgetbook_workspace_components_extras_tab_bar_tab_bar;
-import 'package:widgetbook_workspace/components/extras/tray/tray.dart'
-    as _widgetbook_workspace_components_extras_tray_tray;
 import 'package:widgetbook_workspace/components/form/form.dart'
     as _widgetbook_workspace_components_form_form;
 import 'package:widgetbook_workspace/components/icon_button/icon_button.dart'
@@ -204,6 +176,34 @@ import 'package:widgetbook_workspace/components/tooltip/tooltip.dart'
     as _widgetbook_workspace_components_tooltip_tooltip;
 import 'package:widgetbook_workspace/components/tree_view/tree_view.dart'
     as _widgetbook_workspace_components_tree_view_tree_view;
+import 'package:widgetbook_workspace/extras/area_chart/area_chart.dart'
+    as _widgetbook_workspace_extras_area_chart_area_chart;
+import 'package:widgetbook_workspace/extras/bar_chart/bar_chart.dart'
+    as _widgetbook_workspace_extras_bar_chart_bar_chart;
+import 'package:widgetbook_workspace/extras/big_number/big_number.dart'
+    as _widgetbook_workspace_extras_big_number_big_number;
+import 'package:widgetbook_workspace/extras/coach_mark/coach_mark.dart'
+    as _widgetbook_workspace_extras_coach_mark_coach_mark;
+import 'package:widgetbook_workspace/extras/color_loupe/color_loupe.dart'
+    as _widgetbook_workspace_extras_color_loupe_color_loupe;
+import 'package:widgetbook_workspace/extras/donut_chart/donut_chart.dart'
+    as _widgetbook_workspace_extras_donut_chart_donut_chart;
+import 'package:widgetbook_workspace/extras/histogram/histogram.dart'
+    as _widgetbook_workspace_extras_histogram_histogram;
+import 'package:widgetbook_workspace/extras/line_chart/line_chart.dart'
+    as _widgetbook_workspace_extras_line_chart_line_chart;
+import 'package:widgetbook_workspace/extras/quick_actions/quick_actions.dart'
+    as _widgetbook_workspace_extras_quick_actions_quick_actions;
+import 'package:widgetbook_workspace/extras/rating/rating.dart'
+    as _widgetbook_workspace_extras_rating_rating;
+import 'package:widgetbook_workspace/extras/scatter_plot/scatter_plot.dart'
+    as _widgetbook_workspace_extras_scatter_plot_scatter_plot;
+import 'package:widgetbook_workspace/extras/scroll_zoom_bar/scroll_zoom_bar.dart'
+    as _widgetbook_workspace_extras_scroll_zoom_bar_scroll_zoom_bar;
+import 'package:widgetbook_workspace/extras/tab_bar/tab_bar.dart'
+    as _widgetbook_workspace_extras_tab_bar_tab_bar;
+import 'package:widgetbook_workspace/extras/tray/tray.dart'
+    as _widgetbook_workspace_extras_tray_tray;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -843,258 +843,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_drop_zone_drop_zone
                     .BuildDropZonePresentation,
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
-        name: 'extras',
-        children: [
-          _widgetbook.WidgetbookFolder(
-            name: 'area_chart',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumAreaChart',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_area_chart_area_chart
-                            .BuildAreaChartPresentation,
-                  ),
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Single Series',
-                    builder:
-                        _widgetbook_workspace_components_extras_area_chart_area_chart
-                            .BuildAreaChartSingleSeries,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'bar_chart',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumBarChart',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_bar_chart_bar_chart
-                            .BuildBarChartPresentation,
-                  ),
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Single Series',
-                    builder:
-                        _widgetbook_workspace_components_extras_bar_chart_bar_chart
-                            .BuildBarChartSingleSeries,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'big_number',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumBigNumber',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_big_number_big_number
-                            .BuildBigNumberPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'coach_mark',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumCoachMark',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_coach_mark_coach_mark
-                            .BuildCoachMarkPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'color_loupe',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumColorLoupe',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_color_loupe_color_loupe
-                            .BuildColorLoupePresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'donut_chart',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumDonutChart',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_donut_chart_donut_chart
-                            .BuildDonutChartPresentation,
-                  ),
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Without Value',
-                    builder:
-                        _widgetbook_workspace_components_extras_donut_chart_donut_chart
-                            .BuildDonutChartWithoutValue,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'histogram',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumHistogram',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_histogram_histogram
-                            .BuildHistogramPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'line_chart',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumLineChart',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_line_chart_line_chart
-                            .BuildLineChartPresentation,
-                  ),
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Single Series',
-                    builder:
-                        _widgetbook_workspace_components_extras_line_chart_line_chart
-                            .BuildLineChartSingleSeries,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'quick_actions',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumQuickActions',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_quick_actions_quick_actions
-                            .BuildQuickActionsPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'rating',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumRating',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_rating_rating
-                            .BuildRatingPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'scatter_plot',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumScatterPlot',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_scatter_plot_scatter_plot
-                            .BuildScatterPlotPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'scroll_zoom_bar',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumScrollZoomBar',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_scroll_zoom_bar_scroll_zoom_bar
-                            .BuildScrollZoomBarPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'tab_bar',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTabBar',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder:
-                        _widgetbook_workspace_components_extras_tab_bar_tab_bar
-                            .BuildTabBarPresentation,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookFolder(
-            name: 'tray',
-            children: [
-              _widgetbook.WidgetbookComponent(
-                name: 'SpectrumTray',
-                useCases: [
-                  _widgetbook.WidgetbookUseCase(
-                    name: 'Presentation',
-                    builder: _widgetbook_workspace_components_extras_tray_tray
-                        .BuildTrayPresentation,
-                  ),
-                ],
               ),
             ],
           ),
@@ -1947,6 +1695,243 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Presentation',
                 builder: _widgetbook_workspace_components_tree_view_tree_view
                     .BuildTreeViewPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  ),
+  _widgetbook.WidgetbookFolder(
+    name: 'extras',
+    children: [
+      _widgetbook.WidgetbookFolder(
+        name: 'area_chart',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumAreaChart',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_area_chart_area_chart
+                    .BuildAreaChartPresentation,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Single Series',
+                builder: _widgetbook_workspace_extras_area_chart_area_chart
+                    .BuildAreaChartSingleSeries,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'bar_chart',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumBarChart',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_bar_chart_bar_chart
+                    .BuildBarChartPresentation,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Single Series',
+                builder: _widgetbook_workspace_extras_bar_chart_bar_chart
+                    .BuildBarChartSingleSeries,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'big_number',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumBigNumber',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_big_number_big_number
+                    .BuildBigNumberPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'coach_mark',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumCoachMark',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_coach_mark_coach_mark
+                    .BuildCoachMarkPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'color_loupe',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumColorLoupe',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_color_loupe_color_loupe
+                    .BuildColorLoupePresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'donut_chart',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumDonutChart',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_donut_chart_donut_chart
+                    .BuildDonutChartPresentation,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Without Value',
+                builder: _widgetbook_workspace_extras_donut_chart_donut_chart
+                    .BuildDonutChartWithoutValue,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'histogram',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumHistogram',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_histogram_histogram
+                    .BuildHistogramPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'line_chart',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumLineChart',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_line_chart_line_chart
+                    .BuildLineChartPresentation,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Single Series',
+                builder: _widgetbook_workspace_extras_line_chart_line_chart
+                    .BuildLineChartSingleSeries,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'quick_actions',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumQuickActions',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder:
+                    _widgetbook_workspace_extras_quick_actions_quick_actions
+                        .BuildQuickActionsPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'rating',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumRating',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_rating_rating
+                    .BuildRatingPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'scatter_plot',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumScatterPlot',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_scatter_plot_scatter_plot
+                    .BuildScatterPlotPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'scroll_zoom_bar',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumScrollZoomBar',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder:
+                    _widgetbook_workspace_extras_scroll_zoom_bar_scroll_zoom_bar
+                        .BuildScrollZoomBarPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'tab_bar',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumTabBar',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_tab_bar_tab_bar
+                    .BuildTabBarPresentation,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'tray',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'SpectrumTray',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Presentation',
+                builder: _widgetbook_workspace_extras_tray_tray
+                    .BuildTrayPresentation,
               ),
             ],
           ),
