@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  device_frame_plus: ^1.5.0
   spectrum:
     path: ..
   widgetbook: ^3.25.0

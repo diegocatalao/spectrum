@@ -204,8 +204,25 @@ import 'package:widgetbook_workspace/extras/tab_bar/tab_bar.dart'
     as _widgetbook_workspace_extras_tab_bar_tab_bar;
 import 'package:widgetbook_workspace/extras/tray/tray.dart'
     as _widgetbook_workspace_extras_tray_tray;
+import 'package:widgetbook_workspace/templates/homescreen.dart'
+    as _widgetbook_workspace_templates_homescreen;
 
 final directories = <_widgetbook.WidgetbookNode>[
+  _widgetbook.WidgetbookCategory(
+    name: 'Templates',
+    children: [
+      _widgetbook.WidgetbookComponent(
+        name: 'HomeScreenTemplate',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Presentation',
+            builder: _widgetbook_workspace_templates_homescreen
+                .buildHomeScreenPresentation,
+          ),
+        ],
+      ),
+    ],
+  ),
   _widgetbook.WidgetbookFolder(
     name: 'components',
     children: [
