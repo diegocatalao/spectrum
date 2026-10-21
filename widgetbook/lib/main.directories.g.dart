@@ -44,8 +44,6 @@ import 'package:widgetbook_workspace/components/checkbox/checkbox.dart'
     as _widgetbook_workspace_components_checkbox_checkbox;
 import 'package:widgetbook_workspace/components/checkbox_group/checkbox_group.dart'
     as _widgetbook_workspace_components_checkbox_group_checkbox_group;
-import 'package:widgetbook_workspace/components/clear_button/clear_button.dart'
-    as _widgetbook_workspace_components_clear_button_clear_button;
 import 'package:widgetbook_workspace/components/close_button/close_button.dart'
     as _widgetbook_workspace_components_close_button_close_button;
 import 'package:widgetbook_workspace/components/color_area/color_area.dart'
@@ -132,8 +130,6 @@ import 'package:widgetbook_workspace/components/link/link.dart'
     as _widgetbook_workspace_components_link_link;
 import 'package:widgetbook_workspace/components/link_button/link_button.dart'
     as _widgetbook_workspace_components_link_button_link_button;
-import 'package:widgetbook_workspace/components/list_box/list_box.dart'
-    as _widgetbook_workspace_components_list_box_list_box;
 import 'package:widgetbook_workspace/components/list_view/list_view.dart'
     as _widgetbook_workspace_components_list_view_list_view;
 import 'package:widgetbook_workspace/components/menu/menu.dart'
@@ -148,8 +144,6 @@ import 'package:widgetbook_workspace/components/menu/submenu_trigger/submenu_tri
     as _widgetbook_workspace_components_menu_submenu_trigger_submenu_trigger;
 import 'package:widgetbook_workspace/components/meter/meter.dart'
     as _widgetbook_workspace_components_meter_meter;
-import 'package:widgetbook_workspace/components/notification_badge/notification_badge.dart'
-    as _widgetbook_workspace_components_notification_badge_notification_badge;
 import 'package:widgetbook_workspace/components/number_field/number_field.dart'
     as _widgetbook_workspace_components_number_field_number_field;
 import 'package:widgetbook_workspace/components/picker/picker.dart'
@@ -206,8 +200,6 @@ import 'package:widgetbook_workspace/components/toggle_button/toggle_button.dart
     as _widgetbook_workspace_components_toggle_button_toggle_button;
 import 'package:widgetbook_workspace/components/toggle_button_group/toggle_button_group.dart'
     as _widgetbook_workspace_components_toggle_button_group_toggle_button_group;
-import 'package:widgetbook_workspace/components/toolbar/toolbar.dart'
-    as _widgetbook_workspace_components_toolbar_toolbar;
 import 'package:widgetbook_workspace/components/tooltip/tooltip.dart'
     as _widgetbook_workspace_components_tooltip_tooltip;
 import 'package:widgetbook_workspace/components/tree_view/tree_view.dart'
@@ -527,22 +519,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder:
                     _widgetbook_workspace_components_checkbox_group_checkbox_group
                         .BuildCheckboxGroupPresentation,
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
-        name: 'clear_button',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumClearButton',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder:
-                    _widgetbook_workspace_components_clear_button_clear_button
-                        .BuildClearButtonPresentation,
               ),
             ],
           ),
@@ -1282,21 +1258,6 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
-        name: 'list_box',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumListBox',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder: _widgetbook_workspace_components_list_box_list_box
-                    .BuildListBoxPresentation,
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
         name: 'list_view',
         children: [
           _widgetbook.WidgetbookComponent(
@@ -1440,22 +1401,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Value Label',
                 builder: _widgetbook_workspace_components_meter_meter
                     .BuildMeterValueLabel,
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
-        name: 'notification_badge',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumNotificationBadge',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder:
-                    _widgetbook_workspace_components_notification_badge_notification_badge
-                        .BuildNotificationBadgePresentation,
               ),
             ],
           ),
@@ -1967,21 +1912,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder:
                     _widgetbook_workspace_components_toggle_button_group_toggle_button_group
                         .BuildToggleButtonGroupPresentation,
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
-        name: 'toolbar',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SpectrumToolbar',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Presentation',
-                builder: _widgetbook_workspace_components_toolbar_toolbar
-                    .BuildToolbarPresentation,
               ),
             ],
           ),
