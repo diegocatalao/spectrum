@@ -36,40 +36,7 @@ class SpectrumWidgetBook extends StatelessWidget {
         // in the top left corner of the canvas.
         AlignmentAddon(),
       ],
-      directories: directories.map(_collapse).toList(),
+      directories: directories,
     );
-  }
-
-  /// Recreates the generated tree with every folder and component collapsed,
-  /// since the generator always creates them expanded and has no option for it.
-  WidgetbookNode _collapse(WidgetbookNode node) {
-    final WidgetbookNode collapsed;
-
-    if (node is WidgetbookFolder) {
-      // When the node is a folder, its children are collapsed first,
-      // so the whole tree starts closed and only the top level
-      // folders are shown when the Widgetbook opens.
-      collapsed = WidgetbookFolder(
-        name: node.name,
-        children: node.children!.map(_collapse).toList(),
-        isInitiallyExpanded: false,
-      );
-    } else if (node is WidgetbookComponent) {
-      // When the node is a component, it is collapsed, but its use cases
-      // are kept as they are, since a use case is a leaf and has
-      // nothing to expand.
-      collapsed = WidgetbookComponent(
-        name: node.name,
-        useCases: node.useCases,
-        isInitiallyExpanded: false
-      );
-    } else {
-      // When the node is anything else, like a use case, it is kept
-      // as it is, because the generator only creates folders,
-      // components and use cases.
-      collapsed = node;
-    }
-
-    return collapsed;
   }
 }
