@@ -26,5 +26,6 @@ export 'src/utils/color_handle.dart';
 export 'src/utils/calendar_grid.dart';
 export 'src/utils/field.dart';
 export 'src/utils/slider_track.dart';
+export 'src/utils/segmented_input.dart';
 
 export 'src/components/components.dart';
