@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../foundations/colors.dart';
 
-// Mapeamento dos tokens semânticos do Spectrum 2 para o ColorScheme do Material:
-// primary → accent, secondary → neutral, error → negative, *Container → subtle background,
-// surface → background-base, onSurface → body/neutral content, outline → borda, outlineVariant → divisor.
+/// Maps the Spectrum 2 semantic tokens to the Material ColorScheme:
+/// primary → accent, secondary → neutral, error → negative, *Container → subtle background,
+/// surface → background-base, onSurface → body/neutral content, outline → border, outlineVariant → divider.
 abstract final class SpectrumColorScheme {
   static ColorScheme light() => const ColorScheme.light(
     primary: SpectrumColors.blue900,
