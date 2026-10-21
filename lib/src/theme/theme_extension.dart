@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../foundations/colors.dart';
 
-// Spectrum tokens that have no place in the Material ColorScheme.
+/// Spectrum tokens that have no place in the Material ColorScheme.
 class SpectrumThemeExtension extends ThemeExtension<SpectrumThemeExtension> {
   /// accent-background-color-hover/down: blue of hovered and pressed accent elements.
   final Color accentHover;
@@ -26,6 +26,21 @@ class SpectrumThemeExtension extends ThemeExtension<SpectrumThemeExtension> {
     negativeHover: SpectrumDarkColors.red700,
     focusIndicator: SpectrumDarkColors.blue800,
   );
+
+  /// Returns the Spectrum tokens of the theme. When the theme has no SpectrumThemeExtension,
+  /// returns the light or dark defaults, following the brightness of the theme.
+  static SpectrumThemeExtension of(BuildContext context) {
+    final theme = Theme.of(context);
+    final extension = theme.extension<SpectrumThemeExtension>();
+
+    if (extension != null) {
+      return extension;
+    } else if (theme.brightness == Brightness.dark) {
+      return dark;
+    } else {
+      return light;
+    }
+  }
 
   @override
   SpectrumThemeExtension copyWith({Color? accentHover, Color? negativeHover, Color? focusIndicator}) {

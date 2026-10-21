@@ -87,7 +87,7 @@ class _SpectrumBreadcrumbState extends State<SpectrumBreadcrumb> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(
-                    color: showFocusRing ? context.spectrum.focusIndicator : Colors.transparent,
+                    color: showFocusRing ? SpectrumThemeExtension.of(context).focusIndicator : Colors.transparent,
                     width: 2,
                   ),
                 ),

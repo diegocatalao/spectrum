@@ -42,7 +42,7 @@ class _SpectrumTagState extends State<SpectrumTag> {
       content = colors.outline;
     } else if (isSelected && (group?.isEmphasized ?? false)) {
       // When selected and emphasized, the tag is the accent blue with white text.
-      background = isActive ? context.spectrum.accentHover : colors.primary;
+      background = isActive ? SpectrumThemeExtension.of(context).accentHover : colors.primary;
       content = colors.onPrimary;
     } else if (isSelected) {
       // When selected, the tag is gray-800 with gray-25 text.

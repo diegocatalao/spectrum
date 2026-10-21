@@ -102,7 +102,9 @@ class _SpectrumTreeViewItemState extends State<SpectrumTreeViewItem> {
             border: Border(bottom: BorderSide(color: isDark ? SpectrumDarkColors.gray300 : SpectrumColors.gray300)),
           ),
           foregroundDecoration: BoxDecoration(
-            border: showFocusRing ? Border.all(color: context.spectrum.focusIndicator, width: 2) : null,
+            border: showFocusRing
+                ? Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2)
+                : null,
           ),
           child: Row(
             spacing: 4,

@@ -201,7 +201,7 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
       // When the toggle button is selected and emphasized, it is filled with the
       // accent blue, darker on hover and tap, with a white content.
       background = colors.primary;
-      pressed = context.spectrum.accentHover;
+      pressed = SpectrumThemeExtension.of(context).accentHover;
       content = colors.onPrimary;
     } else if (isSelected) {
       // When the toggle button is selected, it is filled with the neutral gray-800,
@@ -352,7 +352,7 @@ class _SpectrumActionButtonState extends State<SpectrumActionButton> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: context.spectrum.focusIndicator, width: 2),
+                    border: Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2),
                   ),
                 ),
               ),

@@ -97,7 +97,7 @@ class _SpectrumCloseButtonState extends State<SpectrumCloseButton> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: context.spectrum.focusIndicator, width: 2),
+                    border: Border.all(color: SpectrumThemeExtension.of(context).focusIndicator, width: 2),
                   ),
                 ),
               ),

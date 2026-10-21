@@ -173,7 +173,7 @@ class _DayCellState extends State<_DayCell> {
     } else {
       // Otherwise the selection is the accent blue.
       accent = colors.primary;
-      accentActive = context.spectrum.accentHover;
+      accentActive = SpectrumThemeExtension.of(context).accentHover;
     }
 
     if (isDisabled) {
@@ -252,7 +252,7 @@ class _DayCellState extends State<_DayCell> {
                     color: circle,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: showFocusRing ? context.spectrum.focusIndicator : Colors.transparent,
+                      color: showFocusRing ? SpectrumThemeExtension.of(context).focusIndicator : Colors.transparent,
                       width: 2,
                     ),
                   ),

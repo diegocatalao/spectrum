@@ -148,7 +148,7 @@ class _SpectrumPickerState extends State<SpectrumPicker> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: showFocusRing ? context.spectrum.focusIndicator : Colors.transparent,
+                      color: showFocusRing ? SpectrumThemeExtension.of(context).focusIndicator : Colors.transparent,
                       width: 2,
                     ),
                   ),

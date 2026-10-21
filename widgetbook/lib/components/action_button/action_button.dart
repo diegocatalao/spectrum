@@ -54,9 +54,7 @@ Widget BuildActionButtonPresentation(BuildContext context) {
       description: 'Fixed white or black colors for buttons over images or colored backgrounds.',
     ),
     onTap: () => log('BuildActionButtonPresentation button was tapped.'),
-    child: Text(
-      context.knobs.string(label: 'content', initialValue: 'Edit', description: 'The text of the button.'),
-    ),
+    child: Text(context.knobs.string(label: 'content', initialValue: 'Edit', description: 'The text of the button.')),
   );
 }
 
